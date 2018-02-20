@@ -1,24 +1,17 @@
 {
-  "name": "bears-team-1",
-  "version": "1.0.0",
-  "description": "Voyage 4",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chingu-voyage4/Bears-Team-1.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/chingu-voyage4/Bears-Team-1/issues"
-  },
-  "homepage": "https://github.com/chingu-voyage4/Bears-Team-1#readme",
+  "name": "my-app",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
-    "express": "^4.16.2",
-    "node": "^9.5.0"
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1"
+  },
+  "proxy": "http://localhost:8080",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   }
 }
