@@ -1,0 +1,24 @@
+{
+  "name": "bears-team-1",
+  "version": "1.0.0",
+  "description": "Voyage 4",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chingu-voyage4/Bears-Team-1.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chingu-voyage4/Bears-Team-1/issues"
+  },
+  "homepage": "https://github.com/chingu-voyage4/Bears-Team-1#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "node": "^9.5.0"
+  }
+}
