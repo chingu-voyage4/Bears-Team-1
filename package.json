@@ -3,19 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
+    "mongoose": "^5.0.6",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"
   },
   "proxy": "http://localhost:3001",
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"nodemon server.js\"",
+    "start": "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "concurrently": "^3.5.1"
+    "concurrently": "^3.5.1",
+    "nodemon": "^1.15.1"
   }
 }
