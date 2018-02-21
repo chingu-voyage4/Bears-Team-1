@@ -1,17 +1,21 @@
 {
-  "name": "my-app",
+  "name": "Bears-Team-1",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "express": "^4.16.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-scripts": "1.1.1"
   },
-  "proxy": "http://localhost:8080",
+  "proxy": "http://localhost:3001",
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently \"react-scripts start\" \"nodemon server.js\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "concurrently": "^3.5.1"
   }
 }
