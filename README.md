@@ -8,4 +8,4 @@ npm start
 
 ```
 webpack server: 3000 <br>
-api server: /api/3001
+api server: 3001/api/
