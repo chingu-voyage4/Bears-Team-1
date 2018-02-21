@@ -34,8 +34,8 @@ mongoose.Promise = global.Promise;
 // Answer requests
 //////////////////////////////
 
-app.get("/ping", function(req, res) {
-  return res.send("pong");
+app.get("/api", function(req, res) {
+  return res.send("api server");
 });
 
 // All remaining requests return the React app, so it can handle routing.
