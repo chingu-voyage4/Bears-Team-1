@@ -1,8 +1,9 @@
 const express = require("express");
-const cors = require('cors');
+const cors = require("cors");
 const path = require("path");
-require('dotenv').config();
-const mongoose = require('mongoose');
+require("dotenv").config();
+const mongoose = require("mongoose");
+const MONGO_URL = require("./config");
 
 const app = express();
 
@@ -17,16 +18,21 @@ if (process.env.NODE_ENV === "production") {
 
 // Cross Origin Resource Sharing
 app.use(cors());
-app.options('*', cors());
+app.options("*", cors());
 
 //////////////////////////////
 // MongoDB
 //////////////////////////////
 
 // Import Tweet Model
-const Tweet = require('./models/Tweet');
+const Tweet = require("./models/Tweet");
 // Connect to database
-mongoose.connect(process.env.MONGO_URI || "mongodb://localhost:27017/bearsTeam1");
+mongoose.connect(process.env.MONGO_URI || MONGO_URL, (err, db) => {
+  if (err) {
+    return console.log(err);
+  }
+  console.log("db", db);
+});
 // Use native promises
 mongoose.Promise = global.Promise;
 
@@ -43,10 +49,10 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
-app.listen(process.env.PORT || 3001, (err) => {
-  if(err) {
+app.listen(process.env.PORT || 3001, err => {
+  if (err) {
     console.log("error", err);
   } else {
-    console.log(`Server.js is running on port ${app.get("port")}`)
+    console.log(`Server.js is running on port ${app.get("port")}`);
   }
 });
