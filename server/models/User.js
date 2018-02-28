@@ -31,3 +31,7 @@ const UserSchema = new Schema({
     },
     avatarUrl: ""
 });
+
+const User = mongoose.model("User", UserSchema);
+
+module.exports = {User};
