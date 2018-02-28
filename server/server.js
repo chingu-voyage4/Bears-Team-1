@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Priority serve any static files.
-app.use(express.static(path.resolve(__dirname, "../react/build")));
+app.use(express.static("build"));
 
 // Cross Origin Resource Sharing
 app.use(cors());
@@ -38,8 +38,8 @@ app.get("/api", (req, res) => {
 });
 
 // All remaining requests return the React app, so it can handle routing.
-app.get("*", (request, response) => {
-  response.sendFile(path.resolve(__dirname, "../react/build", "index.html"));
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
 app.listen(PORT, () => console.log(`Express listening on port ${PORT}`));
