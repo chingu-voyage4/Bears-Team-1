@@ -43,3 +43,5 @@ app.get("*", (request, response) => {
 });
 
 app.listen(PORT, () => console.log(`Express listening on port ${PORT}`));
+
+module.exports = { app };
