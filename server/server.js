@@ -3,6 +3,7 @@ const cors = require("cors");
 const path = require("path");
 require("dotenv").config();
 const mongoose = require("mongoose");
+const dummyApi = require("./dummyAPI.js");
 
 const app = express();
 
@@ -32,12 +33,12 @@ mongoose.Promise = global.Promise;
 // Answer requests
 //////////////////////////////
 
-app.get("/api", function(req, res) {
-  return res.send("api server");
+app.get("/api", (req, res) => {
+  return res.send(dummyApi);
 });
 
 // All remaining requests return the React app, so it can handle routing.
-app.get("*", function(request, response) {
+app.get("*", (request, response) => {
   response.sendFile(path.resolve(__dirname, "../react/build", "index.html"));
 });
 
