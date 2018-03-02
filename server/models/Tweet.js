@@ -16,6 +16,5 @@ const TweetSchema = new Schema({
   time: Number
 });
 // Convert Schema to Model
-const Tweet = mongoose.model("tweet", TweetSchema);
 // Export Model
-module.exports = Tweet;
+module.exports = mongoose.model("Tweet", TweetSchema);
