@@ -45,12 +45,12 @@ app.get("/api", (req, res) => {
   return res.send(dummyApi);
 });
 
-app.get("/users", (req, res) => {
+app.get("/api/users", (req, res) => {
   User.find({}).then(users => {
     res.send(users);
   });
 });
-app.post("/login", (req, res) => {
+app.post("/signup", (req, res) => {
   let user = new User({
     userInfo: {
       username: req.body.userInfo.username,

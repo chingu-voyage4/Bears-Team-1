@@ -12,7 +12,9 @@ let testUsers = [
       username: "misoawesome",
       firstName: "Miso",
       lastName: "Awesomely"
-    },
+    }
+  },
+  {
     userInfo: {
       username: "looplenny",
       firstName: "Lenny",
