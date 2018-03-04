@@ -1,11 +1,13 @@
 import React, { Component } from "react";
-import Home from "./components/Home";
+import ProfileCard from "./components/ProfileCard";
+import Feed from "./components/Feed";
 
 class Main extends Component {
   render() {
     return (
       <div>
-        <Home />
+        <ProfileCard />
+        <Feed />
       </div>
     );
   }
