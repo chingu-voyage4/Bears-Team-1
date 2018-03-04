@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 
 const User = require("./models/User");
 const dummyApi = require("./dummyAPI.js");
+const MONGO_URI =
+  process.env.MONGO_URI || "mongodb://localhost:27017/v4Bears01";
 const app = express();
 
 app.use(bodyParser.json());
@@ -26,9 +28,9 @@ app.options("*", cors());
 const Tweet = require("./models/Tweet");
 // Connect to database
 mongoose
-  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/v4Bears01")
+  .connect(MONGO_URI)
   .then(res => {
-    console.log("Connected to test db");
+    console.log(`Connected to ${MONGO_URI}`);
   })
   .catch(err => {
     if (err) console.log("err", err);
