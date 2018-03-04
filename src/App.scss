@@ -1,36 +1,116 @@
-.App {
+////////////////////////////////////////
+///// SCSS Variables
+////////////////////////////////////////
+
+$font-color: #000;
+
+// Responsive breakpoints, mobile first design
+$sm: "only screen and (min-width: 576px)";
+$md: "only screen and (min-width: 768px)";
+$lg: "only screen and (min-width: 992px)";
+$xl: "only screen and (min-width: 1200px)";
+
+////////////////////////////////////////
+///// Default Styles
+////////////////////////////////////////
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: $font-color;
+  line-height: 20px;
+  font-family: sans-serif;
+}
+
+////////////////////////////////////////
+///// Helper classes
+////////////////////////////////////////
+
+// Text alignment
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+////////////////////////////////////////
+///// Layout
+////////////////////////////////////////
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.container {
+  // Mobile first
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+  position: relative;
+  // 576px+ width
+  @media #{$sm} {
   }
-  to {
-    transform: rotate(360deg);
+  // 768px+ width
+  @media #{$md} {
+  }
+  // 992px+ width
+  @media #{$lg} {
+  }
+  // 1200px+ width
+  @media #{$xl} {
   }
 }
 
-.test {
-  color: orange;
+// Create grid column-1 through column-12
+@for $i from 1 through 12 {
+  .column-#{$i} {
+    width: 100% / 12 * $i;
+  }
+}
+
+////////////////////////////////////////
+///// Nav
+////////////////////////////////////////
+
+.navbar {
+  background: lightgray;
+}
+
+.navbar ul {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar li {
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  padding: 15px;
+}
+
+.navbar li a {
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s background-color;
+}
+
+.navbar li a:hover {
+  background-color: white;
+}
+
+.navbar--left {
+  display: inline;
+}
+
+.navbar--icon {
+  display: inline;
+  position: absolute;
+  left: 50%;
+}
+
+.navbar--right {
+  display: block;
+  float: right;
 }

@@ -1,27 +1,117 @@
-.App {
-  text-align: center; }
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: #000;
+  line-height: 20px;
+  font-family: sans-serif;
+}
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px; }
+.text-left {
+  text-align: left;
+}
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white; }
+.text-right {
+  text-align: right;
+}
 
-.App-title {
-  font-size: 1.5em; }
+.text-center {
+  text-align: center;
+}
 
-.App-intro {
-  font-size: large; }
+.container {
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+  position: relative;
+}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg); }
-  to {
-    transform: rotate(360deg); } }
+.column-1 {
+  width: 8.33333%;
+}
 
-.test {
-  color: orange; }
+.column-2 {
+  width: 16.66667%;
+}
+
+.column-3 {
+  width: 25%;
+}
+
+.column-4 {
+  width: 33.33333%;
+}
+
+.column-5 {
+  width: 41.66667%;
+}
+
+.column-6 {
+  width: 50%;
+}
+
+.column-7 {
+  width: 58.33333%;
+}
+
+.column-8 {
+  width: 66.66667%;
+}
+
+.column-9 {
+  width: 75%;
+}
+
+.column-10 {
+  width: 83.33333%;
+}
+
+.column-11 {
+  width: 91.66667%;
+}
+
+.column-12 {
+  width: 100%;
+}
+
+.navbar {
+  background: lightgray;
+}
+
+.navbar ul {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar li {
+  display: inline-block;
+  font-family: Arial, sans-serif;
+  padding: 15px;
+}
+
+.navbar li a {
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s background-color;
+}
+
+.navbar li a:hover {
+  background-color: white;
+}
+
+.navbar--left {
+  display: inline;
+}
+
+.navbar--icon {
+  display: inline;
+  position: absolute;
+  left: 50%;
+}
+
+.navbar--right {
+  display: block;
+  float: right;
+}
