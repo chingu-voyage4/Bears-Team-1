@@ -5,6 +5,7 @@ body {
   color: #000;
   line-height: 20px;
   font-family: sans-serif;
+  background: #e6ecf0;
 }
 
 .text-left {
@@ -75,7 +76,9 @@ body {
 }
 
 .navbar {
-  background: lightgray;
+  background: white;
+  border-bottom: 1px solid gray;
+  margin-bottom: 10px;
 }
 
 .navbar ul {
@@ -109,9 +112,65 @@ body {
   display: inline;
   position: absolute;
   left: 50%;
+  padding: -15px;
 }
 
 .navbar--right {
   display: block;
   float: right;
+}
+
+.profile-card {
+  position: relative;
+  background: white;
+}
+
+.profile-card ul {
+  list-style: none;
+}
+
+.profile-card li {
+  display: inline-block;
+}
+
+.profile-card ul li span {
+  display: block;
+}
+
+.profile-card--background {
+  height: 100px;
+  background: black;
+}
+
+.profile-card--avatar {
+  border-radius: 50%;
+  border: solid white 1px;
+  height: 100px;
+  width: 100px;
+  background: lightblue;
+  display: inline-block;
+  position: absolute;
+  margin: -45px 0 0 10px;
+}
+
+.profile-card--info {
+  width: 30%;
+  padding: 0 0 10px 0;
+}
+
+.profile-card--name {
+  padding-top: 10px;
+  text-align: center;
+}
+
+.profile-card--name--real {
+  font-weight: bold;
+}
+
+.profile-card--info--name {
+  font-weight: bold;
+}
+
+.profile-card--info--number {
+  color: blue;
 }
