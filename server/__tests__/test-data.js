@@ -23,4 +23,15 @@ let testUsers = [
   }
 ];
 
-module.exports = { testUser, testUsers };
+let testTweets = [
+  {
+    user: "misomighty",
+    text: "A tweet by misomighty"
+  },
+  {
+    user: "loopylenny",
+    text: "A tweet by loopylenny"
+  }
+];
+
+module.exports = { testUser, testUsers, testTweets };

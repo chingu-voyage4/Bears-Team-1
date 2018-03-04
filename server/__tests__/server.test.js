@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const User = require("./../models/User");
 const Tweet = require("./../models/Tweet");
 const app = require("./../app");
-const { testUser, testUsers } = require("./test-data");
+const { testUser, testUsers, testTweets } = require("./test-data");
 
 beforeEach(done => {
   // Before each test, erase User collection and insert Users
@@ -24,7 +24,17 @@ describe("GET /api/users", () => {
       .get("/api/users")
       .expect(200)
       .expect(res => {
-        console.log(res.body);
+        expect(res.body.length).toBe(2);
+      });
+  });
+});
+
+describe("GET /api/tweets", () => {
+  test("should return all tweets", () => {
+    return request(app)
+      .get("/api/tweets")
+      .expect(200)
+      .expect(res => {
         expect(res.body.length).toBe(2);
       });
   });
