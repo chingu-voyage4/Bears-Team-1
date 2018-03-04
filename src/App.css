@@ -155,7 +155,8 @@ body {
 }
 
 .profile-card--info {
-  width: 30%;
+  width: 33%;
+  text-align: center;
   padding: 0 0 10px 0;
 }
 
@@ -174,4 +175,31 @@ body {
 
 .profile-card--info--number {
   color: blue;
+}
+
+.feed--list {
+  list-style: none;
+  background: white;
+}
+
+.feed--list-item {
+  border-bottom: 1px solid gray;
+}
+
+.feed--avatar {
+  float: left;
+  border-radius: 50%;
+  border: 0;
+  height: 50px;
+  width: 50px;
+  background: lightblue;
+  display: block;
+}
+
+.feed--list-item--actions {
+  text-align: center;
+}
+
+.feed--list-item--actions span {
+  margin: 20px;
 }
