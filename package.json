@@ -36,5 +36,8 @@
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"]
+  },
+  "jest": {
+    "testRegex": "(/__tests__/.|(\\.|/)(test|spec))\\.jsx?$"
   }
 }
