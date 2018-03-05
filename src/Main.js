@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import ProfileCard from "./components/ProfileCard";
+import Profile from "./components/Profile";
 import Feed from "./components/Feed";
 
 class Main extends Component {
   render() {
     return (
       <div>
-        <ProfileCard />
+        <Profile />
         <Feed />
       </div>
     );
