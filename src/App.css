@@ -76,54 +76,34 @@ body {
 }
 
 .navbar {
-  background: white;
-  border-bottom: 1px solid gray;
-  margin-bottom: 10px;
+  background: black;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
 }
 
 .navbar ul {
   list-style: none;
-  text-align: left;
-  padding: 0;
+  width: 100%;
   margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 .navbar li {
   display: inline-block;
-  font-family: Arial, sans-serif;
-  padding: 15px;
+  width: 20%;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar li a {
-  text-decoration: none;
-  font-weight: bold;
-  transition: 0.3s background-color;
-}
-
-.navbar li a:hover {
-  background-color: white;
-}
-
-.navbar--left {
-  display: inline;
-}
-
-.navbar--icon {
-  display: inline;
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  transform: translateX(-50%);
-}
-
-.navbar--right {
-  display: block;
-  float: right;
+.navbar img {
+  width: 40px;
 }
 
 .profile-card {
   position: relative;
-  background: white;
+  background: #fff;
 }
 
 .profile-card ul {
@@ -148,7 +128,7 @@ body {
   border: solid white 1px;
   height: 100px;
   width: 100px;
-  background: lightblue;
+  background: #89d9d0;
   display: inline-block;
   position: absolute;
   margin: -45px 0 0 10px;
@@ -174,7 +154,7 @@ body {
 }
 
 .profile-card--info--number {
-  color: blue;
+  color: #89d9d0;
 }
 
 .feed--list {
@@ -192,7 +172,7 @@ body {
   border: 0;
   height: 50px;
   width: 50px;
-  background: lightblue;
+  background: #89d9d0;
   display: block;
 }
 
