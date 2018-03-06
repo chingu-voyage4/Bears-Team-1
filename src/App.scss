@@ -1,36 +1,245 @@
-.App {
+////////////////////////////////////////
+///// SCSS Variables
+////////////////////////////////////////
+
+$font-color: #000;
+$brand-color: #89d9d0;
+
+// Responsive breakpoints, mobile first design
+$sm: "only screen and (min-width: 576px)";
+$md: "only screen and (min-width: 768px)";
+$lg: "only screen and (min-width: 992px)";
+$xl: "only screen and (min-width: 1200px)";
+
+////////////////////////////////////////
+///// Default Styles
+////////////////////////////////////////
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  color: $font-color;
+  line-height: 20px;
+  font-family: sans-serif;
+  background: black;
+}
+
+////////////////////////////////////////
+///// Helper classes
+////////////////////////////////////////
+
+// Text alignment
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
+////////////////////////////////////////
+///// Layout
+////////////////////////////////////////
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.container {
+  // Mobile first
+  height: 100%;
+  width: auto;
+  margin: 0 auto;
+  position: relative;
+  // 576px+ width
+  @media #{$sm} {
   }
-  to {
-    transform: rotate(360deg);
+  // 768px+ width
+  @media #{$md} {
+  }
+  // 992px+ width
+  @media #{$lg} {
+  }
+  // 1200px+ width
+  @media #{$xl} {
   }
 }
 
-.test {
-  color: orange;
+// Create grid column-1 through column-12
+@for $i from 1 through 12 {
+  .column-#{$i} {
+    width: 100% / 12 * $i;
+    display: inline-block;
+  }
+}
+
+////////////////////////////////////////
+///// Nav
+////////////////////////////////////////
+
+.navbar {
+  background: black;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.navbar ul {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.navbar li {
+  display: inline-block;
+  width: 20%;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar img {
+  width: 40px;
+}
+
+////////////////////////////////////////
+///// Profile
+////////////////////////////////////////
+
+.profile {
+  position: relative;
+}
+
+.profile--background {
+  height: 100px;
+  background: skyblue;
+}
+
+.profile--avatar {
+  position: absolute;
+  margin: -45px 0 0 10px;
+  border: solid white 1px;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  background: $brand-color;
+}
+
+.profile--button--edit-profile {
+  float: right;
+  margin: 10px;
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.profile--container--bottom-half {
+  padding: 65px 10px 10px 10px;
+  background: white;
+}
+
+.profile--name {
+  font-weight: bold;
+}
+
+.profile--username {
+  float: left;
+  width: 50%;
+}
+
+.profile--location {
+  float: right;
+  width: 50%;
+  text-align: right;
+}
+
+.profile--about {
+  padding: 30px 0px 10px 0px;
+}
+
+.profile--stats {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.profile--stats li {
+  display: inline-block;
+  width: 33%;
+  margin: 0;
+  padding: 0;
+}
+
+.profile--stats-name {
+  display: block;
+}
+
+.profile--stats-number {
+  font-weight: bold;
+}
+
+////////////////////////////////////////
+///// Feed
+////////////////////////////////////////
+
+.feed--list {
+  list-style: none;
+  background: white;
+  padding: 0;
+}
+
+.feed--list-item {
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+
+.feed--avatar {
+  float: left;
+  border-radius: 50%;
+  border: 0;
+  height: 50px;
+  width: 50px;
+  background: $brand-color;
+  display: block;
+  margin-right: 10px;
+}
+
+.feed--user {
+}
+
+.feed--username {
+}
+
+.feed--date {
+  color: gray;
+}
+
+.feed--message {
+}
+
+.feed--list-item--actions {
+  padding-top: 10px;
+  text-align: left;
+  list-style: none;
+  padding: 10px 0 0 60px;
+  margin: 0;
+}
+
+.feed--list-item--actions li {
+  display: inline-block;
+  padding-right: 10px;
+  min-width: 60px;
+}
+
+.feed--list-item--actions img {
+  width: 20px;
+  padding-right: 5px;
+}
+
+.feed--list-item--actions span {
+  display: inline-block;
 }
