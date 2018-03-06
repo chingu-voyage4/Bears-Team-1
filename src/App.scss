@@ -22,7 +22,7 @@ body {
   color: $font-color;
   line-height: 20px;
   font-family: sans-serif;
-  background: #e6ecf0;
+  background: black;
 }
 
 ////////////////////////////////////////
@@ -68,6 +68,7 @@ body {
 @for $i from 1 through 12 {
   .column-#{$i} {
     width: 100% / 12 * $i;
+    display: inline-block;
   }
 }
 
@@ -121,7 +122,7 @@ body {
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  background: yellow;
+  background: $brand-color;
 }
 
 .profile--button--edit-profile {
@@ -181,66 +182,6 @@ body {
   font-weight: bold;
 }
 
-/*
-
-.profile-card {
-  position: relative;
-  background: #fff;
-}
-
-.profile-card ul {
-  list-style: none;
-}
-
-.profile-card li {
-  display: inline-block;
-}
-
-.profile-card ul li span {
-  display: block;
-}
-
-.profile-card--background {
-  height: 100px;
-  background: black;
-}
-
-.profile-card--avatar {
-  border-radius: 50%;
-  border: solid white 1px;
-  height: 100px;
-  width: 100px;
-  background: $brand-color;
-  display: inline-block;
-  position: absolute;
-  margin: -45px 0 0 10px;
-}
-
-.profile-card--info {
-  width: 33%;
-  text-align: center;
-  padding: 0 0 10px 0;
-}
-
-.profile-card--name {
-  padding-top: 10px;
-  text-align: center;
-}
-
-.profile-card--name--real {
-  font-weight: bold;
-}
-
-.profile-card--info--name {
-  font-weight: bold;
-}
-
-.profile-card--info--number {
-  color: $brand-color;
-}
-
-*/
-
 ////////////////////////////////////////
 ///// Feed
 ////////////////////////////////////////
@@ -248,10 +189,12 @@ body {
 .feed--list {
   list-style: none;
   background: white;
+  padding: 0;
 }
 
 .feed--list-item {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid black;
+  padding: 10px;
 }
 
 .feed--avatar {
@@ -262,12 +205,41 @@ body {
   width: 50px;
   background: $brand-color;
   display: block;
+  margin-right: 10px;
+}
+
+.feed--user {
+}
+
+.feed--username {
+}
+
+.feed--date {
+  color: gray;
+}
+
+.feed--message {
 }
 
 .feed--list-item--actions {
-  text-align: center;
+  padding-top: 10px;
+  text-align: left;
+  list-style: none;
+  padding: 10px 0 0 60px;
+  margin: 0;
+}
+
+.feed--list-item--actions li {
+  display: inline-block;
+  padding-right: 10px;
+  min-width: 60px;
+}
+
+.feed--list-item--actions img {
+  width: 20px;
+  padding-right: 5px;
 }
 
 .feed--list-item--actions span {
-  margin: 20px;
+  display: inline-block;
 }

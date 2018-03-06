@@ -5,7 +5,7 @@ body {
   color: #000;
   line-height: 20px;
   font-family: sans-serif;
-  background: #e6ecf0;
+  background: black;
 }
 
 .text-left {
@@ -29,50 +29,62 @@ body {
 
 .column-1 {
   width: 8.33333%;
+  display: inline-block;
 }
 
 .column-2 {
   width: 16.66667%;
+  display: inline-block;
 }
 
 .column-3 {
   width: 25%;
+  display: inline-block;
 }
 
 .column-4 {
   width: 33.33333%;
+  display: inline-block;
 }
 
 .column-5 {
   width: 41.66667%;
+  display: inline-block;
 }
 
 .column-6 {
   width: 50%;
+  display: inline-block;
 }
 
 .column-7 {
   width: 58.33333%;
+  display: inline-block;
 }
 
 .column-8 {
   width: 66.66667%;
+  display: inline-block;
 }
 
 .column-9 {
   width: 75%;
+  display: inline-block;
 }
 
 .column-10 {
   width: 83.33333%;
+  display: inline-block;
 }
 
 .column-11 {
   width: 91.66667%;
+  display: inline-block;
 }
 
 .column-12 {
   width: 100%;
+  display: inline-block;
 }
 
 .navbar {
@@ -117,7 +129,7 @@ body {
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  background: yellow;
+  background: #89d9d0;
 }
 
 .profile--button--edit-profile {
@@ -177,72 +189,15 @@ body {
   font-weight: bold;
 }
 
-/*
-
-.profile-card {
-  position: relative;
-  background: #fff;
-}
-
-.profile-card ul {
-  list-style: none;
-}
-
-.profile-card li {
-  display: inline-block;
-}
-
-.profile-card ul li span {
-  display: block;
-}
-
-.profile-card--background {
-  height: 100px;
-  background: black;
-}
-
-.profile-card--avatar {
-  border-radius: 50%;
-  border: solid white 1px;
-  height: 100px;
-  width: 100px;
-  background: $brand-color;
-  display: inline-block;
-  position: absolute;
-  margin: -45px 0 0 10px;
-}
-
-.profile-card--info {
-  width: 33%;
-  text-align: center;
-  padding: 0 0 10px 0;
-}
-
-.profile-card--name {
-  padding-top: 10px;
-  text-align: center;
-}
-
-.profile-card--name--real {
-  font-weight: bold;
-}
-
-.profile-card--info--name {
-  font-weight: bold;
-}
-
-.profile-card--info--number {
-  color: $brand-color;
-}
-
-*/
 .feed--list {
   list-style: none;
   background: white;
+  padding: 0;
 }
 
 .feed--list-item {
-  border-bottom: 1px solid gray;
+  border-bottom: 1px solid black;
+  padding: 10px;
 }
 
 .feed--avatar {
@@ -253,12 +208,32 @@ body {
   width: 50px;
   background: #89d9d0;
   display: block;
+  margin-right: 10px;
+}
+
+.feed--date {
+  color: gray;
 }
 
 .feed--list-item--actions {
-  text-align: center;
+  padding-top: 10px;
+  text-align: left;
+  list-style: none;
+  padding: 10px 0 0 60px;
+  margin: 0;
+}
+
+.feed--list-item--actions li {
+  display: inline-block;
+  padding-right: 10px;
+  min-width: 60px;
+}
+
+.feed--list-item--actions img {
+  width: 20px;
+  padding-right: 5px;
 }
 
 .feed--list-item--actions span {
-  margin: 20px;
+  display: inline-block;
 }
