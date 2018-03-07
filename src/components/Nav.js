@@ -32,18 +32,18 @@ class Nav extends Component {
               </Link>
             </li>
             <li>
-              <a href="/search">
+              <Link to="/search">
                 <img src={search} alt="Search" className="navbar--icon" />
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="/notifications">
+              <Link to="/notifications">
                 <img
                   src={notifications}
                   alt="Notifications"
                   className="navbar--icon"
                 />
-              </a>
+              </Link>
             </li>
             <li>
               <Link to="/scoop">
