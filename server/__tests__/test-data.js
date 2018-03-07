@@ -3,9 +3,9 @@ const User = require("./../models/User");
 
 let testUser = {
   userInfo: {
-    username: "misoawesome",
+    username: "misomighty",
     firstName: "Miso",
-    lastName: "Awesomely"
+    lastName: "Mighty"
   }
 };
 
@@ -38,6 +38,7 @@ let testTweets = [
 ];
 
 let dumpDB = () => {
+  // Returns a promise when both functions resolve
   return Promise.all([
     Tweet.remove({}).catch(err => err),
     User.remove({}).catch(err => err)
@@ -45,11 +46,8 @@ let dumpDB = () => {
 };
 
 let seedDB = () => {
-  const promise1 = new Promise((resolve, reject) => reject(1)).catch(err =>
-    console.log(err)
-  );
+  // Returns a promise when both functions resolve
   return Promise.all([
-    promise1,
     Tweet.insertMany(testTweets).catch(err => err),
     User.insertMany(testUsers).catch(err => err)
   ]);

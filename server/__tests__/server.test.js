@@ -34,7 +34,7 @@ describe("GET /api/users", () => {
 });
 
 describe("GET /api/tweets", () => {
-  it.only("should return all tweets", done => {
+  it("should return all tweets", done => {
     request(app)
       .get("/api/tweets")
       .expect(200)
@@ -46,13 +46,13 @@ describe("GET /api/tweets", () => {
 });
 
 describe("POST /signup", () => {
-  it("should add a valid user to the database", done => {
+  it.only("should add a valid user to the database", done => {
     request(app)
       .post("/signup")
       .send(testUser)
       .expect(200)
       .expect(res => {
-        expect(res.body).toEqual(testUser);
+        expect(res.body.userInfo).toEqual(testUser.userInfo);
       })
       .end(done);
   });
