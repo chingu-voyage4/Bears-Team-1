@@ -64,13 +64,8 @@ app.post("/signup", (req, res) => {
       lastName: req.body.userInfo.lastName
     }
   });
-  user.save().then(
-    doc => {
-      console.log("saved doc", doc);
-    },
-    err => console.log(err)
-  );
-  res.send(user);
+  user.save().then(doc => res.send(doc), err => res.status(400).send(err));
+
   // newUser.save().then(doc => res.send(doc), err => res.status(400).send(err));
 });
 
