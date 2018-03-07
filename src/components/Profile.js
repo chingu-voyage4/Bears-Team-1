@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Feed from "./Feed";
 
 class Profile extends Component {
   render() {
@@ -40,6 +41,7 @@ class Profile extends Component {
             </div>
           </div>
         </div>
+        <Feed />
       </div>
     );
   }
