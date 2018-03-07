@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import profile from "../assets/iconmonstr-user-1-240.png";
 import profileActive from "../assets/iconmonstr-user-1-240-active.png";
 import feed from "../assets/iconmonstr-newspaper-13-240.png";
@@ -17,26 +18,26 @@ class Nav extends Component {
         <nav className="navbar">
           <ul className="navbar--list">
             <li>
-              <a href="#">
+              <Link to="/">
                 <img
                   src={profileActive}
                   alt="Profile"
                   className="navbar--icon"
                 />
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <Link to="/feed">
                 <img src={feed} alt="Feed" className="navbar--icon" />
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#">
+              <a href="/search">
                 <img src={search} alt="Search" className="navbar--icon" />
               </a>
             </li>
             <li>
-              <a href="#">
+              <a href="/notifications">
                 <img
                   src={notifications}
                   alt="Notifications"
@@ -45,9 +46,9 @@ class Nav extends Component {
               </a>
             </li>
             <li>
-              <a href="#">
+              <Link to="/scoop">
                 <img src={post} alt="Post" className="navbar--icon" />
-              </a>
+              </Link>
             </li>
           </ul>
         </nav>

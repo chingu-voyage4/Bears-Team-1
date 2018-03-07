@@ -1,6 +1,9 @@
 ////////////////////////////////////////
 ///// SCSS Variables
 ////////////////////////////////////////
+.white {
+  color: white;
+}
 
 $font-color: #000;
 $brand-color: #89d9d0;
@@ -22,7 +25,7 @@ body {
   color: $font-color;
   line-height: 20px;
   font-family: sans-serif;
-  background: black;
+  background: white;
 }
 
 ////////////////////////////////////////
