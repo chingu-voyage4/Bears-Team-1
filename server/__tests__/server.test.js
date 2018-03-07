@@ -40,11 +40,20 @@ describe("GET Users and Tweets", () => {
       })
       .end(done);
   });
-  it("should get all tweets by user id");
+  it.only("should get all tweets by user id", done => {
+    let user_id = "5aa0454c39abdf0037404592";
+    request(app)
+      .get(`/api/tweets/${user_id}`)
+      .expect(404)
+      .expect(res => {
+        expect(res.body.length).toBe(4);
+      })
+      .end(done);
+  });
 });
 
 describe("POST new User, new Tweet", () => {
-  it.only("should add a new user", done => {
+  it("should add a new user", done => {
     // TODO: ADD VALIDATION
     request(app)
       .post("/signup")
