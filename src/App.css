@@ -117,6 +117,10 @@ body {
   width: 40px;
 }
 
+.navbar--selected {
+  filter: brightness(2);
+}
+
 .profile {
   position: relative;
 }
