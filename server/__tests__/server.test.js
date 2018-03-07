@@ -11,24 +11,14 @@ const {
   testUsers,
   testTweets,
   dumpThenAddTweets,
-  dumpThenAddUsers
+  dumpThenAddUsers,
+  dumpDB,
+  seedDB
 } = require("./test-data");
 
 beforeEach(done => {
-  // dumpThenAddUsers().then(
-  //   () => {},
-  //   err => {
-  //     return err;
-  //   }
-  // );
-  // dumpThenAddTweets().then(
-  //   () => {},
-  //   err => {
-  //     return err;
-  //   }
-  // );
-  dumpThenAddUsers();
-  dumpThenAddTweets();
+  dumpDB();
+  seedDB();
   done();
 });
 
@@ -39,7 +29,7 @@ describe("GET /api/users", () => {
       .expect(200)
       .expect(res => {
         console.log("res", res.body);
-        expect(res.body.length).toBe(3);
+        expect(res.body.length).toBe(2);
       })
       .end(done);
   });
