@@ -10,25 +10,23 @@ const {
   testUser,
   testUsers,
   testTweets,
-  dumpThenAddTweets,
-  dumpThenAddUsers,
   dumpDB,
   seedDB
 } = require("./test-data");
 
 beforeEach(done => {
-  dumpDB();
-  seedDB();
-  done();
+  // Dump, seed, done!
+  dumpDB().then(() => {
+    seedDB().then(done());
+  });
 });
 
 describe("GET /api/users", () => {
-  it.only("should return all users", done => {
+  it("should return all users", done => {
     request(app)
       .get("/api/users")
       .expect(200)
       .expect(res => {
-        console.log("res", res.body);
         expect(res.body.length).toBe(2);
       })
       .end(done);
@@ -36,7 +34,7 @@ describe("GET /api/users", () => {
 });
 
 describe("GET /api/tweets", () => {
-  it("should return all tweets", done => {
+  it.only("should return all tweets", done => {
     request(app)
       .get("/api/tweets")
       .expect(200)
