@@ -46,23 +46,11 @@ let seedDB = () => {
   Tweet.insertMany(testTweets);
   User.insertMany(testUsers);
 };
-let dumpThenAddTweets = done => {
-  Tweet.remove({}).then(() => {
-    Tweet.insertMany(testTweets);
-  });
-};
 
-let dumpThenAddUsers = done => {
-  User.remove({}).then(() => {
-    User.insertMany(testUsers);
-  });
-};
 module.exports = {
   testUser,
   testUsers,
   testTweets,
-  dumpThenAddTweets,
-  dumpThenAddUsers,
   dumpDB,
   seedDB
 };
