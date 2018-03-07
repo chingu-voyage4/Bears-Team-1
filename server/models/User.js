@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Define User Schema
 const User = mongoose.model("User", {
@@ -24,7 +25,7 @@ const User = mongoose.model("User", {
     }
   },
   stats: {
-    tweets: [Number],
+    tweets: [{ type: ObjectId, ref: "Tweet" }],
     likes: [Number],
     followers: [Number],
     following: [Number]
