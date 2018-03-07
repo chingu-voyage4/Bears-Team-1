@@ -10,7 +10,6 @@ const dummyApi = require("./dummyAPI.js");
 const MONGO_URI =
   process.env.MONGO_URI || "mongodb://localhost:27017/v4Bears01";
 const app = express();
-
 app.use(bodyParser.json());
 
 // Priority serve any static files.
@@ -46,8 +45,15 @@ app.get("/api", (req, res) => {
 });
 
 app.get("/api/users", (req, res) => {
-  User.find({}).then(users => {
+  User.find().then(users => {
+    console.log("Users", users);
     res.send(users);
+  });
+});
+
+app.get("/api/tweets", (req, res) => {
+  Tweet.find().then(tweets => {
+    res.send(tweets);
   });
 });
 app.post("/signup", (req, res) => {
@@ -73,4 +79,4 @@ app.post("/signup", (req, res) => {
 //   response.sendFile(path.resolve(__dirname, "../react/build", "index.html"));
 // });
 
-module.exports = app;
+module.exports = { app };

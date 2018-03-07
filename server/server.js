@@ -1,7 +1,9 @@
 require("dotenv").config();
 const path = require("path");
 
-const app = require("./app");
+const { app } = require("./app");
 const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, () => console.log(`Express listening on port ${PORT}`));
+let search = app.listen(PORT, () =>
+  console.log(`Express listening on port ${PORT}`)
+);

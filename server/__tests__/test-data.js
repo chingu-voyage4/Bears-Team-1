@@ -1,3 +1,6 @@
+const Tweet = require("./../models/Tweet");
+const User = require("./../models/User");
+
 let testUser = {
   userInfo: {
     username: "misoawesome",
@@ -34,4 +37,23 @@ let testTweets = [
   }
 ];
 
-module.exports = { testUser, testUsers, testTweets };
+let dumpThenAddTweets = done => {
+  return Tweet.remove({}).then(() => {
+    console.log("removing tweets");
+    return Tweet.insertMany(testTweets);
+  });
+};
+
+let dumpThenAddUsers = done => {
+  return User.remove({}).then(() => {
+    console.log("removing users");
+    User.insertMany(testUsers).then(users => done());
+  });
+};
+module.exports = {
+  testUser,
+  testUsers,
+  testTweets,
+  dumpThenAddTweets,
+  dumpThenAddUsers
+};
