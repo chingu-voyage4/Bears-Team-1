@@ -11,13 +11,18 @@ let testUser = {
 
 let testUsers = [
   {
+    _id: "5aa054ac1a6e5a01b90f591c",
     userInfo: {
       username: "misoawesome",
       firstName: "Miso",
       lastName: "Awesomely"
+    },
+    stats: {
+      tweets: [0, 1, 2]
     }
   },
   {
+    _id: "5aa054ac1a6e5a01b90f591d",
     userInfo: {
       username: "looplenny",
       firstName: "Lenny",
