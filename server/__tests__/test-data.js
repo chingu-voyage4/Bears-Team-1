@@ -38,13 +38,21 @@ let testTweets = [
 ];
 
 let dumpDB = () => {
-  Tweet.remove({});
-  User.remove({});
+  return Promise.all([
+    Tweet.remove({}).catch(err => err),
+    User.remove({}).catch(err => err)
+  ]);
 };
 
 let seedDB = () => {
-  Tweet.insertMany(testTweets);
-  User.insertMany(testUsers);
+  const promise1 = new Promise((resolve, reject) => reject(1)).catch(err =>
+    console.log(err)
+  );
+  return Promise.all([
+    promise1,
+    Tweet.insertMany(testTweets).catch(err => err),
+    User.insertMany(testUsers).catch(err => err)
+  ]);
 };
 
 module.exports = {
