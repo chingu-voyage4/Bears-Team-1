@@ -37,17 +37,24 @@ let testTweets = [
   }
 ];
 
+let dumpDB = () => {
+  Tweet.remove({});
+  User.remove({});
+};
+
+let seedDB = () => {
+  Tweet.insertMany(testTweets);
+  User.insertMany(testUsers);
+};
 let dumpThenAddTweets = done => {
-  return Tweet.remove({}).then(() => {
-    console.log("removing tweets");
-    return Tweet.insertMany(testTweets);
+  Tweet.remove({}).then(() => {
+    Tweet.insertMany(testTweets);
   });
 };
 
 let dumpThenAddUsers = done => {
-  return User.remove({}).then(() => {
-    console.log("removing users");
-    User.insertMany(testUsers).then(users => done());
+  User.remove({}).then(() => {
+    User.insertMany(testUsers);
   });
 };
 module.exports = {
@@ -55,5 +62,7 @@ module.exports = {
   testUsers,
   testTweets,
   dumpThenAddTweets,
-  dumpThenAddUsers
+  dumpThenAddUsers,
+  dumpDB,
+  seedDB
 };
