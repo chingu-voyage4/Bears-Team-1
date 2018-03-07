@@ -21,7 +21,7 @@ beforeEach(done => {
   });
 });
 
-describe("GET /api/users", () => {
+describe("GET Users and Tweets", () => {
   it("should return all users", done => {
     request(app)
       .get("/api/users")
@@ -31,9 +31,6 @@ describe("GET /api/users", () => {
       })
       .end(done);
   });
-});
-
-describe("GET /api/tweets", () => {
   it("should return all tweets", done => {
     request(app)
       .get("/api/tweets")
@@ -43,10 +40,12 @@ describe("GET /api/tweets", () => {
       })
       .end(done);
   });
+  it("should get all tweets by user id");
 });
 
-describe("POST /signup", () => {
-  it.only("should add a valid user to the database", done => {
+describe("POST new User, new Tweet", () => {
+  it.only("should add a new user", done => {
+    // TODO: ADD VALIDATION
     request(app)
       .post("/signup")
       .send(testUser)
@@ -56,4 +55,6 @@ describe("POST /signup", () => {
       })
       .end(done);
   });
+
+  it("should add a new tweet");
 });
