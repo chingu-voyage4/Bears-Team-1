@@ -33,8 +33,19 @@ let testUsers = [
 
 let testTweets = [
   {
+    _id: "5aa05812fcbbc803417de0b5",
     user: "misomighty",
-    text: "A tweet by misomighty"
+    text: "A 1st tweet by misomighty"
+  },
+  {
+    _id: "5aa05812fcbbc803417de0b6",
+    user: "misomighty",
+    text: "A 2nd tweet by misomighty"
+  },
+  {
+    _id: "5aa05812fcbbc803417de0b7",
+    user: "misomighty",
+    text: "A 3rd tweet by misomighty"
   },
   {
     user: "loopylenny",
