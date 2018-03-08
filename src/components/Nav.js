@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import profile from "../assets/iconmonstr-user-1-240.png";
 import profileActive from "../assets/iconmonstr-user-1-240-active.png";
 import feed from "../assets/iconmonstr-newspaper-13-240.png";
@@ -18,37 +18,33 @@ class Nav extends Component {
         <nav className="navbar">
           <ul className="navbar--list">
             <li>
-              <Link to="/">
-                <img
-                  src={profileActive}
-                  alt="Profile"
-                  className="navbar--icon"
-                />
-              </Link>
+              <NavLink exact to="/" activeClassName="navbar--selected">
+                <img src={profile} alt="Profile" className="navbar--icon" />
+              </NavLink>
             </li>
             <li>
-              <Link to="/feed">
+              <NavLink to="/feed" activeClassName="navbar--selected">
                 <img src={feed} alt="Feed" className="navbar--icon" />
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/search">
+              <NavLink to="/search" activeClassName="navbar--selected">
                 <img src={search} alt="Search" className="navbar--icon" />
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/notifications">
+              <NavLink to="/notifications" activeClassName="navbar--selected">
                 <img
                   src={notifications}
                   alt="Notifications"
                   className="navbar--icon"
                 />
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link to="/scoop">
+              <NavLink to="/scoop" activeClassName="navbar--selected">
                 <img src={post} alt="Post" className="navbar--icon" />
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
