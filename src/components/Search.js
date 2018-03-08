@@ -1,8 +1,15 @@
 import React, { Component } from "react";
+import SearchBar from "./SearchBar.js";
+import SearchResults from "./SearchResults.js";
 
 class Search extends Component {
   render() {
-    return <div> Search by username under construction </div>;
+    return (
+      <div>
+        <SearchBar />
+        <SearchResults />
+      </div>
+    );
   }
 }
 
