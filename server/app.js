@@ -45,10 +45,26 @@ app.get("/api", (req, res) => {
 });
 
 app.get("/api/users", (req, res) => {
-  User.find().then(users => {
-    console.log("Users", users);
-    res.send(users);
-  });
+  User.find().then(
+    users => {
+      console.log("users", users);
+      res.send(users);
+    },
+    err => res.status(400).send(err)
+  );
+});
+
+app.get("/api/tweets/:user_id", (req, res) => {
+  // Get id param, save to var
+  let user_id = req.params.user_id;
+  // Find all tweets by that user
+  User.findOne({ _id: user_id })
+    .populate("stats.tweets")
+    .then(user => {
+      res.send(user.stats.tweets);
+    });
+
+  // res.send("hi");
 });
 
 app.get("/api/tweets", (req, res) => {
@@ -56,6 +72,7 @@ app.get("/api/tweets", (req, res) => {
     res.send(tweets);
   });
 });
+
 app.post("/signup", (req, res) => {
   let user = new User({
     userInfo: {
@@ -65,8 +82,6 @@ app.post("/signup", (req, res) => {
     }
   });
   user.save().then(doc => res.send(doc), err => res.status(400).send(err));
-
-  // newUser.save().then(doc => res.send(doc), err => res.status(400).send(err));
 });
 
 // All remaining requests return the React app, so it can handle routing.

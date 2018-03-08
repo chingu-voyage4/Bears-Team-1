@@ -1,3 +1,4 @@
+const _ = require("lodash");
 const request = require("supertest");
 const expect = require("expect");
 const mongoose = require("mongoose");
@@ -36,17 +37,19 @@ describe("GET Users and Tweets", () => {
       .get("/api/tweets")
       .expect(200)
       .expect(res => {
-        expect(res.body.length).toBe(2);
+        expect(res.body.length).toBe(4);
       })
       .end(done);
   });
-  it.only("should get all tweets by user id", done => {
-    let user_id = "5aa0454c39abdf0037404592";
+  it("should get all tweets by user id", done => {
+    // _id is static id from test user
+    let user_id = "5aa054ac1a6e5a01b90f591c";
     request(app)
       .get(`/api/tweets/${user_id}`)
-      .expect(404)
+      .expect(200)
       .expect(res => {
-        expect(res.body.length).toBe(4);
+        // Returns an array of tweet id strings
+        expect(res.body.length).toBe(3);
       })
       .end(done);
   });
