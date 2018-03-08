@@ -18,7 +18,11 @@ let testUsers = [
       lastName: "Awesomely"
     },
     stats: {
-      tweets: [0, 1, 2]
+      tweets: [
+        "5aa05812fcbbc803417de0b5",
+        "5aa05812fcbbc803417de0b6",
+        "5aa05812fcbbc803417de0b7"
+      ]
     }
   },
   {
@@ -27,6 +31,9 @@ let testUsers = [
       username: "looplenny",
       firstName: "Lenny",
       lastName: "Looper"
+    },
+    stats: {
+      tweets: ["5aa05812fcbbc803417de0b8"]
     }
   }
 ];
@@ -48,6 +55,7 @@ let testTweets = [
     text: "A 3rd tweet by misomighty"
   },
   {
+    _id: "5aa05812fcbbc803417de0b8",
     user: "loopylenny",
     text: "A tweet by loopylenny"
   }
