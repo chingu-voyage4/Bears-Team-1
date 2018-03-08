@@ -4,7 +4,8 @@ class Scoop extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      scoopText: ""
+      scoopText: "",
+      remainingCharacters: 200
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,22 +22,22 @@ class Scoop extends Component {
 
   render() {
     return (
-      <div>
-        What's the scoop?
-        <form onSubmit={this.handleSubmit}>
+      <div className="scoop">
+        <h1>What's the scoop?</h1>
+        <form onSubmit={this.handleSubmit} className="scoop--form">
           <textarea
             value={this.state.scoopText}
             onChange={this.handleChange}
-            placeholder="What's the scoop?"
+            placeholder="..."
             className="scoop--textarea"
           />
+          <div>200 characters remaining</div>
           <input
             type="submit"
             value="Submit"
-            className="profile--button--edit-profile"
+            className="scoop--form--submit-button"
           />
         </form>
-        200 characters remaining
       </div>
     );
   }

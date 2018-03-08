@@ -260,11 +260,46 @@ body {
 ///// Scoop
 ////////////////////////////////////////
 
+.scoop {
+  background-image: linear-gradient(-225deg, #e3fdf5 50%, #ffe6fa 50%);
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  color: #3e403f;
+}
+
+.scoop h1 {
+  margin: 0;
+  padding: 20px;
+}
+
 .scoop--textarea {
-  margin: 10px 0px 0px 10px;
-  width: 60%;
+  margin: 0;
+  padding: 10px 2%;
+  width: 96%;
   height: 100px;
-  border: 1px solid black;
+  border: 0px solid black;
   border-radius: 5px;
-  background: lightgray;
+  background: #fff;
+  resize: none;
+  font-size: 16px;
+}
+
+.scoop--form {
+  margin: 0 auto;
+  padding: 0;
+  width: 90%;
+}
+
+.scoop--form--submit-button {
+  font-size: 14px;
+  width: 100%;
+  margin: 15px 0px 20px 0px;
+  padding: 10px;
+  background: #b8f2e6;
+  border: 0px solid black;
+  border-radius: 5px;
+  font-weight: normal;
+  font-family: $main-font;
+  cursor: pointer;
 }
