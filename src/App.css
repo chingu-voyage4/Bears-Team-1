@@ -1,14 +1,10 @@
-.white {
-  color: white;
-}
-
 body {
   margin: 0;
   padding: 0;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   color: #000;
-  line-height: 20px;
-  font-family: sans-serif;
+  line-height: 22px;
   background: white;
 }
 
@@ -95,7 +91,7 @@ body {
   background: black;
   width: 100%;
   margin: 0;
-  padding: 10px 0;
+  padding: 10px 0px 6px 0px;
 }
 
 .navbar ul {
@@ -123,6 +119,7 @@ body {
 
 .profile {
   position: relative;
+  border-bottom: 10px solid black;
 }
 
 .profile--background {
@@ -132,8 +129,8 @@ body {
 
 .profile--avatar {
   position: absolute;
-  margin: -45px 0 0 10px;
-  border: solid white 1px;
+  margin: -50px 0 0 10px;
+  border: solid white 2px;
   border-radius: 50%;
   height: 100px;
   width: 100px;
@@ -141,17 +138,21 @@ body {
 }
 
 .profile--button--edit-profile {
+  font-size: 14px;
   float: right;
-  margin: 10px;
-  padding: 8px 16px;
-  background: white;
-  border: 1px solid black;
-  border-radius: 8px;
-  font-weight: bold;
+  margin: 15px 10px 0px 0px;
+  padding: 9px 18px;
+  background: linear-gradient(45deg, #b388eb, #8093f1);
+  border: 0px solid black;
+  color: white;
+  border-radius: 20px;
+  font-weight: normal;
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer;
 }
 
 .profile--container--bottom-half {
-  padding: 65px 10px 10px 10px;
+  padding: 60px 10px 10px 10px;
   background: white;
 }
 
@@ -191,16 +192,18 @@ body {
 
 .profile--stats-name {
   display: block;
+  font-weight: bold;
 }
 
 .profile--stats-number {
-  font-weight: bold;
+  font-weight: normal;
 }
 
 .feed--list {
   list-style: none;
   background: white;
   padding: 0;
+  margin: 0;
 }
 
 .feed--list-item {
@@ -244,4 +247,13 @@ body {
 
 .feed--list-item--actions span {
   display: inline-block;
+}
+
+.scoop--textarea {
+  margin: 10px 0px 0px 10px;
+  width: 60%;
+  height: 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: lightgray;
 }

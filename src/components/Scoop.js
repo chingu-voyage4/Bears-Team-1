@@ -22,14 +22,21 @@ class Scoop extends Component {
   render() {
     return (
       <div>
+        What's the scoop?
         <form onSubmit={this.handleSubmit}>
           <textarea
             value={this.state.scoopText}
             onChange={this.handleChange}
             placeholder="What's the scoop?"
+            className="scoop--textarea"
           />
-          <input type="submit" value="Submit" />
+          <input
+            type="submit"
+            value="Submit"
+            className="profile--button--edit-profile"
+          />
         </form>
+        200 characters remaining
       </div>
     );
   }
