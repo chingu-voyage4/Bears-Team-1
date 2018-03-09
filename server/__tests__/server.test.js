@@ -74,6 +74,10 @@ describe("POST new User, new Tweet", () => {
       .post("/api/tweet")
       .send(newTweet)
       .expect(200)
+      .expect(res => {
+        // The user's tweet array should contain the new tweet id
+        expect(res.body).toContain(newTweet.id);
+      })
       .end(done);
   });
 });

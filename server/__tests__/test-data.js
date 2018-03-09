@@ -28,7 +28,7 @@ let testUsers = [
   {
     _id: "5aa054ac1a6e5a01b90f591d",
     userInfo: {
-      username: "looplenny",
+      username: "loopylenny",
       firstName: "Lenny",
       lastName: "Looper"
     },
@@ -39,6 +39,8 @@ let testUsers = [
 ];
 
 let newTweet = new Tweet({
+  _id: "5aa05812fcbbc803417de0b8",
+  _creator: "5aa054ac1a6e5a01b90f591d",
   user: "loopylenny",
   text: "This is a new tweet by loopylenny"
 });
@@ -46,21 +48,25 @@ let newTweet = new Tweet({
 let testTweets = [
   {
     _id: "5aa05812fcbbc803417de0b5",
+    _creator: "5aa054ac1a6e5a01b90f591c",
     user: "misomighty",
     text: "A 1st tweet by misomighty"
   },
   {
     _id: "5aa05812fcbbc803417de0b6",
+    _creator: "5aa054ac1a6e5a01b90f591c",
     user: "misomighty",
     text: "A 2nd tweet by misomighty"
   },
   {
     _id: "5aa05812fcbbc803417de0b7",
+    _creator: "5aa054ac1a6e5a01b90f591c",
     user: "misomighty",
     text: "A 3rd tweet by misomighty"
   },
   {
     _id: "5aa05812fcbbc803417de0b8",
+    _creator: "5aa054ac1a6e5a01b90f591d",
     user: "loopylenny",
     text: "A tweet by loopylenny"
   }
