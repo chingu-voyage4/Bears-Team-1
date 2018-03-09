@@ -19,7 +19,6 @@
   "scripts": {
     "start":
       "concurrently \"react-scripts start\" \"nodemon server/server.js\"",
-    "db-test": "mocha server/**/*.test.js",
     "build": "react-scripts build",
     "test": "mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'",
