@@ -1,8 +1,9 @@
 const mongoose = require("mongoose");
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Define Tweet Schema
 const Tweet = mongoose.model("Tweet", {
-  user: String,
+  user: ObjectId,
   text: String,
   comments: [
     {
