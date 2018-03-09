@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const cors = require("cors");
 const path = require("path");
 require("dotenv").config();
@@ -12,6 +13,7 @@ const app = express();
 
 // Priority serve any static files.
 app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.resolve(__dirname, "../react/build")));
 
 // Cross Origin Resource Sharing
@@ -56,9 +58,10 @@ app.get("/api/tweets", (req, res) => {
 app.post("/api/tweet", (req, res) => {
   let newTweet_id;
   let newTweet = new Tweet({
-    user: req.body.user,
+    _creator: req.body._creator,
     text: req.body.text
   });
+  res.send(newTweet);
 });
 
 app.post("/signup", (req, res) => {

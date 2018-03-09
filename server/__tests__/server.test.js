@@ -76,7 +76,7 @@ describe("POST new User, new Tweet", () => {
       .expect(200)
       .expect(res => {
         // The user's tweet array should contain the new tweet id
-        expect(res.body).toContain(newTweet.id);
+        expect(res.body).toContain(newTweet._creator);
       })
       .end(done);
   });

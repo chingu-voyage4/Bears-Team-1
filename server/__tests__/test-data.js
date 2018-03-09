@@ -41,7 +41,6 @@ let testUsers = [
 let newTweet = new Tweet({
   _id: "5aa05812fcbbc803417de0b8",
   _creator: "5aa054ac1a6e5a01b90f591d",
-  user: "loopylenny",
   text: "This is a new tweet by loopylenny"
 });
 
