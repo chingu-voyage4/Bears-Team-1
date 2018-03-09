@@ -3,39 +3,20 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
 require("dotenv").config();
-const mongoose = require("mongoose");
 
+const mongoose = require("./server");
+const Tweet = require("./models/Tweet");
 const User = require("./models/User");
 const dummyApi = require("./dummyAPI.js");
-const MONGO_URI =
-  process.env.MONGO_URI || "mongodb://localhost:27017/v4Bears01";
 const app = express();
-app.use(bodyParser.json());
 
 // Priority serve any static files.
+app.use(bodyParser.json());
 app.use(express.static(path.resolve(__dirname, "../react/build")));
 
 // Cross Origin Resource Sharing
 app.use(cors());
 app.options("*", cors());
-
-//////////////////////////////
-// MongoDB
-//////////////////////////////
-
-// Import Tweet Model
-const Tweet = require("./models/Tweet");
-// Connect to database
-mongoose
-  .connect(MONGO_URI)
-  .then(res => {
-    console.log(`Connected to ${MONGO_URI}`);
-  })
-  .catch(err => {
-    if (err) console.log("err", err);
-  });
-// Use native promises
-mongoose.Promise = global.Promise;
 
 //////////////////////////////
 // Answer requests
@@ -47,7 +28,6 @@ app.get("/api", (req, res) => {
 app.get("/api/users", (req, res) => {
   User.find().then(
     users => {
-      console.log("users", users);
       res.send(users);
     },
     err => res.status(400).send(err)
@@ -73,6 +53,27 @@ app.get("/api/tweets", (req, res) => {
   });
 });
 
+app.post("/api/tweet", (req, res) => {
+  // let newTweet = new Tweet({
+  //   user: req.body.user,
+  //   text: req.body.text
+  // });
+
+  // Tweet.save(newTweet)
+  //   .then(doc => res.send(doc))
+  //   .catch(err => console.log("err", err));
+
+  // let userId = User.findOne({
+  //   userInfo: {
+  //     username: req.body.user
+  //   }
+  // });
+
+  // console.log("userId", userId);
+
+  res.send("hi");
+});
+
 app.post("/signup", (req, res) => {
   let user = new User({
     userInfo: {
@@ -83,6 +84,12 @@ app.post("/signup", (req, res) => {
   });
   user.save().then(doc => res.send(doc), err => res.status(400).send(err));
 });
+
+const PORT = process.env.PORT || 3001;
+
+let search = app.listen(PORT, () =>
+  console.log(`Express listening on port ${PORT}`)
+);
 
 // All remaining requests return the React app, so it can handle routing.
 // app.get("*", (request, response) => {

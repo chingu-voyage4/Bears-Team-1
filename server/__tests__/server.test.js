@@ -1,7 +1,7 @@
 const _ = require("lodash");
 const request = require("supertest");
 const expect = require("expect");
-const mongoose = require("mongoose");
+const mongoose = require("./../server");
 const Schema = mongoose.Schema;
 
 const User = require("./../models/User");
