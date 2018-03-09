@@ -39,7 +39,7 @@ let testUsers = [
 ];
 
 let newTweet = new Tweet({
-  user: loopylenny,
+  user: "loopylenny",
   text: "This is a new tweet by loopylenny"
 });
 

@@ -11,6 +11,7 @@ const {
   testUser,
   testUsers,
   testTweets,
+  newTweet,
   dumpDB,
   seedDB
 } = require("./test-data");
@@ -68,5 +69,11 @@ describe("POST new User, new Tweet", () => {
       .end(done);
   });
 
-  it("should add a new tweet");
+  it("should add a new tweet", done => {
+    request(app)
+      .post("/api/tweet")
+      .send(newTweet)
+      .expect(200)
+      .end(done);
+  });
 });
