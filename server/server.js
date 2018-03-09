@@ -1,6 +1,3 @@
-const express = require("express");
-const cors = require("cors");
-const path = require("path");
 require("dotenv").config();
 const mongoose = require("mongoose");
 const dummyApi = require("./dummyAPI.js");
@@ -19,13 +16,15 @@ app.options("*", cors());
 //////////////////////////////
 // MongoDB
 //////////////////////////////
-
-// Import Tweet Model
-const Tweet = require("./models/Tweet");
 // Connect to database
-mongoose.connect(
-  process.env.MONGO_URI || "mongodb://localhost:27017/bearsTeam1"
-);
+mongoose
+  .connect(MONGO_URI)
+  .then(res => {
+    console.log(`Connected to ${MONGO_URI}`);
+  })
+  .catch(err => {
+    if (err) console.log("err", err);
+  });
 // Use native promises
 mongoose.Promise = global.Promise;
 
