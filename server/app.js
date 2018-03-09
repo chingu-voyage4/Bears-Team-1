@@ -54,24 +54,11 @@ app.get("/api/tweets", (req, res) => {
 });
 
 app.post("/api/tweet", (req, res) => {
-  // let newTweet = new Tweet({
-  //   user: req.body.user,
-  //   text: req.body.text
-  // });
-
-  // Tweet.save(newTweet)
-  //   .then(doc => res.send(doc))
-  //   .catch(err => console.log("err", err));
-
-  // let userId = User.findOne({
-  //   userInfo: {
-  //     username: req.body.user
-  //   }
-  // });
-
-  // console.log("userId", userId);
-
-  res.send("hi");
+  let newTweet_id;
+  let newTweet = new Tweet({
+    user: req.body.user,
+    text: req.body.text
+  });
 });
 
 app.post("/signup", (req, res) => {

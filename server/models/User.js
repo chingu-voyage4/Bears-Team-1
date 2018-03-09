@@ -25,7 +25,6 @@ const User = mongoose.model("User", {
     }
   },
   stats: {
-    tweets: [{ type: ObjectId, ref: "Tweet" }],
     likes: [Number],
     followers: [Number],
     following: [Number]

@@ -3,7 +3,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Define Tweet Schema
 const Tweet = mongoose.model("Tweet", {
-  user: String,
+  _creator: ObjectId,
   text: String,
   comments: [
     {
