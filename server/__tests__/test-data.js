@@ -1,13 +1,13 @@
 const Tweet = require("./../models/Tweet");
 const User = require("./../models/User");
 
-let testUser = {
+let testUser = new User({
   userInfo: {
     username: "misomighty",
     firstName: "Miso",
     lastName: "Mighty"
   }
-};
+});
 
 let testUsers = [
   {
@@ -37,6 +37,11 @@ let testUsers = [
     }
   }
 ];
+
+let newTweet = new Tweet({
+  user: loopylenny,
+  text: "This is a new tweet by loopylenny"
+});
 
 let testTweets = [
   {
@@ -81,6 +86,7 @@ module.exports = {
   testUser,
   testUsers,
   testTweets,
+  newTweet,
   dumpDB,
   seedDB
 };
