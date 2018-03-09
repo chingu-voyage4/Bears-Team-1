@@ -48,7 +48,7 @@ describe("GET Users and Tweets", () => {
       .get(`/api/tweets/${user_id}`)
       .expect(200)
       .expect(res => {
-        // Returns an array of tweet id strings
+        // Expect 3 tweet objects
         expect(res.body.length).toBe(3);
       })
       .end(done);
