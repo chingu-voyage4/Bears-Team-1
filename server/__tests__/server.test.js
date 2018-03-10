@@ -1,12 +1,12 @@
 const _ = require("lodash");
 const request = require("supertest");
 const expect = require("expect");
-const mongoose = require("./../server");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const User = require("./../models/User");
 const Tweet = require("./../models/Tweet");
-const { app } = require("./../app");
+const { app } = require("./../server");
 const {
   testUser,
   testUsers,
@@ -75,8 +75,11 @@ describe("POST new User, new Tweet", () => {
       .send(newTweet)
       .expect(200)
       .expect(res => {
-        // The user's tweet array should contain the new tweet id
-        expect(res.body).toContain(newTweet._creator);
+        // The tweet should include the user's id
+        // creator ID returns an ObjectId so it must be stringified to be tested
+        expect(JSON.stringify(res.body.creator)).toEqual(
+          expect.stringContaining(JSON.stringify(newTweet.creator))
+        );
       })
       .end(done);
   });

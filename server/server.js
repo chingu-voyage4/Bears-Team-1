@@ -1,16 +1,13 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const urlEncodedParser = bodyParser.urlencoded({ extended: false });
+const mongoose = require("mongoose");
+
 const cors = require("cors");
 const path = require("path");
-const mongoose = require("mongoose");
 require("dotenv").config();
 
-const Tweet = require("./models/Tweet");
-const User = require("./models/User");
-const dummyApi = require("./dummyAPI.js");
+const bodyParser = require("body-parser");
+const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const app = express();
-const PORT = process.env.PORT || 3001;
 
 // Priority serve any static files.
 app.use(express.static("build"));
@@ -22,12 +19,13 @@ app.options("*", cors());
 //////////////////////////////
 // MongoDB
 //////////////////////////////
+
+// Import models
+const Tweet = require("./models/Tweet");
+const User = require("./models/User");
 // Connect to database
 mongoose
-  .connect(MONGO_URI)
-  .then(res => {
-    console.log(`Connected to ${MONGO_URI}`);
-  })
+  .connect("mongodb://localhost:27017/bearsTeam1" || process.env.MONGO_URI)
   .catch(err => {
     if (err) console.log("err", err);
   });
@@ -37,14 +35,14 @@ mongoose.Promise = global.Promise;
 //////////////////////////////
 // Answer requests
 //////////////////////////////
-
+const dummyApi = require("./dummyAPI.js");
 app.get("/api", (req, res) => {
   return res.send(dummyApi);
 });
 
 // Priority serve any static files.
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: "true" }));
 app.use(express.static(path.resolve(__dirname, "../react/build")));
 
 // Cross Origin Resource Sharing
@@ -87,12 +85,12 @@ app.get("/api/tweets", (req, res) => {
 });
 
 app.post("/api/tweet", (req, res) => {
-  let newTweet_id;
   let newTweet = new Tweet({
-    _creator: req.body._creator,
+    creator: req.body.creator,
     text: req.body.text
   });
-  res.send(newTweet);
+
+  newTweet.save().then(doc => res.send(doc));
 });
 
 app.post("/signup", (req, res) => {
@@ -116,6 +114,8 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
+// Connect to port
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => console.log(`Express listening on port ${PORT}`));
 
 module.exports = { app };
