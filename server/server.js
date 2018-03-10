@@ -66,16 +66,11 @@ app.get("/api/users", (req, res) => {
 });
 
 app.get("/api/tweets/:user_id", (req, res) => {
-  // Get id param, save to var
-  let user_id = req.params.user_id;
+  let creator = req.params.user_id;
   // Find all tweets by that user
-  User.findOne({ _id: user_id })
-    .populate("stats.tweets")
-    .then(user => {
-      res.send(user.stats.tweets);
-    });
-
-  // res.send("hi");
+  Tweet.find({ creator }).then(docs => {
+    res.send(docs);
+  });
 });
 
 app.get("/api/tweets", (req, res) => {

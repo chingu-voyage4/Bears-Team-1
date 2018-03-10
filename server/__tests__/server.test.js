@@ -44,9 +44,9 @@ describe("GET Users and Tweets", () => {
   });
   it("should get all tweets by user id", done => {
     // _id is static id from test user
-    let user_id = "5aa054ac1a6e5a01b90f591c";
+    let creator = "5aa054ac1a6e5a01b90f591c";
     request(app)
-      .get(`/api/tweets/${user_id}`)
+      .get(`/api/tweets/${creator}`)
       .expect(200)
       .expect(res => {
         // Expect 3 tweet objects
