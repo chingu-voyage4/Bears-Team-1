@@ -52,51 +52,14 @@ app.options("*", cors());
 //////////////////////////////
 // Answer requests
 //////////////////////////////
+const user = require("./user"); // ROUTER
+const tweet = require("./tweet"); // ROUTER
+
+app.use("user", user);
+app.use("tweet", tweet);
+
 app.get("/api", (req, res) => {
   return res.send(dummyApi);
-});
-
-app.get("/api/users", (req, res) => {
-  User.find().then(
-    users => {
-      res.send(users);
-    },
-    err => res.status(400).send(err)
-  );
-});
-
-app.get("/api/tweets/:user_id", (req, res) => {
-  let creator = req.params.user_id;
-  // Find all tweets by that user
-  Tweet.find({ creator }).then(docs => {
-    res.send(docs);
-  });
-});
-
-app.get("/api/tweets", (req, res) => {
-  Tweet.find().then(tweets => {
-    res.send(tweets);
-  });
-});
-
-app.post("/api/tweet", (req, res) => {
-  let newTweet = new Tweet({
-    creator: req.body.creator,
-    text: req.body.text
-  });
-
-  newTweet.save().then(doc => res.send(doc));
-});
-
-app.post("/signup", (req, res) => {
-  let user = new User({
-    userInfo: {
-      username: req.body.userInfo.username,
-      firstName: req.body.userInfo.firstName,
-      lastName: req.body.userInfo.lastName
-    }
-  });
-  user.save().then(doc => res.send(doc), err => res.status(400).send(err));
 });
 
 // All remaining requests return the React app, so it can handle routing.
