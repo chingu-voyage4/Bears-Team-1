@@ -2,9 +2,20 @@
 ///// SCSS Variables
 ////////////////////////////////////////
 
-$font-color: #000;
-$brand-color: #89d9d0;
+$font-size: 16px;
+$line-height: 22px;
 $main-font: "Open Sans", sans-serif;
+$font-color: #3e403f;
+$brand-color-black: #3e403f;
+$brand-color-white: #ffffff;
+$brand-color-lightgreen: #e3fdf5;
+$brand-color-green: #b8f2e6;
+$brand-color-pink: #ffe6fa;
+$brand-background-pg: linear-gradient(
+  -225deg,
+  $brand-color-lightgreen 50%,
+  $brand-color-pink 50%
+);
 
 // Responsive breakpoints, mobile first design
 $sm: "only screen and (min-width: 576px)";
@@ -20,10 +31,10 @@ body {
   margin: 0;
   padding: 0;
   font-family: $main-font;
-  font-size: 16px;
-  color: $font-color;
-  line-height: 22px;
-  background: white;
+  font-size: $font-size;
+  color: $brand-color-black;
+  line-height: $line-height;
+  background: $brand-color-white;
 }
 
 ////////////////////////////////////////
@@ -47,7 +58,6 @@ body {
 
 .container {
   // Mobile first
-  height: 100%;
   width: auto;
   margin: 0 auto;
   position: relative;
@@ -78,7 +88,7 @@ body {
 ////////////////////////////////////////
 
 .navbar {
-  background: black;
+  background: $brand-color-black;
   width: 100%;
   margin: 0;
   padding: 10px 0px 6px 0px;
@@ -113,53 +123,64 @@ body {
 
 .profile {
   position: relative;
-  border-bottom: 10px solid black;
+  border-bottom: 10px solid $brand-color-black;
 }
 
 .profile--background {
-  height: 100px;
-  background: skyblue;
+  height: 125px;
+  background: $brand-color-white;
+  background-image: $brand-background-pg;
 }
 
 .profile--avatar {
   position: absolute;
-  margin: -50px 0 0 10px;
-  border: solid white 2px;
+  margin: -50px 0 0 3%;
+  border: solid $brand-color-white 2px;
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  background: $brand-color;
+  background: $brand-color-black;
 }
 
 .profile--button--edit-profile {
-  font-size: 14px;
+  font-size: $font-size;
   float: right;
-  margin: 15px 10px 0px 0px;
-  padding: 9px 18px;
-  background: linear-gradient(45deg, #b388eb, #8093f1);
-  border: 0px solid black;
-  color: white;
-  border-radius: 20px;
+  margin: 10px 3% 0px 0px;
+  padding: 10px 25px;
+  background: $brand-color-green;
+  border: 0px solid $brand-color-black;
+  color: $brand-color-black;
+  border-radius: 5px;
   font-weight: normal;
   font-family: $main-font;
   cursor: pointer;
 }
 
+.profile--button--edit-profile:focus {
+  outline: 0;
+}
+
 .profile--container--bottom-half {
-  padding: 60px 10px 10px 10px;
-  background: white;
+  padding: 60px 3% 10px 3%;
+  background: $brand-color-white;
 }
 
 .profile--name {
+  font-size: $font-size * 1.5;
+  line-height: $line-height * 1.5;
   font-weight: bold;
 }
 
 .profile--username {
+  font-size: $font-size * 1.2;
+  line-height: $line-height * 1.2;
   float: left;
   width: 50%;
 }
 
 .profile--location {
+  font-size: $font-size * 1.2;
+  line-height: $line-height * 1.2;
   float: right;
   width: 50%;
   text-align: right;
@@ -185,12 +206,16 @@ body {
 }
 
 .profile--stats-name {
+  font-size: $font-size * 1.1;
+  line-height: $line-height * 1.1;
   display: block;
   font-weight: bold;
 }
 
-.profile--stats-number {
+.profile--stats-number a {
   font-weight: normal;
+  text-decoration: none;
+  color: $brand-color-black;
 }
 
 ////////////////////////////////////////
@@ -199,35 +224,46 @@ body {
 
 .feed--list {
   list-style: none;
-  background: white;
+  background: $brand-color-white;
   padding: 0;
   margin: 0;
 }
 
 .feed--list-item {
-  border-bottom: 1px solid black;
-  padding: 10px;
+  background: $brand-color-lightgreen;
+  border-bottom: 2px solid $brand-color-white;
+  padding: 10px 3%;
+}
+
+.feed--list-item:nth-child(even) {
+  background: $brand-color-pink;
 }
 
 .feed--avatar {
   float: left;
+  border: 1px solid $brand-color-white;
   border-radius: 50%;
-  border: 0;
   height: 50px;
   width: 50px;
-  background: $brand-color;
+  background: $brand-color-black;
   display: block;
-  margin-right: 10px;
+  margin-right: 3%;
+  margin-top: 10px;
 }
 
 .feed--user {
+  font-size: $font-size * 0.9;
+  line-height: $line-height * 0.9;
 }
 
 .feed--username {
+  font-size: $font-size * 1.1;
+  line-height: $line-height * 1.1;
+  font-weight: bold;
 }
 
 .feed--date {
-  color: gray;
+  color: $brand-color-black;
 }
 
 .feed--message {
@@ -244,7 +280,7 @@ body {
 .feed--list-item--actions li {
   display: inline-block;
   padding-right: 10px;
-  min-width: 60px;
+  min-width: 65px;
 }
 
 .feed--list-item--actions img {
@@ -285,7 +321,7 @@ body {
 
 .search--input:focus {
   outline: none;
-  border: 2px solid $brand-color;
+  border: 2px solid $brand-color-green;
 }
 
 .search--container img {
@@ -321,7 +357,7 @@ body {
 }
 
 .searchResults--container:hover {
-  background-color: lighten($brand-color, 15%);
+  background-color: lighten($brand-color-green, 15%);
   // border: 1px solid $brand-color;
 }
 
@@ -337,7 +373,7 @@ body {
 }
 
 .searchResults--list .name:hover {
-  color: darken($brand-color, 10%);
+  color: darken($brand-color-green, 10%);
 }
 
 .searchResults--list .handle {
@@ -349,45 +385,91 @@ body {
 ////////////////////////////////////////
 
 .scoop {
-  background-image: linear-gradient(-225deg, #e3fdf5 50%, #ffe6fa 50%);
+  background-image: $brand-background-pg;
   margin: 0 auto;
   padding: 0;
   text-align: center;
-  color: #3e403f;
+  color: $brand-color-black;
 }
 
 .scoop h1 {
   margin: 0;
-  padding: 20px;
+  padding: 30px 0px 30px 0px;
 }
 
 .scoop--textarea {
   margin: 0;
-  padding: 10px 2%;
-  width: 96%;
+  padding: 10px 3%;
+  width: 94%;
   height: 100px;
-  border: 0px solid black;
+  border: 0px solid $brand-color-black;
   border-radius: 5px;
-  background: #fff;
+  background: $brand-color-white;
   resize: none;
   font-size: 16px;
+}
+
+.scoop--textarea:focus {
+  outline: 0;
 }
 
 .scoop--form {
   margin: 0 auto;
   padding: 0;
-  width: 90%;
+  width: 94%;
 }
 
 .scoop--form--submit-button {
   font-size: 14px;
   width: 100%;
-  margin: 15px 0px 20px 0px;
+  margin: 25px 0px 30px 0px;
   padding: 10px;
-  background: #b8f2e6;
-  border: 0px solid black;
+  background: $brand-color-green;
+  border: 0px solid $brand-color-black;
   border-radius: 5px;
   font-weight: normal;
   font-family: $main-font;
   cursor: pointer;
+  font-size: $font-size;
+  color: $brand-color-black;
+}
+
+.scoop--form--submit-button:focus {
+  outline: 0;
+}
+
+////////////////////////////////////////
+///// Footer
+////////////////////////////////////////
+
+.footer--list {
+  background: $brand-color-black;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0px 10px 0px;
+  color: $brand-color-white;
+  text-align: center;
+}
+
+.footer--list ul {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.footer--list li {
+  display: inline-block;
+  width: 33%;
+  margin: 0;
+  padding: 0;
+}
+
+.footer--list img {
+  width: 40px;
+}
+
+.footer--list a {
+  color: $brand-color-pink;
+  text-decoration: none;
 }
