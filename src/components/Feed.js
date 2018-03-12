@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import reply from "../assets/iconmonstr-speech-bubble-15-240.png";
-import share from "../assets/iconmonstr-share-1-240.png";
-import like from "../assets/iconmonstr-favorite-3-240.png";
+import reply from "../assets/iconmonstr-speech-bubble-2-240.png";
+import share from "../assets/iconmonstr-retweet-1-240.png";
+import like from "../assets/iconmonstr-favorite-2-240.png";
 
 class Feed extends Component {
   render() {
