@@ -3,9 +3,9 @@ body {
   padding: 0;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
-  color: #000;
+  color: #3e403f;
   line-height: 22px;
-  background: white;
+  background: #ffffff;
 }
 
 .text-left {
@@ -21,7 +21,6 @@ body {
 }
 
 .container {
-  height: 100%;
   width: auto;
   margin: 0 auto;
   position: relative;
@@ -88,10 +87,10 @@ body {
 }
 
 .navbar {
-  background: black;
+  background: #3e403f;
   width: 100%;
   margin: 0;
-  padding: 10px 0px 6px 0px;
+  padding: 10px 0px 5px 0px;
 }
 
 .navbar ul {
@@ -119,53 +118,64 @@ body {
 
 .profile {
   position: relative;
-  border-bottom: 10px solid black;
+  border-bottom: 10px solid #3e403f;
 }
 
 .profile--background {
-  height: 100px;
-  background: skyblue;
+  height: 125px;
+  background: #ffffff;
+  background-image: linear-gradient(-225deg, #e3fdf5 50%, #ffe6fa 50%);
 }
 
 .profile--avatar {
   position: absolute;
-  margin: -50px 0 0 10px;
-  border: solid white 2px;
+  margin: -50px 0 0 3%;
+  border: solid #ffffff 2px;
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  background: #89d9d0;
+  background: #3e403f;
 }
 
 .profile--button--edit-profile {
-  font-size: 14px;
+  font-size: 16px;
   float: right;
-  margin: 15px 10px 0px 0px;
-  padding: 9px 18px;
-  background: linear-gradient(45deg, #b388eb, #8093f1);
-  border: 0px solid black;
-  color: white;
-  border-radius: 20px;
+  margin: 10px 3% 0px 0px;
+  padding: 10px 25px;
+  background: #b8f2e6;
+  border: 0px solid #3e403f;
+  color: #3e403f;
+  border-radius: 5px;
   font-weight: normal;
   font-family: "Open Sans", sans-serif;
   cursor: pointer;
 }
 
+.profile--button--edit-profile:focus {
+  outline: 0;
+}
+
 .profile--container--bottom-half {
-  padding: 60px 10px 10px 10px;
-  background: white;
+  padding: 60px 3% 10px 3%;
+  background: #ffffff;
 }
 
 .profile--name {
+  font-size: 24px;
+  line-height: 33px;
   font-weight: bold;
 }
 
 .profile--username {
+  font-size: 19.2px;
+  line-height: 26.4px;
   float: left;
   width: 50%;
 }
 
 .profile--location {
+  font-size: 19.2px;
+  line-height: 26.4px;
   float: right;
   width: 50%;
   text-align: right;
@@ -191,39 +201,60 @@ body {
 }
 
 .profile--stats-name {
+  font-size: 17.6px;
+  line-height: 24.2px;
   display: block;
   font-weight: bold;
 }
 
-.profile--stats-number {
+.profile--stats-number a {
   font-weight: normal;
+  text-decoration: none;
+  color: #3e403f;
 }
 
 .feed--list {
   list-style: none;
-  background: white;
+  background: #ffffff;
   padding: 0;
   margin: 0;
 }
 
 .feed--list-item {
-  border-bottom: 1px solid black;
-  padding: 10px;
+  background: #e3fdf5;
+  border-bottom: 2px solid #ffffff;
+  padding: 10px 3%;
+}
+
+.feed--list-item:nth-child(even) {
+  background: #ffe6fa;
 }
 
 .feed--avatar {
   float: left;
+  border: 1px solid #ffffff;
   border-radius: 50%;
-  border: 0;
   height: 50px;
   width: 50px;
-  background: #89d9d0;
+  background: #3e403f;
   display: block;
-  margin-right: 10px;
+  margin-right: 3%;
+  margin-top: 10px;
+}
+
+.feed--user {
+  font-size: 14.4px;
+  line-height: 19.8px;
+}
+
+.feed--username {
+  font-size: 17.6px;
+  line-height: 24.2px;
+  font-weight: bold;
 }
 
 .feed--date {
-  color: gray;
+  color: #3e403f;
 }
 
 .feed--list-item--actions {
@@ -237,7 +268,7 @@ body {
 .feed--list-item--actions li {
   display: inline-block;
   padding-right: 10px;
-  min-width: 60px;
+  min-width: 65px;
 }
 
 .feed--list-item--actions img {
@@ -274,7 +305,7 @@ body {
 
 .search--input:focus {
   outline: none;
-  border: 2px solid #89d9d0;
+  border: 2px solid #b8f2e6;
 }
 
 .search--container img {
@@ -310,7 +341,7 @@ body {
 }
 
 .searchResults--container:hover {
-  background-color: #c3ece7;
+  background-color: #f9fefd;
 }
 
 .searchResults--container .avatar {
@@ -325,7 +356,7 @@ body {
 }
 
 .searchResults--list .name:hover {
-  color: #62cdc1;
+  color: #8dead7;
 }
 
 .searchResults--list .handle {
@@ -342,36 +373,78 @@ body {
 
 .scoop h1 {
   margin: 0;
-  padding: 20px;
+  padding: 30px 0px 30px 0px;
 }
 
 .scoop--textarea {
   margin: 0;
-  padding: 10px 2%;
-  width: 96%;
+  padding: 10px 3%;
+  width: 94%;
   height: 100px;
-  border: 0px solid black;
+  border: 0px solid #3e403f;
   border-radius: 5px;
-  background: #fff;
+  background: #ffffff;
   resize: none;
   font-size: 16px;
+}
+
+.scoop--textarea:focus {
+  outline: 0;
 }
 
 .scoop--form {
   margin: 0 auto;
   padding: 0;
-  width: 90%;
+  width: 94%;
 }
 
 .scoop--form--submit-button {
   font-size: 14px;
   width: 100%;
-  margin: 15px 0px 20px 0px;
+  margin: 15px 0px 30px 0px;
   padding: 10px;
   background: #b8f2e6;
-  border: 0px solid black;
+  border: 0px solid #3e403f;
   border-radius: 5px;
   font-weight: normal;
   font-family: "Open Sans", sans-serif;
   cursor: pointer;
+  font-size: 16px;
+  color: #3e403f;
+}
+
+.scoop--form--submit-button:focus {
+  outline: 0;
+}
+
+.footer--list {
+  background: #3e403f;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0px 10px 0px;
+  color: #ffffff;
+  text-align: center;
+}
+
+.footer--list ul {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.footer--list li {
+  display: inline-block;
+  width: 33%;
+  margin: 0;
+  padding: 0;
+}
+
+.footer--list img {
+  width: 40px;
+}
+
+.footer--list a {
+  color: #ffe6fa;
+  text-decoration: none;
 }
