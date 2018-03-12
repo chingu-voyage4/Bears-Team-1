@@ -45,7 +45,11 @@ describe("TWEETS", () => {
       .delete(`/tweet/deleteId=${delete_id}`)
       .expect(200)
       .expect(res => {
-        expect(res.body.text).toEqual("A 2nd tweet by misomighty");
+        Tweet.find({})
+          .then(tweets => {
+            expect(tweets.length).toBe(4);
+          })
+          .catch(err => err);
       })
       .end(done);
   });
