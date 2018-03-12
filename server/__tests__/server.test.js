@@ -26,7 +26,7 @@ beforeEach(done => {
 describe("GET Users and Tweets", () => {
   it("should return all users", done => {
     request(app)
-      .get("/api/users")
+      .get("/user/all")
       .expect(200)
       .expect(res => {
         expect(res.body.length).toBe(2);
@@ -35,7 +35,7 @@ describe("GET Users and Tweets", () => {
   });
   it("should return all tweets", done => {
     request(app)
-      .get("/api/tweets")
+      .get("/tweet/all")
       .expect(200)
       .expect(res => {
         expect(res.body.length).toBe(4);
@@ -46,7 +46,7 @@ describe("GET Users and Tweets", () => {
     // _id is static id from test user
     let creator = "5aa054ac1a6e5a01b90f591c";
     request(app)
-      .get(`/api/tweets/${creator}`)
+      .get(`/tweet/${creator}`)
       .expect(200)
       .expect(res => {
         // Expect 3 tweet objects
@@ -60,7 +60,7 @@ describe("POST new User, new Tweet", () => {
   it("should add a new user", done => {
     // TODO: ADD VALIDATION
     request(app)
-      .post("/signup")
+      .post("/user/new")
       .send(testUser)
       .expect(200)
       .expect(res => {
@@ -71,7 +71,7 @@ describe("POST new User, new Tweet", () => {
 
   it("should add a new tweet", done => {
     request(app)
-      .post("/api/tweet")
+      .post("/tweet/new")
       .send(newTweet)
       .expect(200)
       .expect(res => {

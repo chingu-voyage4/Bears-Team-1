@@ -52,8 +52,8 @@ app.options("*", cors());
 //////////////////////////////
 // Answer requests
 //////////////////////////////
-const user = require("./user"); // ROUTER
-const tweet = require("./tweet"); // ROUTER
+const user = require("./user.js"); // ROUTER
+const tweet = require("./tweet.js"); // ROUTER
 
 app.use("user", user);
 app.use("tweet", tweet);
