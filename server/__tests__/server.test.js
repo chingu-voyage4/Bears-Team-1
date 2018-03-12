@@ -95,4 +95,6 @@ describe("USERS", () => {
       })
       .end(done);
   });
+
+  it.only("DELETE / should make a user inactive", done => {});
 });

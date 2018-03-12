@@ -29,7 +29,11 @@ const User = mongoose.model("User", {
     followers: [Number],
     following: [Number]
   },
-  avatarUrl: ""
+  avatarUrl: "",
+  isActive: {
+    type: Boolean,
+    default: true
+  }
 });
 
 module.exports = User;
