@@ -24,4 +24,14 @@ router.post("/new", function(req, res) {
   user.save().then(doc => res.send(doc), err => res.status(400).send(err));
 });
 
+// Make a user inactive
+router.delete("/deleteId=:delete_id", (req, res) => {
+  let delete_id = req.params.delete_id;
+  User.findOneAndUpdate({ _id: delete_id }, { $set: { isActive: false } })
+    .then(user => {
+      res.send(user);
+    })
+    .catch(err => res.status(400).send(err));
+});
+
 module.exports = router;
