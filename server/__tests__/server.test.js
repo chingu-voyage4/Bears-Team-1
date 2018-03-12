@@ -42,8 +42,8 @@ describe("TWEETS", () => {
   it("DELETE / should remove a tweet from the DB", done => {
     const delete_id = "5aa05812fcbbc803417de0b6";
     request(app)
-      .delete(`/tweet/delete=${delete_id}`)
-      .expect(404)
+      .delete(`/tweet/deleteId=${delete_id}`)
+      .expect(200)
       .expect(res => {
         expect(res.body.text).toEqual("A 2nd tweet by misomighty");
       })
