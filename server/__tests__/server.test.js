@@ -23,17 +23,23 @@ beforeEach(done => {
   });
 });
 
-describe("GET Users and Tweets", () => {
-  it("should return all users", done => {
+describe("TWEETS", () => {
+  it("POST / should add a new tweet", done => {
     request(app)
-      .get("/user/all")
+      .post("/tweet/new")
+      .send(newTweet)
       .expect(200)
       .expect(res => {
-        expect(res.body.length).toBe(2);
+        // The tweet should include the user's id
+        // creator ID returns an ObjectId so it must be stringified to be tested
+        expect(JSON.stringify(res.body.creator)).toEqual(
+          expect.stringContaining(JSON.stringify(newTweet.creator))
+        );
       })
       .end(done);
   });
-  it("should return all tweets", done => {
+
+  it("GET / should return all tweets", done => {
     request(app)
       .get("/tweet/all")
       .expect(200)
@@ -42,7 +48,7 @@ describe("GET Users and Tweets", () => {
       })
       .end(done);
   });
-  it("should get all tweets by user id", done => {
+  it("GET / should get all tweets by user id", done => {
     // _id is static id from test user
     let creator = "5aa054ac1a6e5a01b90f591c";
     request(app)
@@ -56,8 +62,18 @@ describe("GET Users and Tweets", () => {
   });
 });
 
-describe("POST new User, new Tweet", () => {
-  it("should add a new user", done => {
+describe("USERS", () => {
+  it("GET / should return all users", done => {
+    request(app)
+      .get("/user/all")
+      .expect(200)
+      .expect(res => {
+        expect(res.body.length).toBe(2);
+      })
+      .end(done);
+  });
+
+  it("POST / should add a new user", done => {
     // TODO: ADD VALIDATION
     request(app)
       .post("/user/new")
@@ -65,21 +81,6 @@ describe("POST new User, new Tweet", () => {
       .expect(200)
       .expect(res => {
         expect(res.body.userInfo).toEqual(testUser.userInfo);
-      })
-      .end(done);
-  });
-
-  it("should add a new tweet", done => {
-    request(app)
-      .post("/tweet/new")
-      .send(newTweet)
-      .expect(200)
-      .expect(res => {
-        // The tweet should include the user's id
-        // creator ID returns an ObjectId so it must be stringified to be tested
-        expect(JSON.stringify(res.body.creator)).toEqual(
-          expect.stringContaining(JSON.stringify(newTweet.creator))
-        );
       })
       .end(done);
   });
