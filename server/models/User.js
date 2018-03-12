@@ -24,11 +24,9 @@ const User = mongoose.model("User", {
       type: Number
     }
   },
-  stats: {
-    likes: [Number],
-    followers: [Number],
-    following: [Number]
-  },
+  likes: [ObjectId],
+  followers: [Number],
+  following: [Number],
   avatarUrl: "",
   isActive: {
     type: Boolean,
