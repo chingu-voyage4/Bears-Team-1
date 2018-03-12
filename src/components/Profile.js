@@ -25,16 +25,22 @@ class Profile extends Component {
               <div>
                 <ul className="profile--stats">
                   <li>
-                    <span className="profile--stats-name">Tweets</span>
-                    <span className="profile--stats-number">1432</span>
+                    <span className="profile--stats-name">Scoops</span>
+                    <span className="profile--stats-number">
+                      <a href="#">1432</a>
+                    </span>
                   </li>
                   <li>
                     <span className="profile--stats-name">Following</span>
-                    <span className="profile--stats-number">847</span>
+                    <span className="profile--stats-number">
+                      <a href="#">847</a>
+                    </span>
                   </li>
                   <li>
                     <span className="profile--stats-name">Followers</span>
-                    <span className="profile--stats-number">323k</span>
+                    <span className="profile--stats-number">
+                      <a href="#">323k</a>
+                    </span>
                   </li>
                 </ul>
               </div>

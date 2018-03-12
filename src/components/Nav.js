@@ -23,16 +23,6 @@ class Nav extends Component {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/feed" activeClassName="navbar--selected">
-                <img src={feed} alt="Feed" className="navbar--icon" />
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/search" activeClassName="navbar--selected">
-                <img src={search} alt="Search" className="navbar--icon" />
-              </NavLink>
-            </li>
-            <li>
               <NavLink to="/notifications" activeClassName="navbar--selected">
                 <img
                   src={notifications}
@@ -43,7 +33,21 @@ class Nav extends Component {
             </li>
             <li>
               <NavLink to="/scoop" activeClassName="navbar--selected">
-                <img src={post} alt="Post" className="navbar--icon" />
+                <img
+                  src={post}
+                  alt="Post"
+                  className="navbar--icon navbar--icon-center"
+                />
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/feed" activeClassName="navbar--selected">
+                <img src={feed} alt="Feed" className="navbar--icon" />
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/search" activeClassName="navbar--selected">
+                <img src={search} alt="Search" className="navbar--icon" />
               </NavLink>
             </li>
           </ul>

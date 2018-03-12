@@ -12,7 +12,10 @@ class Scoop extends Component {
   }
 
   handleChange(event) {
-    this.setState({ scoopText: event.target.value });
+    this.setState({
+      scoopText: event.target.value,
+      remainingCharacters: 200 - event.target.value.length
+    });
   }
 
   handleSubmit(event) {
@@ -30,8 +33,9 @@ class Scoop extends Component {
             onChange={this.handleChange}
             placeholder="..."
             className="scoop--textarea"
+            maxLength="200"
           />
-          <div>200 characters remaining</div>
+          <div>{this.state.remainingCharacters} characters remaining</div>
           <input
             type="submit"
             value="Submit"
