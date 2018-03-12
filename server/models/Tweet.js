@@ -1,11 +1,20 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require("mongoose");
+const ObjectId = mongoose.Schema.Types.ObjectId;
+
 // Define Tweet Schema
-const TweetSchema = new Schema({
+const Tweet = mongoose.model("Tweet", {
+  creator: ObjectId,
   text: String,
-  author: String
-})
-// Convert Schema to Model
-const Tweet = mongoose.model('tweet', TweetSchema);
-// Export Model
+  comments: [
+    {
+      user: String,
+      text: String,
+      time: Number
+    }
+  ],
+  likes: Number,
+  retweets: Number,
+  time: Number
+});
+
 module.exports = Tweet;
