@@ -40,13 +40,11 @@ app.get("/api", (req, res) => {
   return res.send(dummyApi);
 });
 
-// Priority serve any static files.
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: "true" }));
+// Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, "../react/build")));
 
-// Cross Origin Resource Sharing
-app.use(cors());
 app.options("*", cors());
 
 //////////////////////////////
