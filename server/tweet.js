@@ -27,4 +27,9 @@ router.post("/new", (req, res) => {
   newTweet.save().then(doc => res.send(doc));
 });
 
+router.delete("/delete=:delete_id", (req, res) => {
+  const delete_id = req.params.delete_id;
+  Tweet.findById(delete_id).then(tweet => res.send(tweet));
+});
+
 module.exports = router;
