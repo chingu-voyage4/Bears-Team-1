@@ -19,7 +19,7 @@ router.post("/new", (req, res) => {
   newTweet.save().then(doc => res.send(doc));
 });
 
-router.delete("/deleteId=:delete_id", (req, res) => {
+router.delete("/:delete_id", (req, res) => {
   let delete_id = req.params.delete_id;
   Tweet.findOneAndRemove({ _id: delete_id }).then(tweet => res.send(tweet));
 });

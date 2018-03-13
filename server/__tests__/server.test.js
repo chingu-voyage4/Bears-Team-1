@@ -42,7 +42,7 @@ describe("TWEETS", () => {
   it("DELETE / should remove a tweet from the DB", done => {
     const delete_id = "5aa05812fcbbc803417de0b6";
     request(app)
-      .delete(`/tweet/deleteId=${delete_id}`)
+      .delete(`/tweet/${delete_id}`)
       .expect(200)
       .expect(res => {
         Tweet.find({})
