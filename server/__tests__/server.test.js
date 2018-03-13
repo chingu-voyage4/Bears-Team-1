@@ -24,6 +24,16 @@ beforeEach(done => {
 });
 
 describe("TWEETS", () => {
+  it("GET / should return all tweets", done => {
+    request(app)
+      .get("/tweet/all")
+      .expect(200)
+      .expect(res => {
+        expect(res.body.length).toBe(4);
+      })
+      .end(done);
+  });
+
   it("POST / should add a new tweet", done => {
     request(app)
       .post("/tweet/new")
@@ -53,28 +63,6 @@ describe("TWEETS", () => {
       })
       .end(done);
   });
-
-  it("GET / should return all tweets", done => {
-    request(app)
-      .get("/tweet/all")
-      .expect(200)
-      .expect(res => {
-        expect(res.body.length).toBe(4);
-      })
-      .end(done);
-  });
-  it("GET / should get all tweets by user id", done => {
-    // _id is static id from test user
-    let creator = "5aa054ac1a6e5a01b90f591c";
-    request(app)
-      .get(`/user/${creator}/tweets/`)
-      .expect(200)
-      .expect(res => {
-        // Expect 3 tweet objects
-        expect(res.body.length).toBe(3);
-      })
-      .end(done);
-  });
 });
 
 describe("USERS", () => {
@@ -96,6 +84,19 @@ describe("USERS", () => {
       .expect(200)
       .expect(res => {
         expect(res.body.userInfo).toEqual(testUser.userInfo);
+      })
+      .end(done);
+  });
+
+  it("GET / should get all tweets by user id", done => {
+    // _id is static id from test user
+    let creator = "5aa054ac1a6e5a01b90f591c";
+    request(app)
+      .get(`/user/${creator}/tweets/`)
+      .expect(200)
+      .expect(res => {
+        // Expect 3 tweet objects
+        expect(res.body.length).toBe(3);
       })
       .end(done);
   });
