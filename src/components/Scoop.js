@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Scoop extends Component {
   constructor(props) {
@@ -21,6 +22,18 @@ class Scoop extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log("Here's the Scoop:", this.state.scoopText);
+    axios
+      .post("tweet/new", {
+        creator: "placeholder",
+        text: this.state.scoopText
+      })
+      .then(response => {
+        this.setState({ scoopText: "" });
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
