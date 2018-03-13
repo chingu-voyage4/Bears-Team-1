@@ -50,11 +50,9 @@ app.use(express.static(path.resolve(__dirname, "../react/build")));
 //////////////////////////////
 const user = require("./user.js"); // ROUTER
 const tweet = require("./tweet.js"); // ROUTER
-const util = require("./util.js"); // ROUTER
 
 app.use("/user", user);
 app.use("/tweet", tweet);
-app.use("/i", util);
 
 // All remaining requests return the React app, so it can handle routing.
 // app.get("*", (request, response) => {

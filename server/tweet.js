@@ -9,14 +9,6 @@ router.get("/all", (req, res) => {
   });
 });
 
-// Find all tweets by user_id
-router.get("/:user_id", (req, res) => {
-  let creator = req.params.user_id;
-  Tweet.find({ creator }).then(docs => {
-    res.send(docs);
-  });
-});
-
 // Post a new tweet
 router.post("/new", (req, res) => {
   let newTweet = new Tweet({

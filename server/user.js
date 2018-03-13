@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("./models/User");
+const Tweet = require("./models/Tweet");
 
 // Get all users
 router.get("/all", function(req, res) {
@@ -24,6 +25,14 @@ router.post("/new", function(req, res) {
   user.save().then(doc => res.send(doc), err => res.status(400).send(err));
 });
 
+// Find all tweets by user_id
+router.get("/:user_id/tweets", (req, res) => {
+  let creator = req.params.user_id;
+  Tweet.find({ creator }).then(docs => {
+    res.send(docs);
+  });
+});
+
 // Make a user inactive
 router.delete("/deleteId=:delete_id", (req, res) => {
   let delete_id = req.params.delete_id;
@@ -33,5 +42,19 @@ router.delete("/deleteId=:delete_id", (req, res) => {
     })
     .catch(err => res.status(400).send(err));
 });
+
+// Like a tweet
+// router.post("/like/", (req, res) => {
+//   let tweet_id = req.body.tweet_id;
+//   let user_id = req.body.user_id;
+//
+//   User.findByIdAndUpdate(
+//     { _id: user_id },
+//     {$push: {"likes": tweet_id}},
+//     {new: true},
+//     (user => console.log(user)));
+//
+//   res.send("hi");
+// });
 
 module.exports = router;
