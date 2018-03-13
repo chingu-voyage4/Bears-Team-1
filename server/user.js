@@ -34,7 +34,7 @@ router.get("/:user_id/tweets", (req, res) => {
 });
 
 // Make a user inactive
-router.delete("/deleteId=:delete_id", (req, res) => {
+router.put("/:delete_id", (req, res) => {
   let delete_id = req.params.delete_id;
   User.findOneAndUpdate({ _id: delete_id }, { $set: { isActive: false } })
     .then(user => {

@@ -104,7 +104,7 @@ describe("USERS", () => {
     // Loopylenny is about to get nixed
     let delete_id = "5aa054ac1a6e5a01b90f591d";
     request(app)
-      .delete(`/user/deleteId=${delete_id}`)
+      .put(`/user/${delete_id}`)
       .expect(200)
       .expect(res => {
         User.findById(delete_id).then(user => {
