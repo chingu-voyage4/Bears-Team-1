@@ -5,12 +5,11 @@ const Tweet = require("./models/Tweet");
 
 // Get all users
 router.get("/all", function(req, res) {
-  User.find().then(
-    users => {
+  User.find()
+    .then(users => {
       res.send(users);
-    },
-    err => res.status(400).send(err)
-  );
+    })
+    .catch(err => res.status(400).send(err));
 });
 
 // Add a new user
@@ -22,14 +21,17 @@ router.post("/new", function(req, res) {
       lastName: req.body.userInfo.lastName
     }
   });
-  user.save().then(doc => res.send(doc), err => res.status(400).send(err));
+  user
+    .save()
+    .then(doc => res.send(doc))
+    .catch(err => res.status(400).send(err));
 });
 
 // Find all tweets by user_id
 router.get("/:user_id/tweets", (req, res) => {
   let creator = req.params.user_id;
   Tweet.find({ creator }).then(docs => {
-    res.send(docs);
+    res.send(docs).catch(err => res.status(400).send(err));
   });
 });
 
