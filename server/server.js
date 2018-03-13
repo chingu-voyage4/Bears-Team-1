@@ -10,7 +10,7 @@ const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const app = express();
 
 // Priority serve any static files.
-app.use(express.static("build"));
+app.use(express.static("../react/build"));
 
 // Cross Origin Resource Sharing
 app.use(cors());
@@ -45,20 +45,14 @@ app.use(bodyParser.urlencoded({ extended: "true" }));
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, "../react/build")));
 
-app.options("*", cors());
-
 //////////////////////////////
 // Answer requests
 //////////////////////////////
 const user = require("./user.js"); // ROUTER
 const tweet = require("./tweet.js"); // ROUTER
 
-app.use("user", user);
-app.use("tweet", tweet);
-
-app.get("/api", (req, res) => {
-  return res.send(dummyApi);
-});
+app.use("/user", user);
+app.use("/tweet", tweet);
 
 // All remaining requests return the React app, so it can handle routing.
 // app.get("*", (request, response) => {
@@ -67,7 +61,7 @@ app.get("/api", (req, res) => {
 
 // All remaining requests return the React app, so it can handle routing.
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.sendFile(path.join(__dirname, "../build", "index.html"));
 });
 
 // Connect to port

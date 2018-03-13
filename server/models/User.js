@@ -24,12 +24,14 @@ const User = mongoose.model("User", {
       type: Number
     }
   },
-  stats: {
-    likes: [Number],
-    followers: [Number],
-    following: [Number]
-  },
-  avatarUrl: ""
+  likes: [ObjectId],
+  followers: [Number],
+  following: [Number],
+  avatarUrl: "",
+  isActive: {
+    type: Boolean,
+    default: true
+  }
 });
 
 module.exports = User;

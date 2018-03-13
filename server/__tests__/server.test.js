@@ -23,17 +23,8 @@ beforeEach(done => {
   });
 });
 
-describe("GET Users and Tweets", () => {
-  it("should return all users", done => {
-    request(app)
-      .get("/user/all")
-      .expect(200)
-      .expect(res => {
-        expect(res.body.length).toBe(2);
-      })
-      .end(done);
-  });
-  it("should return all tweets", done => {
+describe("TWEETS", () => {
+  it("GET / should return all tweets", done => {
     request(app)
       .get("/tweet/all")
       .expect(200)
@@ -42,34 +33,8 @@ describe("GET Users and Tweets", () => {
       })
       .end(done);
   });
-  it("should get all tweets by user id", done => {
-    // _id is static id from test user
-    let creator = "5aa054ac1a6e5a01b90f591c";
-    request(app)
-      .get(`/tweet/${creator}`)
-      .expect(200)
-      .expect(res => {
-        // Expect 3 tweet objects
-        expect(res.body.length).toBe(3);
-      })
-      .end(done);
-  });
-});
 
-describe("POST new User, new Tweet", () => {
-  it("should add a new user", done => {
-    // TODO: ADD VALIDATION
-    request(app)
-      .post("/user/new")
-      .send(testUser)
-      .expect(200)
-      .expect(res => {
-        expect(res.body.userInfo).toEqual(testUser.userInfo);
-      })
-      .end(done);
-  });
-
-  it("should add a new tweet", done => {
+  it("POST / should add a new tweet", done => {
     request(app)
       .post("/tweet/new")
       .send(newTweet)
@@ -83,4 +48,91 @@ describe("POST new User, new Tweet", () => {
       })
       .end(done);
   });
+
+  it("DELETE / should remove a tweet from the DB", done => {
+    const delete_id = "5aa05812fcbbc803417de0b6";
+    request(app)
+      .delete(`/tweet/${delete_id}`)
+      .expect(200)
+      .expect(res => {
+        Tweet.find({})
+          .then(tweets => {
+            expect(tweets.length).toBe(4);
+          })
+          .catch(err => err);
+      })
+      .end(done);
+  });
 });
+
+describe("USERS", () => {
+  it("GET / should return all users", done => {
+    request(app)
+      .get("/user/all")
+      .expect(200)
+      .expect(res => {
+        expect(res.body.length).toBe(2);
+      })
+      .end(done);
+  });
+
+  it("POST / should add a new user", done => {
+    // TODO: ADD VALIDATION
+    request(app)
+      .post("/user/new")
+      .send(testUser)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.userInfo).toEqual(testUser.userInfo);
+      })
+      .end(done);
+  });
+
+  it("GET / should get all tweets by user id", done => {
+    // _id is static id from test user
+    let creator = "5aa054ac1a6e5a01b90f591c";
+    request(app)
+      .get(`/user/${creator}/tweets/`)
+      .expect(200)
+      .expect(res => {
+        // Expect 3 tweet objects
+        expect(res.body.length).toBe(3);
+      })
+      .end(done);
+  });
+
+  it("DELETE / should make a user inactive", done => {
+    // Loopylenny is about to get nixed
+    let delete_id = "5aa054ac1a6e5a01b90f591d";
+    request(app)
+      .put(`/user/${delete_id}`)
+      .expect(200)
+      .expect(res => {
+        User.findById(delete_id).then(user => {
+          expect(user.userInfo.username).toEqual("loopylenny");
+          expect(user.isActive).toBeFalsy();
+        });
+      })
+      .end(done);
+  });
+});
+
+// describe("UTILS", () => {
+//   it("should a liked post to a user model", done => {
+//     let user_id = "5aa054ac1a6e5a01b90f591d";
+//     let tweet_id = "5aa05812fcbbc803417de0b5";
+//     let req = {
+//       user_id,
+//       tweet_id
+//     };
+//
+//     request(app)
+//       .post(`/i/like`)
+//       .send(req)
+//       .expect(200)
+//       .expect(res => {
+//         expect(res.body.likes.length).toBe(1);
+//       })
+//       .end(done);
+//   });
+// });

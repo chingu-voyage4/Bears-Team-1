@@ -9,14 +9,6 @@ router.get("/all", (req, res) => {
   });
 });
 
-// Find all tweets by user_id
-router.get("/:user_id", (req, res) => {
-  let creator = req.params.user_id;
-  Tweet.find({ creator }).then(docs => {
-    res.send(docs);
-  });
-});
-
 // Post a new tweet
 router.post("/new", (req, res) => {
   let newTweet = new Tweet({
@@ -25,6 +17,11 @@ router.post("/new", (req, res) => {
   });
 
   newTweet.save().then(doc => res.send(doc));
+});
+
+router.delete("/:delete_id", (req, res) => {
+  let delete_id = req.params.delete_id;
+  Tweet.findOneAndRemove({ _id: delete_id }).then(tweet => res.send(tweet));
 });
 
 module.exports = router;
