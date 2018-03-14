@@ -54,31 +54,32 @@ router.post("/:user_id/likes/", (req, res) => {
   let user_id = req.params.user_id;
   let isLiked = req.body.isLiked;
 
+  // Handle LIKE
   if (isLiked) {
-    console.log("liked");
     User.findByIdAndUpdate(
       { _id: user_id },
       { $push: { likes: tweet_id } },
       // Returns the updated document
       { new: true },
       (err, user) => {
-        console.log("found user", user);
-        res.send(user);
+        res.send({
+          user,
+          likes: user.likes,
+          likesNum: user.likes.length
+        });
       }
     ).catch(err => res.status(400).send(err));
   } else if (!isLiked) {
-    // User.findById({_id: user_id}).where({ likes: { "$in" : [tweet_id]} }).then(user => {
     User.findOneAndUpdate(
       { _id: user_id },
       { $pull: { likes: [tweet_id] } },
       { new: true }
     )
       .then(user => {
-        console.log(user);
         res.send({
+          user,
           likesNum: user.likes.length
         });
-        // })
       })
       .catch(err => res.status(400).send(err));
   } else {
@@ -91,6 +92,7 @@ router.get("/:user_id/likes", (req, res) => {
   let user_id = req.params.user_id;
 
   User.findById({ _id: user_id })
+    // Returns an array of Tweet documents in place of Object refs
     .populate("likes")
     .then(user => {
       res.send({
