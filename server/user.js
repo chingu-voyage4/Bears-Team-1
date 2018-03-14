@@ -20,8 +20,7 @@ router.post("/new", function(req, res) {
       username: req.body.userInfo.username,
       firstName: req.body.userInfo.firstName,
       lastName: req.body.userInfo.lastName
-    },
-    dateCreated: Date.now()
+    }
   });
   user
     .save()

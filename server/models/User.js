@@ -32,8 +32,9 @@ const User = mongoose.model("User", {
     type: Boolean,
     default: true
   },
-  dateCreated: {
-    type: Number
+  date: {
+    type: Date,
+    default: Date.now()
   }
 });
 
