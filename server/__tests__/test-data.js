@@ -17,13 +17,7 @@ let testUsers = [
       firstName: "Miso",
       lastName: "Awesomely"
     },
-    stats: {
-      tweets: [
-        "5aa05812fcbbc803417de0b5",
-        "5aa05812fcbbc803417de0b6",
-        "5aa05812fcbbc803417de0b7"
-      ]
-    }
+    likes: ["5aa05812fcbbc803417de0b8"]
   },
   {
     _id: "5aa054ac1a6e5a01b90f591d",
@@ -31,9 +25,6 @@ let testUsers = [
       username: "loopylenny",
       firstName: "Lenny",
       lastName: "Looper"
-    },
-    stats: {
-      tweets: ["5aa05812fcbbc803417de0b8"]
     }
   }
 ];
