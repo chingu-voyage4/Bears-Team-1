@@ -123,7 +123,7 @@ describe("LIKES", () => {
     let tweet_id = "5aa05812fcbbc803417de0b5";
 
     request(app)
-      .post(`/user/${user_id}/like`)
+      .post(`/user/${user_id}/likes`)
       .send({ tweet_id: tweet_id })
       .expect(200)
       .expect(res => {

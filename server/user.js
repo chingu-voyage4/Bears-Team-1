@@ -49,7 +49,7 @@ router.put("/:delete_id", (req, res) => {
 });
 
 // Like a tweet
-router.post("/:user_id/like/", (req, res) => {
+router.post("/:user_id/likes/", (req, res) => {
   let tweet_id = req.body.tweet_id;
   let user_id = req.params.user_id;
 
