@@ -257,6 +257,10 @@ body {
   color: #3e403f;
 }
 
+.feed--message {
+  word-wrap: break-word;
+}
+
 .feed--list-item--actions {
   padding-top: 10px;
   text-align: left;
