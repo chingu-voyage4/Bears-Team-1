@@ -52,10 +52,10 @@ router.put("/:delete_id", (req, res) => {
 router.put("/:user_id/likes/", (req, res) => {
   const tweet_id = req.body.tweet_id;
   const user_id = req.params.user_id;
-  const isLiked = req.body.isLiked;
+  const action = req.body.action;
 
   // Handle LIKE
-  if (isLiked) {
+  if (action === "like") {
     User.findByIdAndUpdate(
       { _id: user_id },
       { $push: { likes: tweet_id } },
@@ -69,7 +69,7 @@ router.put("/:user_id/likes/", (req, res) => {
         });
       }
     ).catch(err => res.status(400).send(err));
-  } else if (!isLiked) {
+  } else if (action === "unlike") {
     User.findOneAndUpdate(
       { _id: user_id },
       { $pull: { likes: [tweet_id] } },

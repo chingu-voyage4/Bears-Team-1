@@ -136,7 +136,7 @@ describe("LIKES", () => {
 
     request(app)
       .put(`/user/${user_id}/likes`)
-      .send({ tweet_id: tweet_id, isLiked: true })
+      .send({ tweet_id: tweet_id, action: "like" })
       .expect(200)
       .expect(res => {
         expect(res.body.likes.length).toBe(2);
@@ -150,7 +150,7 @@ describe("LIKES", () => {
 
     request(app)
       .put(`/user/${user_id}/likes`)
-      .send({ tweet_id: tweet_id, isLiked: false })
+      .send({ tweet_id: tweet_id, action: "unlike" })
       .expect(200)
       .expect(res => {
         expect(res.body.likesNum).toBe(1);
