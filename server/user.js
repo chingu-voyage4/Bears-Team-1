@@ -62,4 +62,17 @@ router.post("/:user_id/likes/", (req, res) => {
   ).catch(err => res.status(400).send(err));
 });
 
+// Get a user's likes
+router.get("/:user_id/likes", (req, res) => {
+  let user_id = req.params.user_id;
+
+  User.findById({ _id: user_id })
+    .populate("likes")
+    .then(user => {
+      console.log("err", user);
+      res.send(user);
+    })
+    .catch(err => res.status(400).send(err));
+});
+
 module.exports = router;
