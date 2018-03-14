@@ -24,7 +24,14 @@ const User = mongoose.model("User", {
       type: Number
     }
   },
-  likes: [ObjectId],
+  // Choosing to use an ObjectId over a childSchema, as we don't want to generate a new ObjectId
+  likes: [
+    {
+      type: ObjectId,
+      // Ref property tells mongo which model to use during population
+      ref: "Tweet"
+    }
+  ],
   followers: [Number],
   following: [Number],
   avatarUrl: "",
