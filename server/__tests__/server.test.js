@@ -117,22 +117,18 @@ describe("USERS", () => {
   });
 });
 
-// describe("UTILS", () => {
-//   it("should a liked post to a user model", done => {
-//     let user_id = "5aa054ac1a6e5a01b90f591d";
-//     let tweet_id = "5aa05812fcbbc803417de0b5";
-//     let req = {
-//       user_id,
-//       tweet_id
-//     };
-//
-//     request(app)
-//       .post(`/i/like`)
-//       .send(req)
-//       .expect(200)
-//       .expect(res => {
-//         expect(res.body.likes.length).toBe(1);
-//       })
-//       .end(done);
-//   });
-// });
+describe("LIKES", () => {
+  it("should a liked post to a user model", done => {
+    let user_id = "5aa054ac1a6e5a01b90f591d";
+    let tweet_id = "5aa05812fcbbc803417de0b5";
+
+    request(app)
+      .post(`/user/${user_id}/like`)
+      .send({ tweet_id: tweet_id })
+      .expect(200)
+      .expect(res => {
+        expect(res.body.likes.length).toBe(1);
+      })
+      .end(done);
+  });
+});

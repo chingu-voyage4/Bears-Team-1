@@ -49,17 +49,17 @@ router.put("/:delete_id", (req, res) => {
 });
 
 // Like a tweet
-// router.post("/like/", (req, res) => {
-//   let tweet_id = req.body.tweet_id;
-//   let user_id = req.body.user_id;
-//
-//   User.findByIdAndUpdate(
-//     { _id: user_id },
-//     {$push: {"likes": tweet_id}},
-//     {new: true},
-//     (user => console.log(user)));
-//
-//   res.send("hi");
-// });
+router.post("/:user_id/like/", (req, res) => {
+  let tweet_id = req.body.tweet_id;
+  let user_id = req.params.user_id;
+
+  User.findByIdAndUpdate(
+    user_id,
+    { $push: { likes: tweet_id } },
+    // Returns the updated document
+    { new: true },
+    (err, user) => res.send(user)
+  ).catch(err => res.status(400).send(err));
+});
 
 module.exports = router;
