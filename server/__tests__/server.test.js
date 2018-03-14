@@ -90,7 +90,7 @@ describe("USERS", () => {
 
   it("GET / should get all tweets by user id", done => {
     // _id is static id from test user
-    let creator = "5aa054ac1a6e5a01b90f591c";
+    const creator = "5aa054ac1a6e5a01b90f591c";
     request(app)
       .get(`/user/${creator}/tweets/`)
       .expect(200)
@@ -103,11 +103,11 @@ describe("USERS", () => {
 
   it("DELETE / should make a user inactive", done => {
     // Loopylenny is about to get nixed
-    let delete_id = "5aa054ac1a6e5a01b90f591d";
+    const delete_id = "5aa054ac1a6e5a01b90f591d";
     request(app)
       .put(`/user/${delete_id}`)
       .expect(200)
-      .expect(res => {
+      .expect(() => {
         User.findById(delete_id).then(user => {
           expect(user.userInfo.username).toEqual("loopylenny");
           expect(user.isActive).toBeFalsy();
@@ -117,22 +117,44 @@ describe("USERS", () => {
   });
 });
 
-// describe("UTILS", () => {
-//   it("should a liked post to a user model", done => {
-//     let user_id = "5aa054ac1a6e5a01b90f591d";
-//     let tweet_id = "5aa05812fcbbc803417de0b5";
-//     let req = {
-//       user_id,
-//       tweet_id
-//     };
-//
-//     request(app)
-//       .post(`/i/like`)
-//       .send(req)
-//       .expect(200)
-//       .expect(res => {
-//         expect(res.body.likes.length).toBe(1);
-//       })
-//       .end(done);
-//   });
-// });
+describe("LIKES", () => {
+  it("should return all liked tweets by a user", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591c";
+
+    request(app)
+      .get(`/user/${user_id}/likes`)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.likesNum).toBe(1);
+      })
+      .end(done);
+  });
+
+  it("should a liked post to a user model", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591d";
+    const tweet_id = "5aa05812fcbbc803417de0b6";
+
+    request(app)
+      .put(`/user/${user_id}/likes`)
+      .send({ tweet_id: tweet_id, action: "like" })
+      .expect(200)
+      .expect(res => {
+        expect(res.body.likes.length).toBe(2);
+      })
+      .end(done);
+  });
+
+  it("should remove a liked tweet from the likes array", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591d";
+    const tweet_id = "5aa05812fcbbc803417de0b8";
+
+    request(app)
+      .put(`/user/${user_id}/likes`)
+      .send({ tweet_id: tweet_id, action: "unlike" })
+      .expect(200)
+      .expect(res => {
+        expect(res.body.likesNum).toBe(1);
+      })
+      .end(done);
+  });
+});
