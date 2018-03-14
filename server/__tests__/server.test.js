@@ -107,7 +107,7 @@ describe("USERS", () => {
     request(app)
       .put(`/user/${delete_id}`)
       .expect(200)
-      .expect(res => {
+      .expect(() => {
         User.findById(delete_id).then(user => {
           expect(user.userInfo.username).toEqual("loopylenny");
           expect(user.isActive).toBeFalsy();

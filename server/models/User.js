@@ -31,6 +31,9 @@ const User = mongoose.model("User", {
   isActive: {
     type: Boolean,
     default: true
+  },
+  dateCreated: {
+    type: Number
   }
 });
 

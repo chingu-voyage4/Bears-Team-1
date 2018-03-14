@@ -20,17 +20,23 @@ router.post("/new", function(req, res) {
       username: req.body.userInfo.username,
       firstName: req.body.userInfo.firstName,
       lastName: req.body.userInfo.lastName
-    }
+    },
+    dateCreated: Date.now()
   });
-  user.save().then(doc => res.send(doc), err => res.status(400).send(err));
+  user
+    .save()
+    .then(user => res.send(user))
+    .catch(err => res.status(400).send(err));
 });
 
 // Find all tweets by user_id
 router.get("/:user_id/tweets", (req, res) => {
   let creator = req.params.user_id;
-  Tweet.find({ creator }).then(docs => {
-    res.send(docs);
-  });
+  Tweet.find({ creator })
+    .then(docs => {
+      res.send(docs);
+    })
+    .catch(err => res.status(400).send(err));
 });
 
 // Make a user inactive
