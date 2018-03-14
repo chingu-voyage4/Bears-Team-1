@@ -139,8 +139,7 @@ describe("LIKES", () => {
       .get(`/user/${user_id}/likes`)
       .expect(200)
       .expect(res => {
-        console.log(res.body);
-        expect(res.body.likes.length).toBe(1);
+        expect(res.body.likesNum).toBe(1);
       })
       .end(done);
   });

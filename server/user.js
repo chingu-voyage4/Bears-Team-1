@@ -69,8 +69,10 @@ router.get("/:user_id/likes", (req, res) => {
   User.findById({ _id: user_id })
     .populate("likes")
     .then(user => {
-      console.log("user", user);
-      res.send(user);
+      res.send({
+        likes: user.likes,
+        likesNum: user.likes.length
+      });
     })
     .catch(err => res.status(400).send(err));
 });
