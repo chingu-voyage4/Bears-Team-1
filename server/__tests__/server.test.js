@@ -90,7 +90,7 @@ describe("USERS", () => {
 
   it("GET / should get all tweets by user id", done => {
     // _id is static id from test user
-    let creator = "5aa054ac1a6e5a01b90f591c";
+    const creator = "5aa054ac1a6e5a01b90f591c";
     request(app)
       .get(`/user/${creator}/tweets/`)
       .expect(200)
@@ -103,7 +103,7 @@ describe("USERS", () => {
 
   it("DELETE / should make a user inactive", done => {
     // Loopylenny is about to get nixed
-    let delete_id = "5aa054ac1a6e5a01b90f591d";
+    const delete_id = "5aa054ac1a6e5a01b90f591d";
     request(app)
       .put(`/user/${delete_id}`)
       .expect(200)
@@ -119,8 +119,8 @@ describe("USERS", () => {
 
 describe("LIKES", () => {
   it("should a liked post to a user model", done => {
-    let user_id = "5aa054ac1a6e5a01b90f591d";
-    let tweet_id = "5aa05812fcbbc803417de0b6";
+    const user_id = "5aa054ac1a6e5a01b90f591d";
+    const tweet_id = "5aa05812fcbbc803417de0b6";
 
     request(app)
       .post(`/user/${user_id}/likes`)
@@ -133,7 +133,7 @@ describe("LIKES", () => {
   });
 
   it("should return all liked tweets by a user", done => {
-    let user_id = "5aa054ac1a6e5a01b90f591c";
+    const user_id = "5aa054ac1a6e5a01b90f591c";
 
     request(app)
       .get(`/user/${user_id}/likes`)
@@ -145,11 +145,11 @@ describe("LIKES", () => {
   });
 
   it("should remove a liked tweet from the likes array", done => {
-    let user_id = "5aa054ac1a6e5a01b90f591d";
-    let tweet_id = "5aa05812fcbbc803417de0b8";
+    const user_id = "5aa054ac1a6e5a01b90f591d";
+    const tweet_id = "5aa05812fcbbc803417de0b8";
 
     request(app)
-      .post(`/user/${user_id}/likes`)
+      .put(`/user/${user_id}/likes`)
       .send({ tweet_id: tweet_id, isLiked: false })
       .expect(200)
       .expect(res => {

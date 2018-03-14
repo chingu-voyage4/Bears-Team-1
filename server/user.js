@@ -49,7 +49,7 @@ router.put("/:delete_id", (req, res) => {
 });
 
 // Handle likes
-router.post("/:user_id/likes/", (req, res) => {
+router.put("/:user_id/likes/", (req, res) => {
   const tweet_id = req.body.tweet_id;
   const user_id = req.params.user_id;
   const isLiked = req.body.isLiked;
