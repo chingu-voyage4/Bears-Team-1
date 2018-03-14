@@ -30,7 +30,7 @@ router.post("/new", function(req, res) {
 
 // Find all tweets by user_id
 router.get("/:user_id/tweets", (req, res) => {
-  let creator = req.params.user_id;
+  const creator = req.params.user_id;
   Tweet.find({ creator })
     .then(docs => {
       res.send(docs);
@@ -40,7 +40,7 @@ router.get("/:user_id/tweets", (req, res) => {
 
 // Make a user inactive
 router.put("/:delete_id", (req, res) => {
-  let delete_id = req.params.delete_id;
+  const delete_id = req.params.delete_id;
   User.findOneAndUpdate({ _id: delete_id }, { $set: { isActive: false } })
     .then(user => {
       res.send(user);
@@ -50,9 +50,9 @@ router.put("/:delete_id", (req, res) => {
 
 // Handle likes
 router.post("/:user_id/likes/", (req, res) => {
-  let tweet_id = req.body.tweet_id;
-  let user_id = req.params.user_id;
-  let isLiked = req.body.isLiked;
+  const tweet_id = req.body.tweet_id;
+  const user_id = req.params.user_id;
+  const isLiked = req.body.isLiked;
 
   // Handle LIKE
   if (isLiked) {
@@ -89,7 +89,7 @@ router.post("/:user_id/likes/", (req, res) => {
 
 // Get a user's likes
 router.get("/:user_id/likes", (req, res) => {
-  let user_id = req.params.user_id;
+  const user_id = req.params.user_id;
 
   User.findById({ _id: user_id })
     // Returns an array of Tweet documents in place of Object refs

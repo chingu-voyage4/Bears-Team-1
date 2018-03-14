@@ -11,7 +11,7 @@ router.get("/all", (req, res) => {
 
 // Post a new tweet
 router.post("/new", (req, res) => {
-  let newTweet = new Tweet({
+  const newTweet = new Tweet({
     creator: req.body.creator,
     text: req.body.text
   });
@@ -20,7 +20,7 @@ router.post("/new", (req, res) => {
 });
 
 router.delete("/:delete_id", (req, res) => {
-  let delete_id = req.params.delete_id;
+  const delete_id = req.params.delete_id;
   Tweet.findOneAndRemove({ _id: delete_id }).then(tweet => res.send(tweet));
 });
 
