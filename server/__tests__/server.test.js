@@ -131,4 +131,17 @@ describe("LIKES", () => {
       })
       .end(done);
   });
+
+  it("should return all liked tweets by a user", done => {
+    let user_id = "5aa054ac1a6e5a01b90f591c";
+
+    request(app)
+      .get(`/user/${user_id}/likes`)
+      .expect(200)
+      .expect(res => {
+        console.log(res.body);
+        expect(res.body.likes.length).toBe(1);
+      })
+      .end(done);
+  });
 });
