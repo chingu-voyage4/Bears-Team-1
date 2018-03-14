@@ -14,7 +14,10 @@ const Tweet = mongoose.model("Tweet", {
   ],
   likes: Number,
   retweets: Number,
-  time: Number
+  date: {
+    type: Date,
+    default: Date.now()
+  }
 });
 
 module.exports = Tweet;

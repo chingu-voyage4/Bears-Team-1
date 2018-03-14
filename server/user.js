@@ -23,21 +23,23 @@ router.post("/new", function(req, res) {
   });
   user
     .save()
-    .then(doc => res.send(doc))
+    .then(user => res.send(user))
     .catch(err => res.status(400).send(err));
 });
 
 // Find all tweets by user_id
 router.get("/:user_id/tweets", (req, res) => {
-  let creator = req.params.user_id;
-  Tweet.find({ creator }).then(docs => {
-    res.send(docs).catch(err => res.status(400).send(err));
-  });
+  const creator = req.params.user_id;
+  Tweet.find({ creator })
+    .then(docs => {
+      res.send(docs);
+    })
+    .catch(err => res.status(400).send(err));
 });
 
 // Make a user inactive
 router.put("/:delete_id", (req, res) => {
-  let delete_id = req.params.delete_id;
+  const delete_id = req.params.delete_id;
   User.findOneAndUpdate({ _id: delete_id }, { $set: { isActive: false } })
     .then(user => {
       res.send(user);
@@ -45,18 +47,59 @@ router.put("/:delete_id", (req, res) => {
     .catch(err => res.status(400).send(err));
 });
 
-// Like a tweet
-// router.post("/like/", (req, res) => {
-//   let tweet_id = req.body.tweet_id;
-//   let user_id = req.body.user_id;
-//
-//   User.findByIdAndUpdate(
-//     { _id: user_id },
-//     {$push: {"likes": tweet_id}},
-//     {new: true},
-//     (user => console.log(user)));
-//
-//   res.send("hi");
-// });
+// Handle likes
+router.put("/:user_id/likes/", (req, res) => {
+  const tweet_id = req.body.tweet_id;
+  const user_id = req.params.user_id;
+  const action = req.body.action;
+
+  // Handle LIKE
+  if (action === "like") {
+    User.findByIdAndUpdate(
+      { _id: user_id },
+      { $push: { likes: tweet_id } },
+      // Returns the updated document
+      { new: true },
+      (err, user) => {
+        res.send({
+          user,
+          likes: user.likes,
+          likesNum: user.likes.length
+        });
+      }
+    ).catch(err => res.status(400).send(err));
+  } else if (action === "unlike") {
+    User.findOneAndUpdate(
+      { _id: user_id },
+      { $pull: { likes: [tweet_id] } },
+      { new: true }
+    )
+      .then(user => {
+        res.send({
+          user,
+          likesNum: user.likes.length
+        });
+      })
+      .catch(err => res.status(400).send(err));
+  } else {
+    res.send("Must include isLiked boolean value to process this request");
+  }
+});
+
+// Get a user's likes
+router.get("/:user_id/likes", (req, res) => {
+  const user_id = req.params.user_id;
+
+  User.findById({ _id: user_id })
+    // Returns an array of Tweet documents in place of Object refs
+    .populate("likes")
+    .then(user => {
+      res.send({
+        likes: user.likes,
+        likesNum: user.likes.length
+      });
+    })
+    .catch(err => res.status(400).send(err));
+});
 
 module.exports = router;
