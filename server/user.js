@@ -48,18 +48,42 @@ router.put("/:delete_id", (req, res) => {
     .catch(err => res.status(400).send(err));
 });
 
-// Like a tweet
+// Handle likes
 router.post("/:user_id/likes/", (req, res) => {
   let tweet_id = req.body.tweet_id;
   let user_id = req.params.user_id;
+  let isLiked = req.body.isLiked;
 
-  User.findByIdAndUpdate(
-    user_id,
-    { $push: { likes: tweet_id } },
-    // Returns the updated document
-    { new: true },
-    (err, user) => res.send(user)
-  ).catch(err => res.status(400).send(err));
+  if (isLiked) {
+    console.log("liked");
+    User.findByIdAndUpdate(
+      { _id: user_id },
+      { $push: { likes: tweet_id } },
+      // Returns the updated document
+      { new: true },
+      (err, user) => {
+        console.log("found user", user);
+        res.send(user);
+      }
+    ).catch(err => res.status(400).send(err));
+  } else if (!isLiked) {
+    // User.findById({_id: user_id}).where({ likes: { "$in" : [tweet_id]} }).then(user => {
+    User.findOneAndUpdate(
+      { _id: user_id },
+      { $pull: { likes: [tweet_id] } },
+      { new: true }
+    )
+      .then(user => {
+        console.log(user);
+        res.send({
+          likesNum: user.likes.length
+        });
+        // })
+      })
+      .catch(err => res.status(400).send(err));
+  } else {
+    res.send("Must include isLiked boolean value to process this request");
+  }
 });
 
 // Get a user's likes

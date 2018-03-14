@@ -25,7 +25,8 @@ let testUsers = [
       username: "loopylenny",
       firstName: "Lenny",
       lastName: "Looper"
-    }
+    },
+    likes: ["5aa05812fcbbc803417de0b5"]
   }
 ];
 
