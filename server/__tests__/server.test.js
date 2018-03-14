@@ -118,20 +118,6 @@ describe("USERS", () => {
 });
 
 describe("LIKES", () => {
-  it("should a liked post to a user model", done => {
-    const user_id = "5aa054ac1a6e5a01b90f591d";
-    const tweet_id = "5aa05812fcbbc803417de0b6";
-
-    request(app)
-      .post(`/user/${user_id}/likes`)
-      .send({ tweet_id: tweet_id, isLiked: true })
-      .expect(200)
-      .expect(res => {
-        expect(res.body.likes.length).toBe(2);
-      })
-      .end(done);
-  });
-
   it("should return all liked tweets by a user", done => {
     const user_id = "5aa054ac1a6e5a01b90f591c";
 
@@ -140,6 +126,20 @@ describe("LIKES", () => {
       .expect(200)
       .expect(res => {
         expect(res.body.likesNum).toBe(1);
+      })
+      .end(done);
+  });
+
+  it("should a liked post to a user model", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591d";
+    const tweet_id = "5aa05812fcbbc803417de0b6";
+
+    request(app)
+      .put(`/user/${user_id}/likes`)
+      .send({ tweet_id: tweet_id, isLiked: true })
+      .expect(200)
+      .expect(res => {
+        expect(res.body.likes.length).toBe(2);
       })
       .end(done);
   });
