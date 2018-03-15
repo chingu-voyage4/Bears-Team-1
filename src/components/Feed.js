@@ -9,7 +9,6 @@ class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      date: Date.now(),
       list: ""
     };
     this.handleLike = this.handleLike.bind(this);
