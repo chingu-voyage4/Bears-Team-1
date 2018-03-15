@@ -59,15 +59,16 @@ router.put("/:user_id/likes/", (req, res) => {
       { _id: user_id },
       { $push: { likes: tweet_id } },
       // Returns the updated document
-      { new: true },
-      (err, user) => {
+      { new: true }
+    )
+      .then(user => {
         res.send({
           user,
           likes: user.likes,
           likesNum: user.likes.length
         });
-      }
-    ).catch(err => res.status(400).send(err));
+      })
+      .catch(err => res.status(400).send(err));
   } else if (action === "unlike") {
     User.findOneAndUpdate(
       { _id: user_id },
