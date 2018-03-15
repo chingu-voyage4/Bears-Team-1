@@ -112,6 +112,7 @@ router.put("/:user_id/following/", (req, res) => {
   console.log("req.body", req.body);
   // Handle LIKE
   if (action === "follow") {
+    // Add the target user to "following"
     User.findByIdAndUpdate(
       { _id: self_id },
       { $push: { following: user_id } },
@@ -125,6 +126,15 @@ router.put("/:user_id/following/", (req, res) => {
         });
       })
       .catch(err => res.status(400).send(err));
+
+    // Add following user to target's "followers"
+    User.findByIdAndUpdate(
+      { _id: user_id },
+      { $push: { followers: self_id } },
+      { new: true }
+    )
+      .then(() => {})
+      .catch(err => res.status(400).send(err));
   } else if (action === "unfollow") {
     User.findOneAndUpdate(
       { _id: self_id },
@@ -137,6 +147,15 @@ router.put("/:user_id/following/", (req, res) => {
           followingNum: user.following.length
         });
       })
+      .catch(err => res.status(400).send(err));
+
+    // Remove user from target's "followers"
+    User.findByIdAndUpdate(
+      { _id: user_id },
+      { $pull: { followers: self_id } },
+      { new: true }
+    )
+      .then(() => {})
       .catch(err => res.status(400).send(err));
   } else {
     res.send("Must include isLiked boolean value to process this request");
