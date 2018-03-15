@@ -216,7 +216,7 @@ describe("FOLLOW", () => {
       .end(done);
   });
 
-  it("should return all followers for a user", done => {
+  it("should return all people that a user is following", done => {
     const user_id = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
     const followerId = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
 
@@ -225,6 +225,19 @@ describe("FOLLOW", () => {
       .expect(200)
       .expect(res => {
         expect(res.body.following[0].userInfo.username).toBe("loopylenny");
+      })
+      .end(done);
+  });
+
+  it("should return all people following a user", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
+    const followerId = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
+
+    request(app)
+      .get(`/user/${user_id}/followers`)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.followers[0].userInfo.username).toBe("misoawesome");
       })
       .end(done);
   });

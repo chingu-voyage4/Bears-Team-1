@@ -27,7 +27,8 @@ let testUsers = [
       firstName: "Lenny",
       lastName: "Looper"
     },
-    likes: ["5aa05812fcbbc803417de0b5"]
+    likes: ["5aa05812fcbbc803417de0b5"],
+    followers: ["5aa054ac1a6e5a01b90f591c"]
   }
 ];
 
