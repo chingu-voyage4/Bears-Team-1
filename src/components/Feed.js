@@ -10,14 +10,31 @@ class Feed extends Component {
     this.state = {
       list: ""
     };
+    this.handleLike = this.handleLike.bind(this);
+  }
+
+  handleLike(event) {
+    event.preventDefault();
+    axios
+      .put("/user/" + "5aa054ac1a6e5a01b90f591d" + "/likes", {
+        tweet_id: "5aa05812fcbbc803417de0b6",
+        action: "like"
+      })
+      .then(response => {
+        console.log(response);
+        console.log("like img clicked");
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   componentDidMount() {
     axios
       .get("/tweet/all")
       .then(response => {
+        console.log(response);
         this.setState({ list: response.data });
-        console.log(response.data);
       })
       .catch(error => {
         console.log(error);
@@ -37,7 +54,10 @@ class Feed extends Component {
                 <div>
                   <div className="feed--user">
                     <span className="feed--username">@username</span>
-                    <span className="feed--date">{" - "}1h ago</span>
+                    <span className="feed--date">
+                      {" - "}
+                      {scoop.date}
+                    </span>
                   </div>
                   <div>
                     <span className="feed--message">{scoop.text}</span>
@@ -50,7 +70,9 @@ class Feed extends Component {
                       <img src={share} alt="share" />0
                     </li>
                     <li>
-                      <img src={like} alt="like" />0
+                      <form onSubmit={this.handleLike}>
+                        <img src={like} alt="like" onClick={this.handleLike} />0
+                      </form>
                     </li>
                   </ul>
                 </div>
