@@ -158,3 +158,22 @@ describe("LIKES", () => {
       .end(done);
   });
 });
+
+describe("FOLLOW", () => {
+  it("should add a user to user.following", done => {
+    const user_id = "";
+    const requestObj = {
+      self_id: "",
+      action: "follow"
+    };
+
+    request(app)
+      .put(`/user/${user_id}/`)
+      .send(requestObj)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.message).toBe("You followed misoawesome");
+      })
+      .end(done);
+  });
+});

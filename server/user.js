@@ -104,4 +104,44 @@ router.get("/:user_id/likes", (req, res) => {
     .catch(err => res.status(400).send(err));
 });
 
+// Handle Follow
+// router.put("/:user_id/follow/", (req, res) => {
+//   const self_id = req.body.self;
+//   const user_id = req.params.user_id;
+//   const action = req.body.action;
+//
+//   // Handle LIKE
+//   if (action === "follow") {
+//     User.findByIdAndUpdate(
+//       { _id: self_id },
+//       { $push: { following: user_id } },
+//       // Returns the updated document
+//       { new: true }
+//     )
+//       .then(user => {
+//         res.send({
+//           user,
+//           likes: user.likes,
+//           likesNum: user.likes.length
+//         });
+//       })
+//       .catch(err => res.status(400).send(err));
+//   } else if (action === "unfollow") {
+//     User.findOneAndUpdate(
+//       { _id: user_id },
+//       { $pull: { likes: [tweet_id] } },
+//       { new: true }
+//     )
+//       .then(user => {
+//         res.send({
+//           user,
+//           likesNum: user.likes.length
+//         });
+//       })
+//       .catch(err => res.status(400).send(err));
+//   } else {
+//     res.send("Must include isLiked boolean value to process this request");
+//   }
+// });
+
 module.exports = router;
