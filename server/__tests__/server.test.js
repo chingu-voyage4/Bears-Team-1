@@ -215,4 +215,18 @@ describe("FOLLOW", () => {
       })
       .end(done);
   });
+
+  it("should return all followers for a user", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
+    const followerId = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
+
+    request(app)
+      .get(`/user/${user_id}/following`)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.followingNum).toBe(1);
+        expect(res.body.following).toContain(followerId);
+      })
+      .end(done);
+  });
 });
