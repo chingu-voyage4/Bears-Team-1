@@ -17,7 +17,8 @@ let testUsers = [
       firstName: "Miso",
       lastName: "Awesomely"
     },
-    likes: ["5aa05812fcbbc803417de0b8"]
+    likes: ["5aa05812fcbbc803417de0b8"],
+    following: ["5aa054ac1a6e5a01b90f591d"]
   },
   {
     _id: "5aa054ac1a6e5a01b90f591d",

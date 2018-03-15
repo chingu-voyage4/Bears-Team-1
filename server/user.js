@@ -118,41 +118,28 @@ router.put("/:user_id/following/", (req, res) => {
       // Returns the updated document
       { new: true }
     )
-      .then(() => {
-        User.findById({ _id: self_id })
-          // Returns an array of Tweet documents in place of Object refs
-          .populate("following")
-          .then(user => {
-            res.send({
-              following: user.following,
-              followingNum: user.following.length
-            });
-          })
-          .catch(err => res.status(400).send(err));
+      .then(user => {
+        res.send({
+          following: user.following,
+          followingNum: user.following.length
+        });
       })
-      // .then(user => {
-      //   res.send({
-      //     following: user.following,
-      //     followingNum: user.following.length,
-      //   });
-      // })
-      // .catch(err => res.status(400).send(err));
-      // }
-      // else if (action === "unfollow") {
-      //   User.findOneAndUpdate(
-      //     { _id: user_id },
-      //     { $pull: { likes: [tweet_id] } },
-      //     { new: true }
-      //   )
-      //     .then(user => {
-      //       res.send({
-      //         user,
-      //         likesNum: user.likes.length
-      //       });
-      //     })
       .catch(err => res.status(400).send(err));
-    // } else {
-    //   res.send("Must include isLiked boolean value to process this request");
+  } else if (action === "unfollow") {
+    User.findOneAndUpdate(
+      { _id: self_id },
+      { $pull: { following: user_id } },
+      { new: true }
+    )
+      .then(user => {
+        res.send({
+          following: user.following,
+          followingNum: user.following.length
+        });
+      })
+      .catch(err => res.status(400).send(err));
+  } else {
+    res.send("Must include isLiked boolean value to process this request");
   }
 });
 

@@ -172,16 +172,16 @@ describe("FOLLOW", () => {
       .send(requestObj)
       .expect(200)
       .expect(res => {
-        expect(res.body.following[0].userInfo.username).toBe("misoawesome");
+        expect(res.body.following).toContain(user_id);
         expect(res.body.followingNum).toBe(1);
       })
       .end(done);
   });
 
   it("should remove a user from user.following", done => {
-    const user_id = "5aa054ac1a6e5a01b90f591c";
+    const user_id = "5aa054ac1a6e5a01b90f591d";
     const requestObj = {
-      self_id: "5aa054ac1a6e5a01b90f591d",
+      self_id: "5aa054ac1a6e5a01b90f591c",
       action: "unfollow"
     };
 
@@ -191,6 +191,7 @@ describe("FOLLOW", () => {
       .expect(200)
       .expect(res => {
         expect(res.body.followingNum).toBe(0);
+        expect(res.body.following).not.toContain(user_id);
       })
       .end(done);
   });
