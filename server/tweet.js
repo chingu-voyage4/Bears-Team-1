@@ -4,11 +4,12 @@ const Tweet = require("./models/Tweet");
 
 // Get all tweets
 router.get("/all", (req, res) => {
-  Tweet.find()
-    .then(tweets => {
-      res.send(tweets);
-    })
-    .catch(err => res.status(400).send(err));
+  Tweet.find({})
+    .populate("creator")
+    .exec(function(err, docs) {
+      if (err) console.error;
+      res.send(docs);
+    });
 });
 
 // Post a new tweet
