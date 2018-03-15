@@ -224,8 +224,7 @@ describe("FOLLOW", () => {
       .get(`/user/${user_id}/following`)
       .expect(200)
       .expect(res => {
-        expect(res.body.followingNum).toBe(1);
-        expect(res.body.following).toContain(followerId);
+        expect(res.body.following[0].userInfo.username).toBe("loopylenny");
       })
       .end(done);
   });

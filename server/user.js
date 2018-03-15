@@ -157,4 +157,18 @@ router.put("/:user_id/following/", (req, res) => {
   }
 });
 
+// Get all following a user
+router.get("/:user_id/following", (req, res) => {
+  const user_id = req.params.user_id;
+  User.findById(user_id)
+    .populate("following")
+    .then(user => {
+      res.send({
+        following: user.following,
+        followingNum: user.likes.length
+      });
+    })
+    .catch(err => res.status(400).send(err));
+});
+
 module.exports = router;
