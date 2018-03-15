@@ -177,4 +177,21 @@ describe("FOLLOW", () => {
       })
       .end(done);
   });
+
+  it("should remove a user from user.following", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591c";
+    const requestObj = {
+      self_id: "5aa054ac1a6e5a01b90f591d",
+      action: "unfollow"
+    };
+
+    request(app)
+      .put(`/user/${user_id}/following`)
+      .send(requestObj)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.followingNum).toBe(0);
+      })
+      .end(done);
+  });
 });
