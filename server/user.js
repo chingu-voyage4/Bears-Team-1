@@ -105,43 +105,55 @@ router.get("/:user_id/likes", (req, res) => {
 });
 
 // Handle Follow
-// router.put("/:user_id/follow/", (req, res) => {
-//   const self_id = req.body.self;
-//   const user_id = req.params.user_id;
-//   const action = req.body.action;
-//
-//   // Handle LIKE
-//   if (action === "follow") {
-//     User.findByIdAndUpdate(
-//       { _id: self_id },
-//       { $push: { following: user_id } },
-//       // Returns the updated document
-//       { new: true }
-//     )
-//       .then(user => {
-//         res.send({
-//           user,
-//           likes: user.likes,
-//           likesNum: user.likes.length
-//         });
-//       })
-//       .catch(err => res.status(400).send(err));
-//   } else if (action === "unfollow") {
-//     User.findOneAndUpdate(
-//       { _id: user_id },
-//       { $pull: { likes: [tweet_id] } },
-//       { new: true }
-//     )
-//       .then(user => {
-//         res.send({
-//           user,
-//           likesNum: user.likes.length
-//         });
-//       })
-//       .catch(err => res.status(400).send(err));
-//   } else {
-//     res.send("Must include isLiked boolean value to process this request");
-//   }
-// });
+router.put("/:user_id/following/", (req, res) => {
+  const user_id = req.params.user_id;
+  const self_id = req.body.self_id;
+  const action = req.body.action;
+  console.log("req.body", req.body);
+  // Handle LIKE
+  if (action === "follow") {
+    User.findByIdAndUpdate(
+      { _id: self_id },
+      { $push: { following: user_id } },
+      // Returns the updated document
+      { new: true }
+    )
+      .then(() => {
+        User.findById({ _id: self_id })
+          // Returns an array of Tweet documents in place of Object refs
+          .populate("following")
+          .then(user => {
+            res.send({
+              following: user.following,
+              followingNum: user.following.length
+            });
+          })
+          .catch(err => res.status(400).send(err));
+      })
+      // .then(user => {
+      //   res.send({
+      //     following: user.following,
+      //     followingNum: user.following.length,
+      //   });
+      // })
+      // .catch(err => res.status(400).send(err));
+      // }
+      // else if (action === "unfollow") {
+      //   User.findOneAndUpdate(
+      //     { _id: user_id },
+      //     { $pull: { likes: [tweet_id] } },
+      //     { new: true }
+      //   )
+      //     .then(user => {
+      //       res.send({
+      //         user,
+      //         likesNum: user.likes.length
+      //       });
+      //     })
+      .catch(err => res.status(400).send(err));
+    // } else {
+    //   res.send("Must include isLiked boolean value to process this request");
+  }
+});
 
 module.exports = router;

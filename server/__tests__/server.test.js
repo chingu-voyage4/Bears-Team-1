@@ -161,18 +161,19 @@ describe("LIKES", () => {
 
 describe("FOLLOW", () => {
   it("should add a user to user.following", done => {
-    const user_id = "";
+    const user_id = "5aa054ac1a6e5a01b90f591c";
     const requestObj = {
-      self_id: "",
+      self_id: "5aa054ac1a6e5a01b90f591d",
       action: "follow"
     };
 
     request(app)
-      .put(`/user/${user_id}/`)
+      .put(`/user/${user_id}/following`)
       .send(requestObj)
       .expect(200)
       .expect(res => {
-        expect(res.body.message).toBe("You followed misoawesome");
+        expect(res.body.following[0].userInfo.username).toBe("misoawesome");
+        expect(res.body.followingNum).toBe(1);
       })
       .end(done);
   });
