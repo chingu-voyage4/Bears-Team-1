@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import moment from "moment";
 import reply from "../assets/iconmonstr-speech-bubble-2-240.png";
 import share from "../assets/iconmonstr-retweet-1-240.png";
 import like from "../assets/iconmonstr-favorite-2-240.png";
@@ -8,6 +9,7 @@ class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      date: Date.now(),
       list: ""
     };
     this.handleLike = this.handleLike.bind(this);
@@ -22,7 +24,6 @@ class Feed extends Component {
       })
       .then(response => {
         console.log(response);
-        console.log("like img clicked");
       })
       .catch(error => {
         console.log(error);
@@ -34,6 +35,7 @@ class Feed extends Component {
       .get("/tweet/all")
       .then(response => {
         console.log(response);
+        console.log(this.state.date);
         this.setState({ list: response.data });
       })
       .catch(error => {
@@ -58,7 +60,7 @@ class Feed extends Component {
                     </span>
                     <span className="feed--date">
                       {" - "}
-                      {scoop.date}
+                      {moment(scoop.date).fromNow()}
                     </span>
                   </div>
                   <div>
