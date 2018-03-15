@@ -161,9 +161,9 @@ describe("LIKES", () => {
 
 describe("FOLLOW", () => {
   it("should add a user to user.following", done => {
-    const user_id = "5aa054ac1a6e5a01b90f591c";
+    const user_id = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
     const requestObj = {
-      self_id: "5aa054ac1a6e5a01b90f591d",
+      self_id: "5aa054ac1a6e5a01b90f591d", // Loopylenny
       action: "follow"
     };
 
@@ -179,9 +179,9 @@ describe("FOLLOW", () => {
   });
 
   it("should remove a user from user.following", done => {
-    const user_id = "5aa054ac1a6e5a01b90f591d";
+    const user_id = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
     const requestObj = {
-      self_id: "5aa054ac1a6e5a01b90f591c",
+      self_id: "5aa054ac1a6e5a01b90f591c", // Misoawesome
       action: "unfollow"
     };
 
@@ -192,6 +192,26 @@ describe("FOLLOW", () => {
       .expect(res => {
         expect(res.body.followingNum).toBe(0);
         expect(res.body.following).not.toContain(user_id);
+      })
+      .end(done);
+  });
+
+  it("should add a following-user to target user's followers array", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
+    const requestObj = {
+      self_id: "5aa054ac1a6e5a01b90f591d", // Loopylenny
+      action: "follow"
+    };
+
+    request(app)
+      .put(`/user/${user_id}/following`)
+      .send(requestObj)
+      .expect(200)
+      .expect(res => {
+        User.findById(user_id).then(user => {
+          expect(user.followers).toContain(requestObj.self_id);
+          expect(user.followers.length).toBe(1);
+        });
       })
       .end(done);
   });
