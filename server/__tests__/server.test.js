@@ -158,3 +158,87 @@ describe("LIKES", () => {
       .end(done);
   });
 });
+
+describe("FOLLOW", () => {
+  it("should add a user to user.following", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
+    const requestObj = {
+      self_id: "5aa054ac1a6e5a01b90f591d", // Loopylenny
+      action: "follow"
+    };
+
+    request(app)
+      .put(`/user/${user_id}/following`)
+      .send(requestObj)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.following).toContain(user_id);
+        expect(res.body.followingNum).toBe(1);
+      })
+      .end(done);
+  });
+
+  it("should remove a user from user.following", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
+    const requestObj = {
+      self_id: "5aa054ac1a6e5a01b90f591c", // Misoawesome
+      action: "unfollow"
+    };
+
+    request(app)
+      .put(`/user/${user_id}/following`)
+      .send(requestObj)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.followingNum).toBe(0);
+        expect(res.body.following).not.toContain(user_id);
+      })
+      .end(done);
+  });
+
+  it("should add a following-user to target user's followers array", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
+    const requestObj = {
+      self_id: "5aa054ac1a6e5a01b90f591d", // Loopylenny
+      action: "follow"
+    };
+
+    request(app)
+      .put(`/user/${user_id}/following`)
+      .send(requestObj)
+      .expect(200)
+      .expect(res => {
+        User.findById(user_id).then(user => {
+          expect(user.followers).toContain(requestObj.self_id);
+          expect(user.followers.length).toBe(1);
+        });
+      })
+      .end(done);
+  });
+
+  it("should return all people that a user is following", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
+    const followerId = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
+
+    request(app)
+      .get(`/user/${user_id}/following`)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.following[0].userInfo.username).toBe("loopylenny");
+      })
+      .end(done);
+  });
+
+  it("should return all people following a user", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
+    const followerId = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
+
+    request(app)
+      .get(`/user/${user_id}/followers`)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.followers[0].userInfo.username).toBe("misoawesome");
+      })
+      .end(done);
+  });
+});
