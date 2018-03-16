@@ -2,10 +2,6 @@
 ///// SCSS Variables
 ////////////////////////////////////////
 
-$font-size: 16px;
-$line-height: 22px;
-$main-font: "Open Sans", sans-serif;
-$font-color: #3e403f;
 $brand-color-black: #3e403f;
 $brand-color-white: #ffffff;
 $brand-color-lightgreen: #e3fdf5;
@@ -16,6 +12,11 @@ $brand-background-pg: linear-gradient(
   $brand-color-lightgreen 50%,
   $brand-color-pink 50%
 );
+
+$font-size: 16px;
+$line-height: 22px;
+$main-font: "Open Sans", sans-serif;
+$font-color: $brand-color-black;
 
 // Responsive breakpoints, mobile first design
 $sm: "only screen and (min-width: 576px)";
