@@ -32,8 +32,20 @@ const User = mongoose.model("User", {
       ref: "Tweet"
     }
   ],
-  followers: [Number],
-  following: [Number],
+  followers: [
+    {
+      type: ObjectId,
+      // Ref property tells mongo which model to use during population
+      ref: "User"
+    }
+  ],
+  following: [
+    {
+      type: ObjectId,
+      // Ref property tells mongo which model to use during population
+      ref: "User"
+    }
+  ],
   avatarUrl: "",
   isActive: {
     type: Boolean,
