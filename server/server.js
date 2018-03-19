@@ -7,7 +7,10 @@ require("dotenv").config();
 
 const bodyParser = require("body-parser");
 const urlEncodedParser = bodyParser.urlencoded({ extended: false });
+require("./service/passport"); //Grabs our passport
 const app = express();
+
+require("./authRoutes/authRoutes")(app); //This will setup the authroutes.
 
 // Priority serve any static files.
 app.use(express.static("../react/build"));
