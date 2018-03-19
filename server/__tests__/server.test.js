@@ -158,3 +158,19 @@ describe("LIKES", () => {
       .end(done);
   });
 });
+
+describe("AUTH", () => {
+  it("Tests if /auth/google successfully redirects the user.", done => {
+    request(app)
+      .get(`/auth/google`)
+      .expect(302) //302 equals a successful redirect
+      .end(done);
+  });
+
+  it("Tests if /auth/github successfully redirects the user.", done => {
+    request(app)
+      .get(`/auth/github`)
+      .expect(302) //302 equals a successful redirect
+      .end(done);
+  });
+});
