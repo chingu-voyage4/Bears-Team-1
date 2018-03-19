@@ -33,7 +33,7 @@ router.get("/:user_id/tweets", (req, res) => {
   const creator = req.params.user_id;
   Tweet.find({ creator })
     .then(docs => {
-      res.send(docs);
+      res.send(docs); //What is res.send();
     })
     .catch(err => res.status(400).send(err));
 });
