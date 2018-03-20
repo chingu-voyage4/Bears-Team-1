@@ -220,6 +220,60 @@ body {
 }
 
 ////////////////////////////////////////
+///// Edit Profile
+////////////////////////////////////////
+
+.editprofile--form {
+  background: $brand-background-pg;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  color: $brand-color-black;
+}
+
+.editprofile {
+  margin: 0px;
+  padding: 30px 0px 30px 0px;
+}
+
+.editprofile--form label {
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.editprofile--form label input {
+  margin: 0 auto;
+  padding: 10px 3%;
+  width: 88%;
+  height: auto;
+  border: 0px solid $brand-color-black;
+  border-radius: 5px;
+  background: $brand-color-white;
+  resize: none;
+  font-size: 16px;
+  display: block;
+}
+
+.editprofile--form label input:focus {
+  outline: 0;
+}
+
+.editprofile--form--save {
+  font-size: $font-size;
+  width: 94%;
+  margin: 20px 0px 20px 0px;
+  padding: 10px 25px;
+  background: $brand-color-green;
+  border: 0px solid $brand-color-black;
+  color: $brand-color-black;
+  border-radius: 5px;
+  font-weight: normal;
+  font-family: $main-font;
+  cursor: pointer;
+}
+
+////////////////////////////////////////
 ///// Feed
 ////////////////////////////////////////
 
@@ -387,7 +441,7 @@ body {
 ////////////////////////////////////////
 
 .scoop {
-  background-image: $brand-background-pg;
+  background: $brand-background-pg;
   margin: 0 auto;
   padding: 0;
   text-align: center;

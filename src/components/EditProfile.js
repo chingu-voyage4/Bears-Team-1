@@ -32,7 +32,8 @@ class EditProfile extends Component {
   render() {
     return (
       <div className="container">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="editprofile--form">
+          <h1 className="editprofile">Edit Profile</h1>
           <label>
             Username:
             <input
@@ -91,7 +92,11 @@ class EditProfile extends Component {
             />
           </label>
 
-          <input type="submit" value="Save" />
+          <input
+            type="submit"
+            value="Save"
+            className="editprofile--form--save"
+          />
         </form>
       </div>
     );
