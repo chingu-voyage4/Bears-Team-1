@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Feed from "./Feed";
 
 class Profile extends Component {
@@ -9,10 +10,11 @@ class Profile extends Component {
           <div className="profile--background" />
           <div>
             <a className="profile--avatar" />
-            <button className="profile--button--edit-profile">
-              Edit profile
-            </button>
-
+            <Link to="editprofile">
+              <button className="profile--button--edit-profile">
+                Edit profile
+              </button>
+            </Link>
             <div className="profile--container--bottom-half">
               <div className="profile--name">Real Name</div>
               <div className="profile--username">@username</div>
