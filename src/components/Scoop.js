@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 
 class Scoop extends Component {
@@ -6,7 +7,8 @@ class Scoop extends Component {
     super(props);
     this.state = {
       scoopText: "",
-      remainingCharacters: 200
+      remainingCharacters: 200,
+      redirectToNewPage: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,6 +32,7 @@ class Scoop extends Component {
       })
       .then(response => {
         this.setState({ scoopText: "" });
+        this.setState({ redirectToNewPage: true });
         console.log(response);
       })
       .catch(error => {
@@ -38,6 +41,10 @@ class Scoop extends Component {
   }
 
   render() {
+    if (this.state.redirectToNewPage) {
+      return <Redirect to="/feed" />;
+    }
+
     return (
       <div className="scoop">
         <h1>What's the scoop?</h1>
