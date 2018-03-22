@@ -4,9 +4,12 @@ const Tweet = require("./models/Tweet");
 
 // Get all tweets
 router.get("/all", (req, res) => {
-  Tweet.find().then(tweets => {
-    res.send(tweets);
-  });
+  Tweet.find({})
+    .populate("creator")
+    .exec(function(err, docs) {
+      if (err) console.error;
+      res.send(docs);
+    });
 });
 
 // Post a new tweet
@@ -16,7 +19,10 @@ router.post("/new", (req, res) => {
     text: req.body.text
   });
 
-  newTweet.save().then(doc => res.send(doc));
+  newTweet
+    .save()
+    .then(doc => res.send(doc))
+    .catch(err => res.send(err));
 });
 
 router.delete("/:delete_id", (req, res) => {

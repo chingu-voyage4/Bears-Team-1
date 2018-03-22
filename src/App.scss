@@ -2,10 +2,6 @@
 ///// SCSS Variables
 ////////////////////////////////////////
 
-$font-size: 16px;
-$line-height: 22px;
-$main-font: "Open Sans", sans-serif;
-$font-color: #3e403f;
 $brand-color-black: #3e403f;
 $brand-color-white: #ffffff;
 $brand-color-lightgreen: #e3fdf5;
@@ -16,6 +12,11 @@ $brand-background-pg: linear-gradient(
   $brand-color-lightgreen 50%,
   $brand-color-pink 50%
 );
+
+$font-size: 16px;
+$line-height: 22px;
+$main-font: "Open Sans", sans-serif;
+$font-color: $brand-color-black;
 
 // Responsive breakpoints, mobile first design
 $sm: "only screen and (min-width: 576px)";
@@ -219,6 +220,60 @@ body {
 }
 
 ////////////////////////////////////////
+///// Edit Profile
+////////////////////////////////////////
+
+.editprofile--form {
+  background: $brand-background-pg;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  color: $brand-color-black;
+}
+
+.editprofile {
+  margin: 0px;
+  padding: 30px 0px 30px 0px;
+}
+
+.editprofile--form label {
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+
+.editprofile--form label input {
+  margin: 0 auto;
+  padding: 10px 3%;
+  width: 88%;
+  height: auto;
+  border: 0px solid $brand-color-black;
+  border-radius: 5px;
+  background: $brand-color-white;
+  resize: none;
+  font-size: 16px;
+  display: block;
+}
+
+.editprofile--form label input:focus {
+  outline: 0;
+}
+
+.editprofile--form--save {
+  font-size: $font-size;
+  width: 94%;
+  margin: 20px 0px 20px 0px;
+  padding: 10px 25px;
+  background: $brand-color-green;
+  border: 0px solid $brand-color-black;
+  color: $brand-color-black;
+  border-radius: 5px;
+  font-weight: normal;
+  font-family: $main-font;
+  cursor: pointer;
+}
+
+////////////////////////////////////////
 ///// Feed
 ////////////////////////////////////////
 
@@ -267,6 +322,7 @@ body {
 }
 
 .feed--message {
+  word-wrap: break-word;
 }
 
 .feed--list-item--actions {
@@ -385,7 +441,7 @@ body {
 ////////////////////////////////////////
 
 .scoop {
-  background-image: $brand-background-pg;
+  background: $brand-background-pg;
   margin: 0 auto;
   padding: 0;
   text-align: center;

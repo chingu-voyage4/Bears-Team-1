@@ -1,11 +1,14 @@
 import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import axios from "axios";
 
 class Scoop extends Component {
   constructor(props) {
     super(props);
     this.state = {
       scoopText: "",
-      remainingCharacters: 200
+      remainingCharacters: 200,
+      redirectToNewPage: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,9 +24,27 @@ class Scoop extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log("Here's the Scoop:", this.state.scoopText);
+    axios
+      .post("tweet/new", {
+        // Can't create a scoop without a valid user id. This one is from server/__tests__/test-data.js -Jdawg
+        creator: "5aa054ac1a6e5a01b90f591c",
+        text: this.state.scoopText
+      })
+      .then(response => {
+        this.setState({ scoopText: "" });
+        this.setState({ redirectToNewPage: true });
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {
+    if (this.state.redirectToNewPage) {
+      return <Redirect to="/feed" />;
+    }
+
     return (
       <div className="scoop">
         <h1>What's the scoop?</h1>

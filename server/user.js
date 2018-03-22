@@ -5,12 +5,11 @@ const Tweet = require("./models/Tweet");
 
 // Get all users
 router.get("/all", function(req, res) {
-  User.find().then(
-    users => {
+  User.find()
+    .then(users => {
       res.send(users);
-    },
-    err => res.status(400).send(err)
-  );
+    })
+    .catch(err => res.status(400).send(err));
 });
 
 // Add a new user
