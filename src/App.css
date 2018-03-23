@@ -141,7 +141,7 @@ body {
   font-size: 16px;
   float: right;
   margin: 10px 3% 0px 0px;
-  padding: 10px 25px;
+  padding: 8px 12px;
   background: #b8f2e6;
   border: 0px solid #3e403f;
   color: #3e403f;
@@ -332,6 +332,21 @@ body {
 
 .feed--list-item--actions span {
   display: inline-block;
+}
+
+.feed--delete-button {
+  font-size: 12.8px;
+  float: none;
+  display: block;
+  margin: 0;
+  padding: 5px 15px;
+  background: #b8f2e6;
+  border: 0px solid #3e403f;
+  color: #3e403f;
+  border-radius: 5px;
+  font-weight: normal;
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer;
 }
 
 .search--container {

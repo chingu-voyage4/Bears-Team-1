@@ -127,7 +127,11 @@ class Feed extends Component {
                         data-listindex={index}
                         onSubmit={this.handleDelete}
                       >
-                        <input type="submit" value="Delete" />
+                        <input
+                          type="submit"
+                          value="Delete"
+                          className="feed--delete-button"
+                        />
                       </form>
                     </li>
                   </ul>

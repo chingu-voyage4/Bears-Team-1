@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Feed from "./Feed";
+import Logout from "./Logout";
 
 class Profile extends Component {
   render() {
@@ -15,6 +16,7 @@ class Profile extends Component {
                 Edit profile
               </button>
             </Link>
+            <Logout />
             <div className="profile--container--bottom-half">
               <div className="profile--name">Real Name</div>
               <div className="profile--username">@username</div>
