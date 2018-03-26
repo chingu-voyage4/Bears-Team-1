@@ -30,20 +30,18 @@ class Profile extends Component {
                 <ul className="profile--stats">
                   <li>
                     <span className="profile--stats-name">Scoops</span>
-                    <span className="profile--stats-number">
-                      <a href="#">1432</a>
-                    </span>
+                    <span className="profile--stats-number">1432</span>
                   </li>
                   <li>
                     <span className="profile--stats-name">Following</span>
                     <span className="profile--stats-number">
-                      <a href="#">847</a>
+                      <a href="/following">847</a>
                     </span>
                   </li>
                   <li>
                     <span className="profile--stats-name">Followers</span>
                     <span className="profile--stats-number">
-                      <a href="#">323k</a>
+                      <a href="/followers">323k</a>
                     </span>
                   </li>
                 </ul>
