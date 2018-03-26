@@ -184,4 +184,16 @@ router.get("/:user_id/followers", (req, res) => {
     .catch(err => res.status(400).send(err));
 });
 
+// Find a user
+router.get("/:searchterm/searchusers", (req, res) => {
+  User.find(
+    { "userInfo.username": req.params.searchterm },
+    (error, results) => {
+      if (error) console.error;
+      console.log(results);
+      res.send(results);
+    }
+  );
+});
+
 module.exports = router;
