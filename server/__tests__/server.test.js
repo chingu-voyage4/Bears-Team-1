@@ -12,6 +12,7 @@ const {
   testUsers,
   testTweets,
   newTweet,
+  edits,
   dumpDB,
   seedDB
 } = require("./test-data");
@@ -22,6 +23,8 @@ beforeEach(done => {
     seedDB().then(done());
   });
 });
+
+// TODO: Extract commonly used variables
 
 describe("TWEETS", () => {
   it("GET / should return all tweets", done => {
@@ -238,6 +241,22 @@ describe("FOLLOW", () => {
       .expect(200)
       .expect(res => {
         expect(res.body.followers[0].userInfo.username).toBe("misoawesome");
+      })
+      .end(done);
+  });
+});
+
+describe("EDIT PROFILE", () => {
+  it("should change a user's username", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
+
+    request(app)
+      .put(`/user/${user_id}/profile`)
+      .send(edits)
+      .expect(404)
+      .expect(res => {
+        console.log("edit res: ", res.body);
+        expect(res);
       })
       .end(done);
   });

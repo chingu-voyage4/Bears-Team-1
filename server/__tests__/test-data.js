@@ -65,6 +65,12 @@ let testTweets = [
   }
 ];
 
+let edits = {
+  userInfo: {
+    username: "loopylucy"
+  }
+};
+
 let dumpDB = () => {
   // Returns a promise when both functions resolve
   return Promise.all([
@@ -86,6 +92,7 @@ module.exports = {
   testUsers,
   testTweets,
   newTweet,
+  edits,
   dumpDB,
   seedDB
 };

@@ -37,6 +37,16 @@ router.get("/:user_id/tweets", (req, res) => {
     .catch(err => res.status(400).send(err));
 });
 
+//Edit a user's information
+router.put("/:user_id/profile", (req, res) => {
+  const user_id = req.params.user_id;
+  const edits = req.params.edits;
+
+  User.findOneAndUpdate({ _id: user_id }, { $set: edits })
+    .then(user => res.send(user))
+    .catch(err => res.status(400).send(err));
+});
+
 // Make a user inactive
 router.put("/:delete_id", (req, res) => {
   const delete_id = req.params.delete_id;
