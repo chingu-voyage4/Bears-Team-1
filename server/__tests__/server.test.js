@@ -250,7 +250,10 @@ describe("EDIT PROFILE", () => {
   it.only("should change a user's username", done => {
     const user_id = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
     let updates = {
-      username: "loopylucy"
+      username: "loopylucy",
+      firstName: "lucy",
+      lastName: "smith",
+      avatarUrl: ""
     };
 
     request(app)
