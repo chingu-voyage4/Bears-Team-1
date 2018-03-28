@@ -3,26 +3,24 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 // Define User Schema
 const User = mongoose.model("User", {
-  userInfo: {
-    username: {
-      type: String,
-      required: true,
-      trim: true,
-      unique: true
-    },
-    firstName: {
-      type: String,
-      required: true,
-      trim: true
-    },
-    lastName: {
-      type: String,
-      required: true,
-      trim: true
-    },
-    gitId: {
-      type: Number
-    }
+  username: {
+    type: String,
+    required: true,
+    trim: true,
+    unique: true
+  },
+  firstName: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  lastName: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  gitId: {
+    type: Number
   },
   // Choosing to use an ObjectId over a childSchema, as we don't want to generate a new ObjectId
   likes: [

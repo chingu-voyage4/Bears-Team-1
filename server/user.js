@@ -40,9 +40,18 @@ router.get("/:user_id/tweets", (req, res) => {
 //Edit a user's information
 router.put("/:user_id/profile", (req, res) => {
   const user_id = req.params.user_id;
-  const edits = req.params.edits;
+  const username = req.body.username;
 
-  User.findOneAndUpdate({ _id: user_id }, { $set: edits })
+  User.findOneAndUpdate(
+    { _id: user_id },
+    {
+      $set: {
+        username: username
+      }
+    },
+    // Returns the updated document
+    { new: true }
+  )
     .then(user => res.send(user))
     .catch(err => res.status(400).send(err));
 });

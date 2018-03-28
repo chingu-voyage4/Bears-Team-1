@@ -12,15 +12,15 @@ const {
   testUsers,
   testTweets,
   newTweet,
-  edits,
   dumpDB,
   seedDB
 } = require("./test-data");
 
-beforeEach(done => {
+// Returning a promise has the same effect as calling done()
+beforeEach(() => {
   // Dump, seed, done!
-  dumpDB().then(() => {
-    seedDB().then(done());
+  return dumpDB().then(() => {
+    seedDB();
   });
 });
 
@@ -247,16 +247,19 @@ describe("FOLLOW", () => {
 });
 
 describe("EDIT PROFILE", () => {
-  it("should change a user's username", done => {
+  it.only("should change a user's username", done => {
     const user_id = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
+    let updates = {
+      username: "loopylucy"
+    };
 
     request(app)
       .put(`/user/${user_id}/profile`)
-      .send(edits)
-      .expect(404)
+      .send(updates)
+      .expect(200)
       .expect(res => {
         console.log("edit res: ", res.body);
-        expect(res);
+        expect(res.body.username).toBe(updates.username);
       })
       .end(done);
   });
