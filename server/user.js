@@ -41,12 +41,18 @@ router.get("/:user_id/tweets", (req, res) => {
 router.put("/:user_id/profile", (req, res) => {
   const user_id = req.params.user_id;
   const username = req.body.username;
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const avatarUrl = req.body.avatarUrl;
 
   User.findOneAndUpdate(
     { _id: user_id },
     {
       $set: {
-        username: username
+        username: username,
+        firstName: firstName,
+        lastName: lastName,
+        avatarUrl: avatarUrl
       }
     },
     // Returns the updated document

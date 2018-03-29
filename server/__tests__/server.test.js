@@ -261,8 +261,10 @@ describe("EDIT PROFILE", () => {
       .send(updates)
       .expect(200)
       .expect(res => {
-        console.log("edit res: ", res.body);
         expect(res.body.username).toBe(updates.username);
+        expect(res.body.firstName).toBe(updates.firstName);
+        expect(res.body.lastName).toBe(updates.lastName);
+        expect(res.body.avatarUrl).toBe(updates.avatarUrl);
       })
       .end(done);
   });
