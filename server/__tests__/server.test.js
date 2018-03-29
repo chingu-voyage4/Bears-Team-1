@@ -247,7 +247,7 @@ describe("FOLLOW", () => {
 });
 
 describe("EDIT PROFILE", () => {
-  it("should change a user's username", done => {
+  it("should update a user's information", done => {
     const user_id = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
     let updates = {
       username: "loopylucy",
