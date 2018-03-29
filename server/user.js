@@ -15,11 +15,9 @@ router.get("/all", function(req, res) {
 // Add a new user
 router.post("/new", function(req, res) {
   let user = new User({
-    userInfo: {
-      username: req.body.userInfo.username,
-      firstName: req.body.userInfo.firstName,
-      lastName: req.body.userInfo.lastName
-    }
+    username: req.body.username,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
   });
   user
     .save()
@@ -34,6 +32,31 @@ router.get("/:user_id/tweets", (req, res) => {
     .then(docs => {
       res.send(docs);
     })
+    .catch(err => res.status(400).send(err));
+});
+
+//Edit a user's information
+router.put("/:user_id/profile", (req, res) => {
+  const user_id = req.params.user_id;
+  const username = req.body.username;
+  const firstName = req.body.firstName;
+  const lastName = req.body.lastName;
+  const avatarUrl = req.body.avatarUrl;
+
+  User.findOneAndUpdate(
+    { _id: user_id },
+    {
+      $set: {
+        username: username,
+        firstName: firstName,
+        lastName: lastName,
+        avatarUrl: avatarUrl
+      }
+    },
+    // Returns the updated document
+    { new: true }
+  )
+    .then(user => res.send(user))
     .catch(err => res.status(400).send(err));
 });
 

@@ -99,7 +99,7 @@ class Feed extends Component {
                 <div>
                   <div className="feed--user">
                     <span className="feed--username">
-                      {scoop.creator.userInfo.username}
+                      {scoop.creator.username}
                     </span>
                     <span className="feed--date">
                       {" - "}

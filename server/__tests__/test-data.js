@@ -2,31 +2,25 @@ const Tweet = require("./../models/Tweet");
 const User = require("./../models/User");
 
 let testUser = new User({
-  userInfo: {
-    username: "misomighty",
-    firstName: "Miso",
-    lastName: "Mighty"
-  }
+  username: "misomighty",
+  firstName: "Miso",
+  lastName: "Mighty"
 });
 
 let testUsers = [
   {
     _id: "5aa054ac1a6e5a01b90f591c",
-    userInfo: {
-      username: "misoawesome",
-      firstName: "Miso",
-      lastName: "Awesomely"
-    },
+    username: "misoawesome",
+    firstName: "Miso",
+    lastName: "Awesomely",
     likes: ["5aa05812fcbbc803417de0b8"],
     following: ["5aa054ac1a6e5a01b90f591d"]
   },
   {
     _id: "5aa054ac1a6e5a01b90f591d",
-    userInfo: {
-      username: "loopylenny",
-      firstName: "Lenny",
-      lastName: "Looper"
-    },
+    username: "loopylenny",
+    firstName: "Lenny",
+    lastName: "Looper",
     likes: ["5aa05812fcbbc803417de0b5"],
     followers: ["5aa054ac1a6e5a01b90f591c"]
   }
@@ -76,7 +70,7 @@ let dumpDB = () => {
 let seedDB = () => {
   // Returns a promise when both functions resolve
   return Promise.all([
-    Tweet.insertMany(testTweets).catch(err => err),
+    Tweet.insertMany(testTweets),
     User.insertMany(testUsers).catch(err => err)
   ]);
 };
