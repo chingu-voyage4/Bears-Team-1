@@ -48,7 +48,8 @@ router.put("/:user_id/profile", (req, res) => {
   const username = req.body.username;
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
-  const avatarUrl = req.body.avatarUrl;
+  const location = req.body.location;
+  const about = req.body.about;
 
   User.findOneAndUpdate(
     { _id: user_id },
@@ -57,7 +58,8 @@ router.put("/:user_id/profile", (req, res) => {
         username: username,
         firstName: firstName,
         lastName: lastName,
-        avatarUrl: avatarUrl
+        location: location,
+        about: about
       }
     },
     // Returns the updated document
