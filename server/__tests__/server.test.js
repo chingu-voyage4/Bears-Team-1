@@ -253,7 +253,8 @@ describe("EDIT PROFILE", () => {
       username: "loopylucy",
       firstName: "lucy",
       lastName: "smith",
-      avatarUrl: ""
+      location: "San Antonio, TX",
+      about: "Just a small town girl living in a lonely world"
     };
 
     request(app)
@@ -264,7 +265,8 @@ describe("EDIT PROFILE", () => {
         expect(res.body.username).toBe(updates.username);
         expect(res.body.firstName).toBe(updates.firstName);
         expect(res.body.lastName).toBe(updates.lastName);
-        expect(res.body.avatarUrl).toBe(updates.avatarUrl);
+        expect(res.body.about).toBe(updates.about);
+        expect(res.body.location).toBe(updates.location);
       })
       .end(done);
   });

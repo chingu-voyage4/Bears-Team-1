@@ -44,7 +44,14 @@ const User = mongoose.model("User", {
       ref: "User"
     }
   ],
-  avatarUrl: "",
+  location: {
+    type: String,
+    default: "Earth"
+  },
+  about: {
+    type: String
+  },
+  avatarUrl: String,
   isActive: {
     type: Boolean,
     default: true
