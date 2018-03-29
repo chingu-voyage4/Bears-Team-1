@@ -39,12 +39,18 @@ class Profile extends Component {
             </Link>
             <Logout />
             <div className="profile--container--bottom-half">
-              <div className="profile--name">Real Name</div>
-              <div className="profile--username">@username</div>
-              <div className="profile--location">Pawnee, IN</div>
+              <div className="profile--name">
+                {this.state.profileData.firstName}{" "}
+                {this.state.profileData.lastName}
+              </div>
+              <div className="profile--username">
+                {this.state.profileData.username}
+              </div>
+              <div className="profile--location">
+                {this.state.profileData.location}
+              </div>
               <div className="profile--about">
-                A little about me? Well, I like people, places, and things. City
-                name Sports team is going all the way this year!
+                {this.state.profileData.about}
               </div>
 
               <div>
@@ -62,7 +68,7 @@ class Profile extends Component {
                   <li>
                     <span className="profile--stats-name">Followers</span>
                     <span className="profile--stats-number">
-                      <a href="/followers">323k</a>
+                      <a href="/followers">123</a>
                     </span>
                   </li>
                 </ul>
