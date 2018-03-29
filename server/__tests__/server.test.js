@@ -16,12 +16,15 @@ const {
   seedDB
 } = require("./test-data");
 
-beforeEach(done => {
+// Returning a promise has the same effect as calling done()
+beforeEach(() => {
   // Dump, seed, done!
-  dumpDB().then(() => {
-    seedDB().then(done());
+  return dumpDB().then(() => {
+    seedDB();
   });
 });
+
+// TODO: Extract commonly used variables
 
 describe("TWEETS", () => {
   it("GET / should return all tweets", done => {
@@ -82,8 +85,8 @@ describe("USERS", () => {
       .post("/user/new")
       .send(testUser)
       .expect(200)
-      .expect(res => {
-        expect(res.body.userInfo).toEqual(testUser.userInfo);
+      .expect(() => {
+        expect.objectContaining(testUser);
       })
       .end(done);
   });
@@ -109,7 +112,7 @@ describe("USERS", () => {
       .expect(200)
       .expect(() => {
         User.findById(delete_id).then(user => {
-          expect(user.userInfo.username).toEqual("loopylenny");
+          expect(user.username).toEqual("loopylenny");
           expect(user.isActive).toBeFalsy();
         });
       })
@@ -224,7 +227,7 @@ describe("FOLLOW", () => {
       .get(`/user/${user_id}/following`)
       .expect(200)
       .expect(res => {
-        expect(res.body.following[0].userInfo.username).toBe("loopylenny");
+        expect(res.body.following[0].username).toBe("loopylenny");
       })
       .end(done);
   });
@@ -237,7 +240,31 @@ describe("FOLLOW", () => {
       .get(`/user/${user_id}/followers`)
       .expect(200)
       .expect(res => {
-        expect(res.body.followers[0].userInfo.username).toBe("misoawesome");
+        expect(res.body.followers[0].username).toBe("misoawesome");
+      })
+      .end(done);
+  });
+});
+
+describe("EDIT PROFILE", () => {
+  it("should update a user's information", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
+    let updates = {
+      username: "loopylucy",
+      firstName: "lucy",
+      lastName: "smith",
+      avatarUrl: ""
+    };
+
+    request(app)
+      .put(`/user/${user_id}/profile`)
+      .send(updates)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.username).toBe(updates.username);
+        expect(res.body.firstName).toBe(updates.firstName);
+        expect(res.body.lastName).toBe(updates.lastName);
+        expect(res.body.avatarUrl).toBe(updates.avatarUrl);
       })
       .end(done);
   });
