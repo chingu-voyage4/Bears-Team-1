@@ -15,11 +15,9 @@ router.get("/all", function(req, res) {
 // Add a new user
 router.post("/new", function(req, res) {
   let user = new User({
-    userInfo: {
-      username: req.body.userInfo.username,
-      firstName: req.body.userInfo.firstName,
-      lastName: req.body.userInfo.lastName
-    }
+    username: req.body.username,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName
   });
   user
     .save()

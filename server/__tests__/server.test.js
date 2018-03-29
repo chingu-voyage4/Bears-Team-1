@@ -85,8 +85,8 @@ describe("USERS", () => {
       .post("/user/new")
       .send(testUser)
       .expect(200)
-      .expect(res => {
-        expect(res.body.userInfo).toEqual(testUser.userInfo);
+      .expect(() => {
+        expect.objectContaining(testUser);
       })
       .end(done);
   });
@@ -112,7 +112,7 @@ describe("USERS", () => {
       .expect(200)
       .expect(() => {
         User.findById(delete_id).then(user => {
-          expect(user.userInfo.username).toEqual("loopylenny");
+          expect(user.username).toEqual("loopylenny");
           expect(user.isActive).toBeFalsy();
         });
       })
@@ -227,7 +227,7 @@ describe("FOLLOW", () => {
       .get(`/user/${user_id}/following`)
       .expect(200)
       .expect(res => {
-        expect(res.body.following[0].userInfo.username).toBe("loopylenny");
+        expect(res.body.following[0].username).toBe("loopylenny");
       })
       .end(done);
   });
@@ -240,14 +240,14 @@ describe("FOLLOW", () => {
       .get(`/user/${user_id}/followers`)
       .expect(200)
       .expect(res => {
-        expect(res.body.followers[0].userInfo.username).toBe("misoawesome");
+        expect(res.body.followers[0].username).toBe("misoawesome");
       })
       .end(done);
   });
 });
 
 describe("EDIT PROFILE", () => {
-  it.only("should change a user's username", done => {
+  it("should change a user's username", done => {
     const user_id = "5aa054ac1a6e5a01b90f591d"; // Loopylenny
     let updates = {
       username: "loopylucy",
