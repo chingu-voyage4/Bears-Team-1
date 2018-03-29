@@ -1,9 +1,30 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import Feed from "./Feed";
 import Logout from "./Logout";
 
 class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      profileData: ""
+    };
+  }
+
+  componentDidMount(event) {
+    axios
+      .get(`/user/${"5aa054ac1a6e5a01b90f591d"}/profile`)
+      .then(response => {
+        console.log(response);
+        this.setState({ profileData: response.data });
+        console.log(this.state.profileData);
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
     return (
       <div className="container">
