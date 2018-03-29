@@ -253,7 +253,8 @@ describe("EDIT PROFILE", () => {
       username: "loopylucy",
       firstName: "lucy",
       lastName: "smith",
-      avatarUrl: ""
+      location: "San Antonio, TX",
+      about: "Just a small town girl living in a lonely world"
     };
 
     request(app)
