@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class EditProfile extends Component {
   constructor(props) {
@@ -26,7 +27,20 @@ class EditProfile extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("Profile saved", this.state.username);
+    axios
+      .put(`/user/5aa054ac1a6e5a01b90f591d/profile`, {
+        username: this.state.username,
+        firstName: this.state.firstname,
+        lastName: this.state.lastname,
+        location: this.state.location,
+        about: this.state.about
+      })
+      .then(response => {
+        console.log("Profile saved");
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
 
   render() {

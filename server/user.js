@@ -35,6 +35,13 @@ router.get("/:user_id/tweets", (req, res) => {
     .catch(err => res.status(400).send(err));
 });
 
+// Get a user's information
+router.get("/:user_id/profile", (req, res) => {
+  User.findById(req.params.user_id, function(err, user) {
+    res.send(user);
+  });
+});
+
 //Edit a user's information
 router.put("/:user_id/profile", (req, res) => {
   const user_id = req.params.user_id;
@@ -207,6 +214,18 @@ router.get("/:user_id/followers", (req, res) => {
       });
     })
     .catch(err => res.status(400).send(err));
+});
+
+// Find a user
+router.get("/:searchterm/searchusers", (req, res) => {
+  User.find(
+    { "userInfo.username": req.params.searchterm },
+    (error, results) => {
+      if (error) console.error;
+      console.log(results);
+      res.send(results);
+    }
+  );
 });
 
 module.exports = router;

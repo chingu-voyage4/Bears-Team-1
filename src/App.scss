@@ -147,7 +147,7 @@ body {
   font-size: $font-size;
   float: right;
   margin: 10px 3% 0px 0px;
-  padding: 10px 25px;
+  padding: 8px 12px;
   background: $brand-color-green;
   border: 0px solid $brand-color-black;
   color: $brand-color-black;
@@ -346,6 +346,21 @@ body {
 
 .feed--list-item--actions span {
   display: inline-block;
+}
+
+.feed--delete-button {
+  font-size: $font-size * 0.8;
+  float: none;
+  display: block;
+  margin: 0;
+  padding: 5px 15px;
+  background: $brand-color-green;
+  border: 0px solid $brand-color-black;
+  color: $brand-color-black;
+  border-radius: 5px;
+  font-weight: normal;
+  font-family: $main-font;
+  cursor: pointer;
 }
 
 ////////////////////////////////////////
