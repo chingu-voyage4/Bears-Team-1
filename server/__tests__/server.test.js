@@ -273,11 +273,11 @@ describe("EDIT PROFILE", () => {
 });
 
 describe("FEED", () => {
-  it("Should return all posts from users being followed and posts by self", done => {
-    const user_id = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
+  it.only("Should return all posts from users being followed and posts by self", done => {
+    const self_id = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
 
     request(app)
-      .get(`users/${user_id}/feed`)
+      .get(`/user/${self_id}/feed`)
       .expect(200)
       .expect(res => {})
       .end(done);
