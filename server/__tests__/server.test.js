@@ -279,7 +279,9 @@ describe("FEED", () => {
     request(app)
       .get(`/user/${self_id}/feed`)
       .expect(200)
-      .expect(res => {})
+      .expect(res => {
+        expect(res.body.length).toBe(5);
+      })
       .end(done);
   });
 });
