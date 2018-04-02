@@ -32,7 +32,7 @@ describe("TWEETS", () => {
       .get("/tweet/all")
       .expect(200)
       .expect(res => {
-        expect(res.body.length).toBe(4);
+        expect(res.body.length).toBe(5);
       })
       .end(done);
   });
@@ -74,7 +74,7 @@ describe("USERS", () => {
       .get("/user/all")
       .expect(200)
       .expect(res => {
-        expect(res.body.length).toBe(2);
+        expect(res.body.length).toBe(3);
       })
       .end(done);
   });
@@ -193,7 +193,7 @@ describe("FOLLOW", () => {
       .send(requestObj)
       .expect(200)
       .expect(res => {
-        expect(res.body.followingNum).toBe(0);
+        expect(res.body.followingNum).toBe(1);
         expect(res.body.following).not.toContain(user_id);
       })
       .end(done);
@@ -267,6 +267,20 @@ describe("EDIT PROFILE", () => {
         expect(res.body.lastName).toBe(updates.lastName);
         expect(res.body.about).toBe(updates.about);
         expect(res.body.location).toBe(updates.location);
+      })
+      .end(done);
+  });
+});
+
+describe("FEED", () => {
+  it("Should return all posts from users being followed and posts by self", done => {
+    const self_id = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
+
+    request(app)
+      .get(`/user/${self_id}/feed`)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.length).toBe(5);
       })
       .end(done);
   });

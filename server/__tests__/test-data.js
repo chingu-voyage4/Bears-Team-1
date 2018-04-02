@@ -14,7 +14,7 @@ let testUsers = [
     firstName: "Miso",
     lastName: "Awesomely",
     likes: ["5aa05812fcbbc803417de0b8"],
-    following: ["5aa054ac1a6e5a01b90f591d"]
+    following: ["5aa054ac1a6e5a01b90f591d", "5aa054ac1a6e5a01b90f591e"]
   },
   {
     _id: "5aa054ac1a6e5a01b90f591d",
@@ -23,6 +23,12 @@ let testUsers = [
     lastName: "Looper",
     likes: ["5aa05812fcbbc803417de0b5"],
     followers: ["5aa054ac1a6e5a01b90f591c"]
+  },
+  {
+    _id: "5aa054ac1a6e5a01b90f591e",
+    username: "jackroads",
+    firstName: "jack",
+    lastName: "roads"
   }
 ];
 
@@ -56,6 +62,12 @@ let testTweets = [
     creator: "5aa054ac1a6e5a01b90f591d",
     user: "loopylenny",
     text: "A tweet by loopylenny"
+  },
+  {
+    _id: "5aa05812fcbbc803417de0b9",
+    creator: "5aa054ac1a6e5a01b90f591e",
+    user: "jackroads",
+    text: "It's jack roads, baby!"
   }
 ];
 

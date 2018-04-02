@@ -35,6 +35,29 @@ router.get("/:user_id/tweets", (req, res) => {
     .catch(err => res.status(400).send(err));
 });
 
+// Get a user's feed
+router.get("/:self_id/feed", (req, res) => {
+  const self_id = req.params.self_id;
+
+  User.findById(self_id, function(err, self) {
+    // Get array of ObjectIDs (OIDs) from self and followed users
+    let feedOIDs = [self.get("following"), self_id];
+
+    // Turning our feedOID arr into an array of objects so that it will be accepted by $or
+    let query = feedOIDs.map(user_id => {
+      // Parse the array of OIDs into an array of objects
+      return { creator: user_id };
+    });
+
+    // Returns all tweets from every user referenced in feedOIDs, sorts by date
+    Tweet.find({ $or: query })
+      .sort({ date: "asc" })
+      .then(feed => {
+        res.send(feed);
+      });
+  });
+});
+
 // Get a user's information
 router.get("/:user_id/profile", (req, res) => {
   User.findById(req.params.user_id, function(err, user) {
