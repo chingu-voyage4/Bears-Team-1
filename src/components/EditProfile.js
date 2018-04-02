@@ -43,6 +43,28 @@ class EditProfile extends Component {
       });
   }
 
+  getUserProfile(event) {
+    axios
+      .get(`/user/${"5aa054ac1a6e5a01b90f591d"}/profile`)
+      .then(response => {
+        console.log("profile:", response);
+        this.setState({
+          username: response.data.username || "",
+          firstname: response.data.firstName || "",
+          lastname: response.data.lastName || "",
+          location: response.data.location || "",
+          about: response.data.about || ""
+        });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
+  componentDidMount() {
+    this.getUserProfile();
+  }
+
   render() {
     return (
       <div className="container">
