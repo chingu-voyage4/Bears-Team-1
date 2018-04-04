@@ -40,16 +40,16 @@ class Profile extends Component {
                     <span className="profile--stats-number">1432</span>
                   </li>
                   <li>
-                    <span className="profile--stats-name">Following</span>
-                    <span className="profile--stats-number">
-                      <a href="/following">847</a>
-                    </span>
+                    <a href="/following">
+                      <span className="profile--stats-name">Following</span>
+                      <span className="profile--stats-number">847</span>
+                    </a>
                   </li>
                   <li>
-                    <span className="profile--stats-name">Followers</span>
-                    <span className="profile--stats-number">
-                      <a href="/followers">123</a>
-                    </span>
+                    <a href="/followers">
+                      <span className="profile--stats-name">Followers</span>
+                      <span className="profile--stats-number">123</span>
+                    </a>
                   </li>
                 </ul>
               </div>

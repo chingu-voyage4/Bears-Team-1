@@ -200,6 +200,11 @@ body {
   padding: 0;
 }
 
+.profile--stats li a {
+  text-decoration: none;
+  color: #3e403f;
+}
+
 .profile--stats-name {
   font-size: 17.6px;
   line-height: 24.2px;
