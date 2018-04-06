@@ -9,11 +9,8 @@ import liked from "../assets/iconmonstr-favorite-1-240.png";
 class Feed extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      list: ""
-    };
+    this.state = {};
     this.handleLike = this.handleLike.bind(this);
-    this.getAllTweets = this.getAllTweets.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
 
@@ -69,29 +66,14 @@ class Feed extends Component {
       });
   }
 
-  getAllTweets(event) {
-    axios
-      .get("/tweet/all")
-      .then(response => {
-        console.log(response);
-        console.log(this.state.date);
-        this.setState({ list: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
-
-  componentDidMount() {
-    this.getAllTweets();
-  }
-
   render() {
+    const scoops = this.props.scoops;
+
     return (
       <div className="container">
         <ol className="feed--list">
-          {this.state.list !== "" &&
-            this.state.list.map((scoop, index) => (
+          {scoops !== null &&
+            scoops.map((scoop, index) => (
               <li className="feed--list-item" key={"listitem" + index}>
                 <div>
                   <div className="feed--avatar" />

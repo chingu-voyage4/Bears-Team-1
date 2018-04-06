@@ -206,6 +206,11 @@ body {
   padding: 0;
 }
 
+.profile--stats li a {
+  text-decoration: none;
+  color: $brand-color-black;
+}
+
 .profile--stats-name {
   font-size: $font-size * 1.1;
   line-height: $line-height * 1.1;

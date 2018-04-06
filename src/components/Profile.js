@@ -7,25 +7,12 @@ import Logout from "./Logout";
 class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      profileData: ""
-    };
-  }
-
-  componentDidMount(event) {
-    axios
-      .get(`/user/${"5aa054ac1a6e5a01b90f591d"}/profile`)
-      .then(response => {
-        console.log(response);
-        this.setState({ profileData: response.data });
-        console.log(this.state.profileData);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    this.state = {};
   }
 
   render() {
+    const profile = this.props.profile;
+
     return (
       <div className="container">
         <div className="profile">
@@ -40,18 +27,11 @@ class Profile extends Component {
             <Logout />
             <div className="profile--container--bottom-half">
               <div className="profile--name">
-                {this.state.profileData.firstName}{" "}
-                {this.state.profileData.lastName}
+                {profile.firstName} {profile.lastName}
               </div>
-              <div className="profile--username">
-                {this.state.profileData.username}
-              </div>
-              <div className="profile--location">
-                {this.state.profileData.location}
-              </div>
-              <div className="profile--about">
-                {this.state.profileData.about}
-              </div>
+              <div className="profile--username">{profile.username}</div>
+              <div className="profile--location">{profile.location}</div>
+              <div className="profile--about">{profile.about}</div>
 
               <div>
                 <ul className="profile--stats">
@@ -60,23 +40,22 @@ class Profile extends Component {
                     <span className="profile--stats-number">1432</span>
                   </li>
                   <li>
-                    <span className="profile--stats-name">Following</span>
-                    <span className="profile--stats-number">
-                      <a href="/following">847</a>
-                    </span>
+                    <a href="/following">
+                      <span className="profile--stats-name">Following</span>
+                      <span className="profile--stats-number">847</span>
+                    </a>
                   </li>
                   <li>
-                    <span className="profile--stats-name">Followers</span>
-                    <span className="profile--stats-number">
-                      <a href="/followers">123</a>
-                    </span>
+                    <a href="/followers">
+                      <span className="profile--stats-name">Followers</span>
+                      <span className="profile--stats-number">123</span>
+                    </a>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-        <Feed />
       </div>
     );
   }

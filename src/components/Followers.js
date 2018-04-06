@@ -5,16 +5,16 @@ class Followers extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      list: ""
+      followers: null
     };
   }
 
-  componentDidMount(event) {
+  componentDidMount() {
     axios
       .get(`/user/${"5aa054ac1a6e5a01b90f591c"}/followers`)
       .then(response => {
         console.log(response);
-        this.setState({ list: response.data });
+        this.setState({ followers: response.data });
       })
       .catch(error => {
         console.log(error);
@@ -22,7 +22,31 @@ class Followers extends Component {
   }
 
   render() {
-    return <div className="container">{JSON.stringify(this.state.list)}</div>;
+    console.log(this.state.followers);
+    return (
+      <div className="container">
+        <ol className="follow--list">
+          {this.state.followers !== null &&
+            this.state.followers.followers.length > 0 &&
+            this.state.followers.followers.map((follower, index) => (
+              <li className="follow--list-item" key={index}>
+                <div>
+                  <div className="follow--avatar" />
+                </div>
+                <div>
+                  <div className="follow--user">
+                    <div className="follow--username">{follower.username}</div>
+                    <div className="follow--name">
+                      {follower.firstName} {follower.lastName}
+                    </div>
+                    <div className="follow--about">{follower.about}</div>
+                  </div>
+                </div>
+              </li>
+            ))}
+        </ol>
+      </div>
+    );
   }
 }
 

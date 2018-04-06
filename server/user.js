@@ -29,10 +29,11 @@ router.post("/new", function(req, res) {
 router.get("/:user_id/tweets", (req, res) => {
   const creator = req.params.user_id;
   Tweet.find({ creator })
-    .then(docs => {
+    .populate("creator")
+    .exec(function(err, docs) {
+      if (err) console.error;
       res.send(docs);
-    })
-    .catch(err => res.status(400).send(err));
+    });
 });
 
 // Get a user's feed
