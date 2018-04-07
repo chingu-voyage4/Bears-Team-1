@@ -285,3 +285,20 @@ describe("FEED", () => {
       .end(done);
   });
 });
+
+describe("COMMENTING", () => {
+  it("should add a comment to a user's tweet", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
+    const tweet_id = "5aa05812fcbbc803417de0b9"; // JackRoads' Tweet
+    let newComment = {
+      user: user_id,
+      text: "This is the first comment on a tweet"
+    };
+
+    request(app)
+      .post(`/tweet/${tweet_id}/comment`)
+      .send(newComment)
+      .expect(404)
+      .end(done);
+  });
+});
