@@ -296,9 +296,14 @@ describe("COMMENTING", () => {
     };
 
     request(app)
-      .post(`/tweet/${tweet_id}/comment`)
+      .put(`/tweet/${tweet_id}/comment`)
       .send(newComment)
-      .expect(404)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.comments.length).toBe(1);
+        expect(res.body.comments[0].text).toBe(newComment.text);
+        expect(res.body.comments[0].user).toBe(user_id);
+      })
       .end(done);
   });
 });
