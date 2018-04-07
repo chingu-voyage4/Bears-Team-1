@@ -107,40 +107,59 @@ router.put("/:delete_id", (req, res) => {
 router.put("/:user_id/likes/", (req, res) => {
   const tweet_id = req.body.tweet_id;
   const user_id = req.params.user_id;
-  const action = req.body.action;
 
   // Handle LIKE
-  if (action === "like") {
-    User.findByIdAndUpdate(
-      { _id: user_id },
-      { $push: { likes: tweet_id } },
-      // Returns the updated document
-      { new: true }
-    )
+  let findIfLiked = new Promise(resolve => {
+    User.findById({ _id: user_id })
       .then(user => {
-        res.send({
-          user,
-          likes: user.likes,
-          likesNum: user.likes.length
-        });
+        // Must cast likes array into a string or else you'll be comparing ObjectId === String
+        let likes = user.get("likes", String);
+        if (likes.includes(tweet_id)) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
       })
       .catch(err => res.status(400).send(err));
-  } else if (action === "unlike") {
-    User.findOneAndUpdate(
-      { _id: user_id },
-      { $pull: { likes: [tweet_id] } },
-      { new: true }
-    )
-      .then(user => {
-        res.send({
-          user,
-          likesNum: user.likes.length
-        });
-      })
-      .catch(err => res.status(400).send(err));
-  } else {
-    res.send("Must include isLiked boolean value to process this request");
-  }
+  });
+
+  findIfLiked
+    .then(isLiked => {
+      // Like a tweet
+      if (!isLiked) {
+        User.findByIdAndUpdate(
+          { _id: user_id },
+          { $push: { likes: tweet_id } },
+          // Returns the updated document
+          { new: true }
+        )
+          .then(user => {
+            res.send({
+              user,
+              likes: user.likes,
+              likesNum: user.likes.length
+            });
+          })
+          .catch(err => res.status(400).send(err));
+        // Unlike a tweet
+      } else if (isLiked) {
+        User.findOneAndUpdate(
+          { _id: user_id },
+          { $pull: { likes: tweet_id } },
+          { new: true }
+        )
+          .then(user => {
+            res.send({
+              user,
+              likesNum: user.likes.length
+            });
+          })
+          .catch(err => res.status(400).send(err));
+      } else {
+        res.send("Must include isLiked boolean value to process this request");
+      }
+    })
+    .catch(err => res.status(400).send(err));
 });
 
 // Get a user's likes

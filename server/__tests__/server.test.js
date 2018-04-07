@@ -133,13 +133,13 @@ describe("LIKES", () => {
       .end(done);
   });
 
-  it("should a liked post to a user model", done => {
+  it("should add liked tweet to likes array", done => {
     const user_id = "5aa054ac1a6e5a01b90f591d";
     const tweet_id = "5aa05812fcbbc803417de0b6";
 
     request(app)
       .put(`/user/${user_id}/likes`)
-      .send({ tweet_id: tweet_id, action: "like" })
+      .send({ tweet_id: tweet_id })
       .expect(200)
       .expect(res => {
         expect(res.body.likes.length).toBe(2);
@@ -148,15 +148,15 @@ describe("LIKES", () => {
   });
 
   it("should remove a liked tweet from the likes array", done => {
-    const user_id = "5aa054ac1a6e5a01b90f591d";
+    const user_id = "5aa054ac1a6e5a01b90f591e";
     const tweet_id = "5aa05812fcbbc803417de0b8";
 
     request(app)
       .put(`/user/${user_id}/likes`)
-      .send({ tweet_id: tweet_id, action: "unlike" })
+      .send({ tweet_id: tweet_id })
       .expect(200)
       .expect(res => {
-        expect(res.body.likesNum).toBe(1);
+        expect(res.body.likesNum).toBe(0);
       })
       .end(done);
   });

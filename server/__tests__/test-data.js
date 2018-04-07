@@ -28,7 +28,8 @@ let testUsers = [
     _id: "5aa054ac1a6e5a01b90f591e",
     username: "jackroads",
     firstName: "jack",
-    lastName: "roads"
+    lastName: "roads",
+    likes: ["5aa05812fcbbc803417de0b8"]
   }
 ];
 
