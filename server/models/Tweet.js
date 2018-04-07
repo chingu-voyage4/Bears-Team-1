@@ -10,9 +10,12 @@ const Tweet = mongoose.model("Tweet", {
   text: String,
   comments: [
     {
-      user: String,
+      user: ObjectId,
       text: String,
-      time: Number
+      time: {
+        type: Number,
+        default: Date.now()
+      }
     }
   ],
   likes: Number,
