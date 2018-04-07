@@ -45,4 +45,21 @@ router.put("/:tweet_id/comment", (req, res) => {
     .catch(err => res.status(400).send(err));
 });
 
+router.put("/:tweet_id/reply", (req, res) => {
+  const tweet_id = req.params.tweet_id;
+  const { comment_id, user, text } = req.body;
+
+  Tweet.findById({ _id: tweet_id })
+    .where("comments._id")
+    .equals(comment_id)
+    .then(doc => {
+      doc.comments[0].replies.push({
+        user,
+        text
+      });
+      res.send(doc);
+    })
+    .catch(err => res.status(400).send(err));
+});
+
 module.exports = router;
