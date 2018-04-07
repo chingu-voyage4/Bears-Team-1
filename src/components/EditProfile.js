@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class EditProfile extends Component {
   constructor(props) {
@@ -67,9 +68,9 @@ class EditProfile extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="editprofile--container">
         <form onSubmit={this.handleSubmit} className="editprofile--form">
-          <h1 className="editprofile">Edit Profile</h1>
+          <h1 className="editprofile--header">Edit Profile</h1>
           <label>
             Username:
             <input
@@ -127,12 +128,16 @@ class EditProfile extends Component {
               maxLength="200"
             />
           </label>
-
-          <input
-            type="submit"
-            value="Save"
-            className="editprofile--form--save"
-          />
+          <div className="editprofile--button-container">
+            <Link to="/">
+              <button className="editprofile--form--cancel">Cancel</button>
+            </Link>
+            <input
+              type="submit"
+              value="Save"
+              className="editprofile--form--save"
+            />
+          </div>
         </form>
       </div>
     );

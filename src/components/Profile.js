@@ -14,14 +14,14 @@ class Profile extends Component {
     const profile = this.props.profile;
 
     return (
-      <div className="container">
+      <div className="">
         <div className="profile">
           <div className="profile--background" />
           <div>
             <a className="profile--avatar" />
             <Link to="editprofile">
               <button className="profile--button--edit-profile">
-                Edit profile
+                Edit Profile
               </button>
             </Link>
             <Logout />

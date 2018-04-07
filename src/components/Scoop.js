@@ -46,23 +46,28 @@ class Scoop extends Component {
     }
 
     return (
-      <div className="scoop">
-        <h1>What's the scoop?</h1>
-        <form onSubmit={this.handleSubmit} className="scoop--form">
-          <textarea
-            value={this.state.scoopText}
-            onChange={this.handleChange}
-            placeholder="..."
-            className="scoop--textarea"
-            maxLength="200"
-          />
-          <div>{this.state.remainingCharacters} characters remaining</div>
-          <input
-            type="submit"
-            value="Submit"
-            className="scoop--form--submit-button"
-          />
-        </form>
+      <div className="scoop--container">
+        <div className="scoop">
+          <h1 className="scoop--header">What's the scoop?</h1>
+          <form onSubmit={this.handleSubmit} className="scoop--form">
+            <textarea
+              value={this.state.scoopText}
+              onChange={this.handleChange}
+              placeholder="..."
+              className="scoop--textarea"
+              maxLength="200"
+              required
+            />
+            <div className="scoop--characters-remaining">
+              {this.state.remainingCharacters} characters remaining
+            </div>
+            <input
+              type="submit"
+              value="Submit"
+              className="scoop--form--submit-button"
+            />
+          </form>
+        </div>
       </div>
     );
   }

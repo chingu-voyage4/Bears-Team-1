@@ -70,7 +70,7 @@ class Feed extends Component {
     const scoops = this.props.scoops;
 
     return (
-      <div className="container">
+      <div className="feed--container">
         <ol className="feed--list">
           {scoops !== null &&
             scoops.map((scoop, index) => (
