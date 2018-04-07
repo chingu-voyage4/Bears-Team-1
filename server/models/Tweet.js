@@ -12,6 +12,16 @@ const Tweet = mongoose.model("Tweet", {
     {
       user: ObjectId,
       text: String,
+      replies: [
+        {
+          user: ObjectId,
+          text: String,
+          time: {
+            type: Number,
+            default: Date.now()
+          }
+        }
+      ],
       time: {
         type: Number,
         default: Date.now()
