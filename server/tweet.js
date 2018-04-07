@@ -30,4 +30,19 @@ router.delete("/:delete_id", (req, res) => {
   Tweet.findOneAndRemove({ _id: delete_id }).then(tweet => res.send(tweet));
 });
 
+router.put("/:tweet_id/comment", (req, res) => {
+  const tweet_id = req.params.tweet_id;
+  const comment = req.body;
+
+  Tweet.findById({ _id: tweet_id })
+    .then(tweet => {
+      tweet.comments.push({
+        user: comment.user,
+        text: comment.text
+      });
+      res.send(tweet);
+    })
+    .catch(err => res.status(400).send(err));
+});
+
 module.exports = router;
