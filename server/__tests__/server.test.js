@@ -306,4 +306,24 @@ describe("COMMENTING", () => {
       })
       .end(done);
   });
+
+  it("should add a reply to a tweet comment", done => {
+    const comment_id = "5ac8ced6d969ba2117170938";
+    const tweet_id = "5aa05812fcbbc803417de0b8";
+    const comment = {
+      comment_id,
+      user: "5aa054ac1a6e5a01b90f591d", // loopylenny
+      text: "Thanks"
+    };
+    request(app)
+      .put(`/tweet/${tweet_id}/reply`)
+      .send(comment)
+      .expect(200)
+      .expect(res => {
+        console.log(res.body);
+        expect(res.body.comments[0].replies.length).toBe(1);
+        expect(res.body.comments[0].replies[0].text).toBe(comment.text);
+      })
+      .end(done);
+  });
 });
