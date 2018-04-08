@@ -136,6 +136,7 @@ body {
   height: 125px;
   background: $brand-color-lightgreen;
   //background-image: $brand-background-pg;
+  //box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .profile--avatar {
@@ -250,25 +251,50 @@ body {
 }
 
 .editprofile--form label {
-  margin: 0 auto;
-  padding-bottom: 10px;
+  margin: 16px 0;
+  padding: 0px 0;
+  display: block;
+  text-align: center;
 }
 
 .editprofile--form label input {
   margin: 0 auto;
-  padding: 10px 3%;
-  width: 88%;
+  padding: 8px 0px;
+  width: 85%;
   height: auto;
   border: none;
   border-bottom: 3px solid $brand-color-green;
   background: $brand-color-white;
   resize: none;
   font-size: 16px;
+  display: block;
+  outline: 0;
+  &:focus {
+    box-shadow: none;
+    border-bottom-color: rgba(0, 0, 0, 0.12);
+    ~ .animated-label {
+      top: 0;
+      opacity: 1;
+      color: #8e44ad;
+      font-size: 12px;
+      &:after {
+        visibility: visible;
+        width: 100%;
+        left: 0;
+      }
+    }
+  }
 }
 
+/*
 .editprofile--form label input:focus {
   outline: 0;
-}
+  color: #000;
+
+    border-bottom: 1px solid #000;
+    box-shadow: 0 1px 0 0 #000;
+  
+}*/
 
 .editprofile--button-container {
   //clear: both;
