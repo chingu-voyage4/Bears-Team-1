@@ -278,8 +278,8 @@ body {
   float: left;
   display: block;
   font-size: 16px;
-  width: 40%;
-  margin: 20px 20px 20px 20px;
+  width: 45%;
+  margin: 16px 0px;
   padding: 8px 16px;
   background: #e59eb4;
   border: 0px solid #200;
@@ -300,8 +300,8 @@ body {
   float: right;
   display: block;
   font-size: 16px;
-  width: 40%;
-  margin: 20px 20px 20px 20px;
+  width: 45%;
+  margin: 16px 0px;
   padding: 8px 16px;
   background: #00c8cd;
   border: 0px solid #200;
