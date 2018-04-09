@@ -3,7 +3,8 @@
 ////////////////////////////////////////
 
 $brand-color-black: #200;
-$brand-color-gray: #666;
+$brand-color-gray: #777;
+$brand-color-lightgray: #d3d3d3;
 $brand-color-white: #ffffff;
 $brand-color-lightgreen: #9edfe2;
 $brand-color-green: #00c8cd; //00C8CD 65C6CB
@@ -134,16 +135,16 @@ body {
 .profile {
   border-radius: 5px;
   background: $brand-color-white;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.profile--background {
+.profile--header {
   margin: 0;
   padding: 0;
-  height: 80px;
+  height: 82px;
   background: $brand-color-green;
   border-radius: 5px 5px 0px 0px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .profile--avatar {
@@ -154,7 +155,7 @@ body {
   height: 100px;
   width: 100px;
   background: $brand-color-black;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .profile--button--edit-profile {
@@ -234,21 +235,28 @@ body {
 
 .editprofile--container {
   background: $brand-color-lightpink;
-  margin: 0 auto;
-  padding: 10px;
+  padding: 24px 16px;
   text-align: center;
 }
 
-.editprofile--form {
-  margin: 20px 10px;
-  padding: 0;
-  background: $brand-color-white;
-  border-radius: 5px;
+.editprofile--header {
+  margin: 0 auto;
+  padding: 30px 0px;
+  background: $brand-color-green;
+  border-radius: 5px 5px 0 0;
+  color: $brand-color-white;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
+.editprofile--form {
+  padding: 0;
+  background: $brand-color-white;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
 .editprofile--input-container {
-  padding: 0px 20px;
+  padding: 0px 16px;
 }
 
 .editprofile--form label {
@@ -264,50 +272,28 @@ body {
   width: 100%;
   height: auto;
   border: none;
-  border-bottom: 3px solid $brand-color-green;
+  border-bottom: 3px solid $brand-color-lightgray;
   background: $brand-color-white;
   resize: none;
   font-size: 16px;
   display: block;
   outline: 0;
   &:focus {
-    box-shadow: none;
-    border-bottom-color: rgba(0, 0, 0, 0.12);
-    ~ .animated-label {
-      top: 0;
-      opacity: 1;
-      color: #8e44ad;
-      font-size: 12px;
-      &:after {
-        visibility: visible;
-        width: 100%;
-        left: 0;
-      }
-    }
+    border-bottom-color: $brand-color-lightgreen;
   }
 }
 
-/*
-.editprofile--form label input:focus {
-  outline: 0;
-  color: #000;
-
-    border-bottom: 1px solid #000;
-    box-shadow: 0 1px 0 0 #000;
-  
-}*/
-
 .editprofile--button-container {
-  //clear: both;
+  clear: both;
 }
 
 .editprofile--form--cancel {
-  //float: left;
-  display: inline-block;
+  float: left;
+  display: block;
   font-size: $font-size;
   width: 40%;
   margin: 20px 20px 20px 20px;
-  padding: 10px 25px;
+  padding: 8px 16px;
   background: $brand-color-pink;
   border: 0px solid $brand-color-black;
   color: $brand-color-white;
@@ -316,15 +302,20 @@ body {
   font-family: $main-font;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.editprofile--form--cancel:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .editprofile--form--save {
-  //float: right;
-  display: inline-block;
+  float: right;
+  display: block;
   font-size: $font-size;
   width: 40%;
   margin: 20px 20px 20px 20px;
-  padding: 10px 25px;
+  padding: 8px 16px;
   background: $brand-color-green;
   border: 0px solid $brand-color-black;
   color: $brand-color-white;
@@ -333,14 +324,11 @@ body {
   font-family: $main-font;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.editprofile--header {
-  padding: 30px 0px 30px 0px;
-  background: $brand-color-green;
-  border-radius: 5px 5px 0 0;
-  color: $brand-color-white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+.editprofile--form--save:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 ////////////////////////////////////////

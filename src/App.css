@@ -126,16 +126,16 @@ body {
 .profile {
   border-radius: 5px;
   background: #ffffff;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.profile--background {
+.profile--header {
   margin: 0;
   padding: 0;
-  height: 80px;
+  height: 82px;
   background: #00c8cd;
   border-radius: 5px 5px 0px 0px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .profile--avatar {
@@ -146,7 +146,7 @@ body {
   height: 100px;
   width: 100px;
   background: #200;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.23);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .profile--button--edit-profile {
@@ -222,21 +222,28 @@ body {
 
 .editprofile--container {
   background: #ffbacf;
-  margin: 0 auto;
-  padding: 10px;
+  padding: 24px 16px;
   text-align: center;
 }
 
-.editprofile--form {
-  margin: 20px 10px;
-  padding: 0;
-  background: #ffffff;
-  border-radius: 5px;
+.editprofile--header {
+  margin: 0 auto;
+  padding: 30px 0px;
+  background: #00c8cd;
+  border-radius: 5px 5px 0 0;
+  color: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
+.editprofile--form {
+  padding: 0;
+  background: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
 .editprofile--input-container {
-  padding: 0px 20px;
+  padding: 0px 16px;
 }
 
 .editprofile--form label {
@@ -252,7 +259,7 @@ body {
   width: 100%;
   height: auto;
   border: none;
-  border-bottom: 3px solid #00c8cd;
+  border-bottom: 3px solid #d3d3d3;
   background: #ffffff;
   resize: none;
   font-size: 16px;
@@ -260,36 +267,20 @@ body {
   outline: 0;
 }
 .editprofile--form label input:focus {
-  box-shadow: none;
-  border-bottom-color: rgba(0, 0, 0, 0.12);
-}
-.editprofile--form label input:focus ~ .animated-label {
-  top: 0;
-  opacity: 1;
-  color: #8e44ad;
-  font-size: 12px;
-}
-.editprofile--form label input:focus ~ .animated-label:after {
-  visibility: visible;
-  width: 100%;
-  left: 0;
+  border-bottom-color: #9edfe2;
 }
 
-/*
-.editprofile--form label input:focus {
-  outline: 0;
-  color: #000;
+.editprofile--button-container {
+  clear: both;
+}
 
-    border-bottom: 1px solid #000;
-    box-shadow: 0 1px 0 0 #000;
-  
-}*/
 .editprofile--form--cancel {
-  display: inline-block;
+  float: left;
+  display: block;
   font-size: 16px;
   width: 40%;
   margin: 20px 20px 20px 20px;
-  padding: 10px 25px;
+  padding: 8px 16px;
   background: #e59eb4;
   border: 0px solid #200;
   color: #ffffff;
@@ -298,14 +289,20 @@ body {
   font-family: "Open Sans", sans-serif;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.editprofile--form--cancel:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .editprofile--form--save {
-  display: inline-block;
+  float: right;
+  display: block;
   font-size: 16px;
   width: 40%;
   margin: 20px 20px 20px 20px;
-  padding: 10px 25px;
+  padding: 8px 16px;
   background: #00c8cd;
   border: 0px solid #200;
   color: #ffffff;
@@ -314,14 +311,11 @@ body {
   font-family: "Open Sans", sans-serif;
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.editprofile--header {
-  padding: 30px 0px 30px 0px;
-  background: #00c8cd;
-  border-radius: 5px 5px 0 0;
-  color: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+.editprofile--form--save:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .feed--container {
@@ -373,7 +367,7 @@ body {
 }
 
 .feed--date {
-  color: #666;
+  color: #777;
 }
 
 .feed--message {
@@ -488,7 +482,7 @@ body {
 }
 
 .search--characters-remaining {
-  color: #666;
+  color: #777;
 }
 
 /*
@@ -645,7 +639,7 @@ body {
 }
 
 .scoop--characters-remaining {
-  color: #666;
+  color: #777;
 }
 
 .footer--list {

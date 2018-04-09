@@ -130,16 +130,15 @@ class EditProfile extends Component {
                 maxLength="200"
               />
             </label>
-            <div className="editprofile--button-container">
-              <Link to="/">
-                <button className="editprofile--form--cancel">Cancel</button>
-              </Link>
-              <input
-                type="submit"
-                value="Save"
-                className="editprofile--form--save"
-              />
-            </div>
+            <Link to="/">
+              <button className="editprofile--form--cancel">Cancel</button>
+            </Link>
+            <input
+              type="submit"
+              value="Save"
+              className="editprofile--form--save"
+            />
+            <div className="editprofile--button-container" />
           </div>
         </form>
       </div>

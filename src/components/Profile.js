@@ -16,7 +16,7 @@ class Profile extends Component {
     return (
       <div className="profile--container">
         <div className="profile">
-          <div className="profile--background" />
+          <div className="profile--header" />
           <div>
             <a className="profile--avatar" />
             <Link to="editprofile">
