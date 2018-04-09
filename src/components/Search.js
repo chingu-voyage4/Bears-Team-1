@@ -7,7 +7,6 @@ class Search extends Component {
     return (
       <div>
         <SearchBar />
-        <SearchResults />
       </div>
     );
   }
