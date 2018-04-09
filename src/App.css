@@ -415,6 +415,77 @@ body {
 }
 
 .search--container {
+  background: #ffbacf;
+  padding: 10px;
+}
+
+.search {
+  background: #ffffff;
+  margin: 20px 10px;
+  padding: 0;
+  text-align: center;
+  color: #200;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+}
+
+.search--header {
+  padding: 30px 0px 30px 0px;
+  background: #00c8cd;
+  border-radius: 5px 5px 0 0;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.search--form {
+  margin: 0 auto;
+  padding: 0;
+  width: 94%;
+}
+
+.search--input {
+  margin: 0;
+  padding: 8px 0;
+  width: 100%;
+  border: none;
+  border-bottom: 3px solid #00c8cd;
+  background: #ffffff;
+  resize: none;
+  font-size: 16px;
+}
+
+.search--input:focus {
+  outline: 0;
+}
+
+.search--form--submit-button {
+  font-size: 14px;
+  width: 100%;
+  margin: 25px 0px 30px 0px;
+  padding: 10px;
+  background: #00c8cd;
+  border: 0px solid #e59eb4;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: "Open Sans", sans-serif;
+  cursor: pointer;
+  font-size: 16px;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.search--form--submit-button:focus {
+  outline: 0;
+}
+
+.search--characters-remaining {
+  color: #666;
+}
+
+/*
+
+
+.search--container {
   width: 100%;
   vertical-align: middle;
   white-space: nowrap;
@@ -439,7 +510,7 @@ body {
 
 .search--input:focus {
   outline: none;
-  border: 2px solid #00c8cd;
+  border: 2px solid $brand-color-green;
 }
 
 .search--container img {
@@ -475,7 +546,8 @@ body {
 }
 
 .searchResults--container:hover {
-  background-color: #1bf9ff;
+  background-color: lighten($brand-color-green, 15%);
+  // border: 1px solid $brand-color;
 }
 
 .searchResults--container .avatar {
@@ -490,13 +562,14 @@ body {
 }
 
 .searchResults--list .name:hover {
-  color: #00969a;
+  color: darken($brand-color-green, 10%);
 }
 
 .searchResults--list .handle {
   color: grey;
 }
 
+*/
 .scoop--container {
   background: #ffbacf;
   padding: 10px;
