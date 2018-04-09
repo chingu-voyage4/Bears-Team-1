@@ -19,6 +19,11 @@ const User = mongoose.model("User", {
     required: true,
     trim: true
   },
+  googleID: {
+    type: String,
+    required: true,
+    trim: true
+  },
   gitId: {
     type: Number
   },
