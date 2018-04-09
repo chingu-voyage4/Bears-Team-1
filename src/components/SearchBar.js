@@ -67,9 +67,6 @@ class SearchBar extends Component {
               />
             </form>
             <ul>
-              {
-                //results === null ? results === [] ? results : <p>...</p> : <p>No results found</p>
-              }
               {!this.state.searchResults
                 ? "Waiting"
                 : !this.state.searchResults.length
@@ -81,19 +78,6 @@ class SearchBar extends Component {
                         </li>
                       );
                     })}
-
-              {/*
-                this.state.searchResults !== null 
-                ? this.state.searchResults !== []
-                ? this.state.searchResults.map((item, index) => {
-                    return (        
-                      <li key={item.id} className="searchResults--list-item">
-                        {item.username}
-                      </li>
-                    )
-                  })
-                : <li>No results found</li> 
-                : <li>...</li>  */}
             </ul>
           </div>
         </div>

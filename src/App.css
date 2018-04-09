@@ -118,19 +118,29 @@ body {
   filter: brightness(2);
 }
 
+.profile--container {
+  background: #ffbacf;
+  padding: 24px 16px;
+}
+
 .profile {
-  position: relative;
+  border-radius: 5px;
+  background: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .profile--background {
-  height: 125px;
-  background: #9edfe2;
+  margin: 0;
+  padding: 0;
+  height: 80px;
+  background: #00c8cd;
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .profile--avatar {
   position: absolute;
-  margin: -50px 0 0 3%;
+  margin: -52px 0 0 14px;
   border: solid #ffffff 2px;
   border-radius: 50%;
   height: 100px;
@@ -142,12 +152,10 @@ body {
 .profile--button--edit-profile {
   font-size: 16px;
   float: right;
-  margin: 10px 3% 0px 0px;
-  padding: 8px 12px;
-  background: #ffffff;
-  border: 0px solid #200;
+  margin: 16px;
+  background: none;
+  border: none;
   color: #00c8cd;
-  border-radius: 5px;
   font-weight: bold;
   font-family: "Open Sans", sans-serif;
   cursor: pointer;
@@ -158,33 +166,27 @@ body {
 }
 
 .profile--container--bottom-half {
-  padding: 60px 3% 10px 3%;
-  background: #ffffff;
+  padding: 62px 16px 16px 16px;
 }
 
 .profile--name {
-  font-size: 24px;
-  line-height: 33px;
   font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .profile--username {
-  font-size: 19.2px;
-  line-height: 26.4px;
   float: left;
-  width: 50%;
 }
 
 .profile--location {
-  font-size: 19.2px;
-  line-height: 26.4px;
   float: right;
-  width: 50%;
   text-align: right;
 }
 
 .profile--about {
-  padding: 30px 0px 10px 0px;
+  padding: 8px 0px 0px 0px;
+  clear: both;
+  margin: 8px 0px;
 }
 
 .profile--stats {
@@ -208,8 +210,6 @@ body {
 }
 
 .profile--stats-name {
-  font-size: 17.6px;
-  line-height: 24.2px;
   display: block;
   font-weight: bold;
 }
@@ -235,6 +235,10 @@ body {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
+.editprofile--input-container {
+  padding: 0px 20px;
+}
+
 .editprofile--form label {
   margin: 16px 0;
   padding: 0px 0;
@@ -245,7 +249,7 @@ body {
 .editprofile--form label input {
   margin: 0 auto;
   padding: 8px 0px;
-  width: 85%;
+  width: 100%;
   height: auto;
   border: none;
   border-bottom: 3px solid #00c8cd;

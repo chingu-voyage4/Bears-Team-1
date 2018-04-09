@@ -126,22 +126,29 @@ body {
 ///// Profile
 ////////////////////////////////////////
 
+.profile--container {
+  background: $brand-color-lightpink;
+  padding: 24px 16px;
+}
+
 .profile {
-  position: relative;
-  //border-bottom: 10px solid $brand-color-black;
+  border-radius: 5px;
+  background: $brand-color-white;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .profile--background {
-  height: 125px;
-  background: $brand-color-lightgreen;
-  //background-image: $brand-background-pg;
-  //box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  margin: 0;
+  padding: 0;
+  height: 80px;
+  background: $brand-color-green;
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .profile--avatar {
   position: absolute;
-  margin: -50px 0 0 3%;
+  margin: -52px 0 0 14px;
   border: solid $brand-color-white 2px;
   border-radius: 50%;
   height: 100px;
@@ -153,12 +160,10 @@ body {
 .profile--button--edit-profile {
   font-size: $font-size;
   float: right;
-  margin: 10px 3% 0px 0px;
-  padding: 8px 12px;
-  background: $brand-color-white;
-  border: 0px solid $brand-color-black;
+  margin: 16px;
+  background: none;
+  border: none;
   color: $brand-color-green;
-  border-radius: 5px;
   font-weight: bold;
   font-family: $main-font;
   cursor: pointer;
@@ -169,33 +174,27 @@ body {
 }
 
 .profile--container--bottom-half {
-  padding: 60px 3% 10px 3%;
-  background: $brand-color-white;
+  padding: 62px 16px 16px 16px;
 }
 
 .profile--name {
-  font-size: $font-size * 1.5;
-  line-height: $line-height * 1.5;
   font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .profile--username {
-  font-size: $font-size * 1.2;
-  line-height: $line-height * 1.2;
   float: left;
-  width: 50%;
 }
 
 .profile--location {
-  font-size: $font-size * 1.2;
-  line-height: $line-height * 1.2;
   float: right;
-  width: 50%;
   text-align: right;
 }
 
 .profile--about {
-  padding: 30px 0px 10px 0px;
+  padding: 8px 0px 0px 0px;
+  clear: both;
+  margin: 8px 0px;
 }
 
 .profile--stats {
@@ -219,8 +218,6 @@ body {
 }
 
 .profile--stats-name {
-  font-size: $font-size * 1.1;
-  line-height: $line-height * 1.1;
   display: block;
   font-weight: bold;
 }
@@ -250,6 +247,10 @@ body {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
+.editprofile--input-container {
+  padding: 0px 20px;
+}
+
 .editprofile--form label {
   margin: 16px 0;
   padding: 0px 0;
@@ -260,7 +261,7 @@ body {
 .editprofile--form label input {
   margin: 0 auto;
   padding: 8px 0px;
-  width: 85%;
+  width: 100%;
   height: auto;
   border: none;
   border-bottom: 3px solid $brand-color-green;

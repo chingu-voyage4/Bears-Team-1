@@ -14,7 +14,7 @@ class Profile extends Component {
     const profile = this.props.profile;
 
     return (
-      <div className="">
+      <div className="profile--container">
         <div className="profile">
           <div className="profile--background" />
           <div>
@@ -32,7 +32,6 @@ class Profile extends Component {
               <div className="profile--username">{profile.username}</div>
               <div className="profile--location">{profile.location}</div>
               <div className="profile--about">{profile.about}</div>
-
               <div>
                 <ul className="profile--stats">
                   <li>
