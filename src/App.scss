@@ -416,47 +416,45 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.feed--list-item:nth-child(even) {
-  background: $brand-color-white;
-}
-
 .feed--avatar {
-  float: left;
-  border: 1px solid $brand-color-white;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 44px;
+  width: 44px;
   background: $brand-color-black;
   display: block;
-  margin-right: 3%;
-  margin-top: 10px;
+  margin-right: 16px;
+  position: absolute;
 }
 
 .feed--user {
-  font-size: $font-size * 0.9;
-  line-height: $line-height * 0.9;
+}
+
+.feed--user-container {
+  padding-left: 52px;
+  position: relative;
 }
 
 .feed--username {
-  font-size: $font-size * 1.1;
-  line-height: $line-height * 1.1;
+  font-size: $font-size;
   font-weight: bold;
   color: $brand-color-green;
 }
 
 .feed--date {
   color: $brand-color-gray;
+  font-size: $font-size * 0.8;
 }
 
 .feed--message {
   word-wrap: break-word;
+  margin: 0;
 }
 
 .feed--list-item--actions {
   padding-top: 10px;
   text-align: left;
   list-style: none;
-  padding: 10px 0 0 60px;
+  padding: 8px 0 0 0px;
   margin: 0;
 }
 
@@ -476,18 +474,17 @@ body {
 }
 
 .feed--delete-button {
-  font-size: $font-size * 0.8;
-  float: none;
-  display: block;
-  margin: 0;
-  padding: 5px 15px;
-  background: $brand-color-white;
-  border: 0px solid $brand-color-black;
-  color: $brand-color-pink;
-  border-radius: 5px;
-  font-weight: bold;
+  font-size: $font-size * 0.7;
   font-family: $main-font;
+  font-weight: bold;
+  color: $brand-color-pink;
+  background: none;
+  border: none;
   cursor: pointer;
+  margin: 16px;
+  float: right;
+  padding: 0;
+  margin: -16px 0px 0px 0px;
 }
 
 ////////////////////////////////////////
@@ -739,6 +736,7 @@ body {
 }
 
 .follow--unfollow-button {
+  font-size: $font-size * 0.7;
   border: none;
   background: none;
   color: $brand-color-pink;
