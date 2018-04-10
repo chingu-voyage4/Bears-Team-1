@@ -416,6 +416,10 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
+.feed--list-item:last-child {
+  margin: 0px;
+}
+
 .feed--avatar {
   border-radius: 50%;
   height: 44px;
@@ -426,7 +430,8 @@ body {
   position: absolute;
 }
 
-.feed--user {
+.feed--user a {
+  text-decoration: none;
 }
 
 .feed--user-container {
@@ -714,6 +719,10 @@ body {
   margin: 0px 0px 16px 0px;
   border-radius: 5px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.follow--list-item:last-child {
+  margin: 0px;
 }
 
 .follow--avatar {

@@ -13,6 +13,7 @@ const Main = () => (
   <main>
     <Switch>
       <Route exact path="/" component={ProfileView} />
+      <Route path="/profile/:id" component={ProfileView} />
       <Route exact path="/followers" component={Followers} />
       <Route exact path="/following" component={Following} />
       <Route exact path="/editprofile" component={EditProfile} />

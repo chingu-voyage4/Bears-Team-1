@@ -9,7 +9,8 @@ class ProfileView extends Component {
     super(props);
     this.state = {
       profile: null,
-      scoops: null
+      scoops: null,
+      userID: this.props.match.params.id
     };
   }
 
@@ -43,6 +44,7 @@ class ProfileView extends Component {
   }
 
   render() {
+    console.log(this.state.userID);
     return (
       <div>
         {this.state.profile ? <Profile profile={this.state.profile} /> : null}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import reply from "../assets/iconmonstr-speech-bubble-2-240.png";
@@ -80,9 +81,11 @@ class Feed extends Component {
                 </div>
                 <div className="feed--user-container">
                   <div className="feed--user">
-                    <span className="feed--username">
-                      {scoop.creator.username}
-                    </span>
+                    <Link to={`/profile/${scoop._id}`}>
+                      <span className="feed--username">
+                        {scoop.creator.username}
+                      </span>
+                    </Link>
                     <span className="feed--date">
                       {" "}
                       &middot; {moment(scoop.date).fromNow()}
