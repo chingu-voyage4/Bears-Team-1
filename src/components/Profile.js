@@ -41,13 +41,17 @@ class Profile extends Component {
                   <li>
                     <a href="/following">
                       <span className="profile--stats-name">Following</span>
-                      <span className="profile--stats-number">847</span>
+                      <span className="profile--stats-number">
+                        {profile.following.length}
+                      </span>
                     </a>
                   </li>
                   <li>
                     <a href="/followers">
                       <span className="profile--stats-name">Followers</span>
-                      <span className="profile--stats-number">123</span>
+                      <span className="profile--stats-number">
+                        {profile.followers.length}
+                      </span>
                     </a>
                   </li>
                 </ul>

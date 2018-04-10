@@ -24,27 +24,30 @@ class Followers extends Component {
   render() {
     console.log(this.state.followers);
     return (
-      <div className="container">
-        <ol className="follow--list">
-          {this.state.followers !== null &&
-            this.state.followers.followers.length > 0 &&
-            this.state.followers.followers.map((follower, index) => (
-              <li className="follow--list-item" key={index}>
-                <div>
-                  <div className="follow--avatar" />
-                </div>
-                <div>
-                  <div className="follow--user">
-                    <div className="follow--username">{follower.username}</div>
-                    <div className="follow--name">
-                      {follower.firstName} {follower.lastName}
-                    </div>
-                    <div className="follow--about">{follower.about}</div>
+      <div className="follow--container">
+        <div className="follow">
+          <ol className="follow--list">
+            {this.state.followers !== null &&
+              this.state.followers.followers.length > 0 &&
+              this.state.followers.followers.map((follower, index) => (
+                <li className="follow--list-item" key={index}>
+                  <div>
+                    <div className="follow--avatar" />
                   </div>
-                </div>
-              </li>
-            ))}
-        </ol>
+                  <div>
+                    <div className="follow--user">
+                      <div className="follow--username">
+                        {follower.username}
+                      </div>
+                      <div className="follow--name">
+                        {follower.firstName} {follower.lastName}
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+          </ol>
+        </div>
       </div>
     );
   }

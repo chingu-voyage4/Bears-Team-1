@@ -335,9 +335,70 @@ body {
 ///// Feed
 ////////////////////////////////////////
 
+.feed--header-container {
+  padding: 0px 32px;
+  text-align: center;
+  background: $brand-color-lightpink;
+}
+
+.feed--button--everybody {
+  float: left;
+  display: block;
+  font-size: $font-size;
+  width: 40%;
+  margin: 0px 0px 24px 0px;
+  padding: 8px 16px;
+  background: $brand-color-green;
+  border: 0px solid $brand-color-black;
+  color: $brand-color-white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: $main-font;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.feed--button--everybody:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.feed--button--following {
+  float: right;
+  display: block;
+  font-size: $font-size;
+  width: 40%;
+  margin: 0px 0px 24px 0px;
+  padding: 8px 16px;
+  background: $brand-color-green;
+  border: 0px solid $brand-color-black;
+  color: $brand-color-white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: $main-font;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.feed--button--following:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.clear {
+  clear: both;
+}
+
+.feed {
+  padding: 0px 16px 24px 16px;
+  margin: 0;
+  background: $brand-color-lightpink;
+}
+
 .feed--container {
   background: $brand-color-lightpink;
-  padding: 10px;
+  padding: 24px 0px 0px 0px;
+  margin: 0;
 }
 
 .feed--list {
@@ -349,11 +410,9 @@ body {
 
 .feed--list-item {
   background: $brand-color-white;
-  padding: 10px;
-  margin: 20px 10px;
+  padding: 8px 16px;
+  margin: 0px 0px 16px 0px;
   border-radius: 5px;
-  //border: 1px solid $brand-color-pink;
-  //border-bottom: 3px solid $brand-color-pink;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -437,12 +496,12 @@ body {
 
 .search--container {
   background: $brand-color-lightpink;
-  padding: 10px;
+  padding: 24px 16px;
 }
 
 .search {
   background: $brand-color-white;
-  margin: 20px 10px;
+  margin: 0;
   padding: 0;
   text-align: center;
   color: $brand-color-black;
@@ -451,11 +510,12 @@ body {
 }
 
 .search--header {
-  padding: 30px 0px 30px 0px;
+  padding: 30px 0px;
+  margin: 0px 0px 16px 0px;
   background: $brand-color-green;
   border-radius: 5px 5px 0 0;
   color: $brand-color-white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .search--form {
@@ -465,14 +525,20 @@ body {
 }
 
 .search--input {
-  margin: 0;
-  padding: 8px 0;
+  margin: 0 auto;
+  padding: 8px 0px;
   width: 100%;
+  height: auto;
   border: none;
-  border-bottom: 3px solid $brand-color-green;
+  border-bottom: 3px solid $brand-color-lightgray;
   background: $brand-color-white;
   resize: none;
   font-size: 16px;
+  display: block;
+  outline: 0;
+  &:focus {
+    border-bottom-color: $brand-color-lightgreen;
+  }
 }
 
 .search--input:focus {
@@ -482,7 +548,7 @@ body {
 .search--form--submit-button {
   font-size: 14px;
   width: 100%;
-  margin: 25px 0px 30px 0px;
+  margin: 16px 0px;
   padding: 10px;
   background: $brand-color-green;
   border: 0px solid $brand-color-pink;
@@ -504,111 +570,18 @@ body {
   outline: 0;
 }
 
-.search--characters-remaining {
-  color: $brand-color-gray;
-}
-
-/*
-
-
-.search--container {
-  width: 100%;
-  vertical-align: middle;
-  white-space: nowrap;
-  position: relative;
-}
-
-.search--input {
-  width: 80%;
-  margin: 25px auto;
-  background-color: #f5f8fa;
-  border-radius: 4px;
-  border: 1px solid #e6ecf0;
-  box-sizing: border-box;
-  color: #14171a;
-  display: block;
-  font-size: 12px;
-  height: 32px;
-  line-height: 16px;
-  padding: 8px 32px 8px 12px;
-  transition: all 0.2s ease-in-out;
-}
-
-.search--input:focus {
-  outline: none;
-  border: 2px solid $brand-color-green;
-}
-
-.search--container img {
-  position: absolute;
-  top: 23%;
-  z-index: 1;
-  width: 18px;
-  right: 20%;
-}
-
-.searchResults--list li {
-  display: inline;
-  margin: 0 5px;
-  padding: 7px;
-  font-size: 13px;
-}
-
-.searchResults--outerContainer {
-  border: 1px solid #e6e6e6;
-  box-shadow: 3px 3px 7px -1px #e8e6e6;
-  border-radius: 5px;
-  width: 80%;
-  margin: 30px auto;
-}
-
-.searchResults--container {
-  display: flex;
-  height: 35px;
-  justify-content: center;
-  align-items: center;
-  padding: 9px;
-  margin: 0 auto;
-}
-
-.searchResults--container:hover {
-  background-color: lighten($brand-color-green, 15%);
-  // border: 1px solid $brand-color;
-}
-
-.searchResults--container .avatar {
-  width: 21px;
-  border: 1px solid #e8e2e2;
-  border-radius: 19px;
-  padding: 7px;
-}
-
-.searchResults--list .name {
-  font-weight: 800;
-}
-
-.searchResults--list .name:hover {
-  color: darken($brand-color-green, 10%);
-}
-
-.searchResults--list .handle {
-  color: grey;
-}
-
-*/
-
 ////////////////////////////////////////
 ///// Scoop
 ////////////////////////////////////////
 
 .scoop--container {
   background: $brand-color-lightpink;
-  padding: 10px;
+  padding: 24px 16px;
 }
 
 .scoop {
   background: $brand-color-white;
-  margin: 20px 10px;
+  margin: 0;
   padding: 0;
   text-align: center;
   color: $brand-color-black;
@@ -617,11 +590,12 @@ body {
 }
 
 .scoop--header {
-  padding: 30px 0px 30px 0px;
+  padding: 30px 0px;
+  margin: 0px 0px 16px 0px;
   background: $brand-color-green;
   border-radius: 5px 5px 0 0;
   color: $brand-color-white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .scoop--textarea {
@@ -630,7 +604,7 @@ body {
   width: 100%;
   height: 100px;
   border: none;
-  border-bottom: 3px solid $brand-color-green;
+  border-bottom: 3px solid $brand-color-lightgray;
   background: $brand-color-white;
   resize: none;
   font-size: 16px;
@@ -638,6 +612,7 @@ body {
 
 .scoop--textarea:focus {
   outline: 0;
+  border-bottom: 3px solid $brand-color-lightgreen;
 }
 
 .scoop--form {
@@ -647,19 +622,24 @@ body {
 }
 
 .scoop--form--submit-button {
-  font-size: 14px;
+  font-size: $font-size;
+  font-weight: bold;
   width: 100%;
-  margin: 15px 0px 30px 0px;
-  padding: 10px;
+  margin: 16px 0px 16px 0px;
+  padding: 8px;
   background: $brand-color-green;
   border: 0px solid $brand-color-pink;
   border-radius: 5px;
-  font-weight: bold;
   font-family: $main-font;
   cursor: pointer;
   font-size: $font-size;
   color: $brand-color-white;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.scoop--form--submit-button:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .scoop--form--submit-button:focus {
@@ -678,7 +658,7 @@ body {
   background: $brand-color-pink;
   width: 100%;
   margin: 0;
-  padding: 10px 0px 10px 0px;
+  padding: 8px 0px 8px 0px;
   color: $brand-color-white;
   text-align: center;
   border-top: 1px solid rgba(0, 0, 0, 0.23);
@@ -706,4 +686,67 @@ body {
 .footer--list a {
   color: $brand-color-white;
   text-decoration: none;
+}
+
+////////////////////////////////////////
+///// Follow Views
+////////////////////////////////////////
+
+.follow {
+  padding: 0px 16px 24px 16px;
+  margin: 0;
+  background: $brand-color-lightpink;
+}
+
+.follow--container {
+  background: $brand-color-lightpink;
+  padding: 24px 0px 0px 0px;
+  margin: 0;
+}
+
+.follow--list {
+  list-style: none;
+  background: $brand-color-lightpink;
+  padding: 0;
+  margin: 0;
+}
+
+.follow--list-item {
+  background: $brand-color-white;
+  padding: 8px 16px;
+  margin: 0px 0px 16px 0px;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.follow--avatar {
+  float: left;
+  border-radius: 50%;
+  height: 44px;
+  width: 44px;
+  background: $brand-color-black;
+  display: block;
+  margin-right: 16px;
+}
+
+.follow--username {
+  color: $brand-color-green;
+  font-weight: bold;
+}
+
+.follow--leftside {
+  display: block;
+}
+
+.follow--unfollow-button {
+  border: none;
+  background: none;
+  color: $brand-color-pink;
+  font-weight: bold;
+  margin: 16px;
+  font-family: $main-font;
+  cursor: pointer;
+  float: right;
+  padding: 0;
+  margin: -16px 0px 0px 0px;
 }

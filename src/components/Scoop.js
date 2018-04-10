@@ -53,7 +53,7 @@ class Scoop extends Component {
             <textarea
               value={this.state.scoopText}
               onChange={this.handleChange}
-              placeholder="..."
+              placeholder=""
               className="scoop--textarea"
               maxLength="200"
               required

@@ -40,38 +40,33 @@ class Following extends Component {
   render() {
     console.log(this.state.following);
     return (
-      <div>
-        <ol className="follow--list">
-          {this.state.following !== null &&
-            this.state.following.following.length > 0 &&
-            this.state.following.following.map((following, index) => (
-              <li className="follow--list-item" key={index}>
-                <div>
-                  <div className="follow--avatar" />
-                </div>
-                <div>
-                  <div className="follow--user">
-                    <div className="follow--username">{following.username}</div>
-                    <div className="follow--name">
-                      {following.firstName} {following.lastName}
+      <div className="follow--container">
+        <div className="follow">
+          <ol className="follow--list">
+            {this.state.following !== null &&
+              this.state.following.following.length > 0 &&
+              this.state.following.following.map((following, index) => (
+                <li className="follow--list-item" key={index}>
+                  <div className="follow--leftside">
+                    <div className="follow--avatar" />
+
+                    <div>
+                      <div className="follow--user">
+                        <div className="follow--username">
+                          {following.username}
+                        </div>
+                        <div className="follow--name">
+                          {following.firstName} {following.lastName}
+                        </div>
+                      </div>
                     </div>
-                    <div className="follow--about">{following.about}</div>
                   </div>
-                </div>
-                <form
-                  data-followingid={following._id}
-                  data-listindex={index}
-                  onSubmit={this.handleSubmit}
-                >
-                  <input
-                    type="submit"
-                    value="Unfollow"
-                    className="follow--follow-button"
-                  />
-                </form>
-              </li>
-            ))}
-        </ol>
+
+                  <button className="follow--unfollow-button">Unfollow</button>
+                </li>
+              ))}
+          </ol>
+        </div>
       </div>
     );
   }
