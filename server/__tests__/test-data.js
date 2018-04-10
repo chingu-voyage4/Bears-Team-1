@@ -28,7 +28,8 @@ let testUsers = [
     _id: "5aa054ac1a6e5a01b90f591e",
     username: "jackroads",
     firstName: "jack",
-    lastName: "roads"
+    lastName: "roads",
+    likes: ["5aa05812fcbbc803417de0b8"]
   }
 ];
 
@@ -61,7 +62,14 @@ let testTweets = [
     _id: "5aa05812fcbbc803417de0b8",
     creator: "5aa054ac1a6e5a01b90f591d",
     user: "loopylenny",
-    text: "A tweet by loopylenny"
+    text: "A tweet by loopylenny",
+    comments: [
+      {
+        _id: "5ac8ced6d969ba2117170938",
+        user: "5aa054ac1a6e5a01b90f591e",
+        text: "Hahahaha good one, bro"
+      }
+    ]
   },
   {
     _id: "5aa05812fcbbc803417de0b9",

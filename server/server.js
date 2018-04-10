@@ -1,5 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
 
 const cors = require("cors");
 const path = require("path");
@@ -24,14 +26,28 @@ app.options("*", cors());
 const Tweet = require("./models/Tweet");
 const User = require("./models/User");
 // Connect to database
-mongoose
-  .connect("mongodb://localhost:27017/bearsTeam1" || process.env.MONGO_URI)
-  .catch(err => {
-    if (err) console.log("err", err);
-  });
+mongoose.connect(process.env.MONGO_URI).catch(err => {
+  if (err) console.log("err", err);
+});
 // Use native promises
 mongoose.Promise = global.Promise;
 
+//////////////////////////////
+// Passport
+//////////////////////////////
+require("./models/User.js");
+require("./services/passport");
+
+app.use(
+  cookieSession({
+    maxeAge: 30 * 24 * 60 * 60 * 1000,
+    keys: [process.env.COOKIE_KEY]
+  })
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
+require("./authRoutes/authRoutes")(app);
 //////////////////////////////
 // Answer requests
 //////////////////////////////

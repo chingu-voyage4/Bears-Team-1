@@ -133,13 +133,13 @@ describe("LIKES", () => {
       .end(done);
   });
 
-  it("should a liked post to a user model", done => {
+  it("should add liked tweet to likes array", done => {
     const user_id = "5aa054ac1a6e5a01b90f591d";
     const tweet_id = "5aa05812fcbbc803417de0b6";
 
     request(app)
       .put(`/user/${user_id}/likes`)
-      .send({ tweet_id: tweet_id, action: "like" })
+      .send({ tweet_id: tweet_id })
       .expect(200)
       .expect(res => {
         expect(res.body.likes.length).toBe(2);
@@ -148,15 +148,15 @@ describe("LIKES", () => {
   });
 
   it("should remove a liked tweet from the likes array", done => {
-    const user_id = "5aa054ac1a6e5a01b90f591d";
+    const user_id = "5aa054ac1a6e5a01b90f591e";
     const tweet_id = "5aa05812fcbbc803417de0b8";
 
     request(app)
       .put(`/user/${user_id}/likes`)
-      .send({ tweet_id: tweet_id, action: "unlike" })
+      .send({ tweet_id: tweet_id })
       .expect(200)
       .expect(res => {
-        expect(res.body.likesNum).toBe(1);
+        expect(res.body.likesNum).toBe(0);
       })
       .end(done);
   });
@@ -281,6 +281,48 @@ describe("FEED", () => {
       .expect(200)
       .expect(res => {
         expect(res.body.length).toBe(5);
+      })
+      .end(done);
+  });
+});
+
+describe("COMMENTING", () => {
+  it("should add a comment to a user's tweet", done => {
+    const user_id = "5aa054ac1a6e5a01b90f591c"; // Misoawesome
+    const tweet_id = "5aa05812fcbbc803417de0b9"; // JackRoads' Tweet
+    let newComment = {
+      user: user_id,
+      text: "This is the first comment on a tweet"
+    };
+
+    request(app)
+      .put(`/tweet/${tweet_id}/comment`)
+      .send(newComment)
+      .expect(200)
+      .expect(res => {
+        expect(res.body.comments.length).toBe(1);
+        expect(res.body.comments[0].text).toBe(newComment.text);
+        expect(res.body.comments[0].user).toBe(user_id);
+      })
+      .end(done);
+  });
+
+  it("should add a reply to a tweet comment", done => {
+    const comment_id = "5ac8ced6d969ba2117170938";
+    const tweet_id = "5aa05812fcbbc803417de0b8";
+    const comment = {
+      comment_id,
+      user: "5aa054ac1a6e5a01b90f591d", // loopylenny
+      text: "Thanks"
+    };
+    request(app)
+      .put(`/tweet/${tweet_id}/reply`)
+      .send(comment)
+      .expect(200)
+      .expect(res => {
+        console.log(res.body);
+        expect(res.body.comments[0].replies.length).toBe(1);
+        expect(res.body.comments[0].replies[0].text).toBe(comment.text);
       })
       .end(done);
   });
