@@ -29,7 +29,7 @@ class EditProfile extends Component {
   handleSubmit(event) {
     event.preventDefault();
     axios
-      .put(`/user/5aa054ac1a6e5a01b90f591d/profile`, {
+      .put(`/user/5aa054ac1a6e5a01b90f591c/profile`, {
         username: this.state.username,
         firstName: this.state.firstname,
         lastName: this.state.lastname,

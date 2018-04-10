@@ -36,7 +36,7 @@ class Profile extends Component {
                 <ul className="profile--stats">
                   <li>
                     <span className="profile--stats-name">Scoops</span>
-                    <span className="profile--stats-number">1432</span>
+                    <span className="profile--stats-number">000</span>
                   </li>
                   <li>
                     <a href="/following">
