@@ -40,7 +40,7 @@ require("./services/passport");
 
 app.use(
   cookieSession({
-    maxeAge: 30 * 24 * 60 * 60 * 1000,
+    maxAge: 30 * 24 * 60 * 60 * 1000,
     keys: [process.env.COOKIE_KEY]
   })
 );
@@ -59,7 +59,7 @@ app.get("/api", (req, res) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: "true" }));
 // Priority serve any static files.
-app.use(express.static(path.resolve(__dirname, "../react/build")));
+// app.use(express.static(path.resolve(__dirname, "../react/build")));
 
 //////////////////////////////
 // Answer requests

@@ -2,11 +2,14 @@
 ///// SCSS Variables
 ////////////////////////////////////////
 
-$brand-color-black: #3e403f;
+$brand-color-black: #200;
+$brand-color-gray: #777;
+$brand-color-lightgray: #d3d3d3;
 $brand-color-white: #ffffff;
-$brand-color-lightgreen: #e3fdf5;
-$brand-color-green: #b8f2e6;
-$brand-color-pink: #ffe6fa;
+$brand-color-lightgreen: #9edfe2;
+$brand-color-green: #00c8cd; //00C8CD 65C6CB
+$brand-color-lightpink: #ffbacf;
+$brand-color-pink: #e59eb4;
 $brand-background-pg: linear-gradient(
   -225deg,
   $brand-color-lightgreen 50%,
@@ -35,7 +38,7 @@ body {
   font-size: $font-size;
   color: $brand-color-black;
   line-height: $line-height;
-  background: $brand-color-white;
+  background: $brand-color-pink;
 }
 
 ////////////////////////////////////////
@@ -89,10 +92,11 @@ body {
 ////////////////////////////////////////
 
 .navbar {
-  background: $brand-color-black;
+  background: $brand-color-green;
   width: 100%;
   margin: 0;
   padding: 10px 0px 5px 0px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
 .navbar ul {
@@ -112,6 +116,7 @@ body {
 
 .navbar img {
   width: 40px;
+  filter: brightness(1.45);
 }
 
 .navbar--selected {
@@ -122,37 +127,45 @@ body {
 ///// Profile
 ////////////////////////////////////////
 
-.profile {
-  position: relative;
-  border-bottom: 10px solid $brand-color-black;
+.profile--container {
+  background: $brand-color-lightpink;
+  padding: 24px 16px;
 }
 
-.profile--background {
-  height: 125px;
+.profile {
+  border-radius: 5px;
   background: $brand-color-white;
-  background-image: $brand-background-pg;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.profile--header {
+  margin: 0;
+  padding: 0;
+  height: 82px;
+  background: $brand-color-green;
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .profile--avatar {
   position: absolute;
-  margin: -50px 0 0 3%;
+  margin: -52px 0 0 14px;
   border: solid $brand-color-white 2px;
   border-radius: 50%;
   height: 100px;
   width: 100px;
   background: $brand-color-black;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .profile--button--edit-profile {
   font-size: $font-size;
   float: right;
-  margin: 10px 3% 0px 0px;
-  padding: 8px 12px;
-  background: $brand-color-green;
-  border: 0px solid $brand-color-black;
-  color: $brand-color-black;
-  border-radius: 5px;
-  font-weight: normal;
+  margin: 16px;
+  background: none;
+  border: none;
+  color: $brand-color-green;
+  font-weight: bold;
   font-family: $main-font;
   cursor: pointer;
 }
@@ -162,33 +175,27 @@ body {
 }
 
 .profile--container--bottom-half {
-  padding: 60px 3% 10px 3%;
-  background: $brand-color-white;
+  padding: 62px 16px 16px 16px;
 }
 
 .profile--name {
-  font-size: $font-size * 1.5;
-  line-height: $line-height * 1.5;
   font-weight: bold;
+  margin-bottom: 8px;
 }
 
 .profile--username {
-  font-size: $font-size * 1.2;
-  line-height: $line-height * 1.2;
   float: left;
-  width: 50%;
 }
 
 .profile--location {
-  font-size: $font-size * 1.2;
-  line-height: $line-height * 1.2;
   float: right;
-  width: 50%;
   text-align: right;
 }
 
 .profile--about {
-  padding: 30px 0px 10px 0px;
+  padding: 8px 0px 0px 0px;
+  clear: both;
+  margin: 8px 0px;
 }
 
 .profile--stats {
@@ -212,129 +219,247 @@ body {
 }
 
 .profile--stats-name {
-  font-size: $font-size * 1.1;
-  line-height: $line-height * 1.1;
   display: block;
   font-weight: bold;
 }
 
-.profile--stats-number a {
-  font-weight: normal;
+.profile--stats-number {
+  font-weight: bold;
   text-decoration: none;
-  color: $brand-color-black;
+  color: $brand-color-pink;
 }
 
 ////////////////////////////////////////
 ///// Edit Profile
 ////////////////////////////////////////
 
-.editprofile--form {
-  background: $brand-background-pg;
-  margin: 0 auto;
-  padding: 0;
+.editprofile--container {
+  background: $brand-color-lightpink;
+  padding: 24px 16px;
   text-align: center;
-  color: $brand-color-black;
 }
 
-.editprofile {
-  margin: 0px;
-  padding: 30px 0px 30px 0px;
+.editprofile--header {
+  margin: 0 auto;
+  padding: 30px 0px;
+  background: $brand-color-green;
+  border-radius: 5px 5px 0 0;
+  color: $brand-color-white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.editprofile--form {
+  padding: 0;
+  background: $brand-color-white;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.editprofile--input-container {
+  padding: 0px 16px;
 }
 
 .editprofile--form label {
+  margin: 16px 0;
+  padding: 0px 0;
   display: block;
-  margin: 0 auto;
-  padding-bottom: 10px;
+  text-align: center;
 }
 
 .editprofile--form label input {
   margin: 0 auto;
-  padding: 10px 3%;
-  width: 88%;
+  padding: 8px 0px;
+  width: 100%;
   height: auto;
-  border: 0px solid $brand-color-black;
-  border-radius: 5px;
+  border: none;
+  border-bottom: 3px solid $brand-color-lightgray;
   background: $brand-color-white;
   resize: none;
   font-size: 16px;
   display: block;
+  outline: 0;
+  &:focus {
+    border-bottom-color: $brand-color-lightgreen;
+  }
 }
 
-.editprofile--form label input:focus {
-  outline: 0;
+.editprofile--button-container {
+  clear: both;
+}
+
+.editprofile--form--cancel {
+  float: left;
+  display: block;
+  font-size: $font-size;
+  width: 45%;
+  margin: 16px 0px;
+  padding: 8px 16px;
+  background: $brand-color-pink;
+  border: 0px solid $brand-color-black;
+  color: $brand-color-white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: $main-font;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.editprofile--form--cancel:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .editprofile--form--save {
+  float: right;
+  display: block;
   font-size: $font-size;
-  width: 94%;
-  margin: 20px 0px 20px 0px;
-  padding: 10px 25px;
+  width: 45%;
+  margin: 16px 0px;
+  padding: 8px 16px;
   background: $brand-color-green;
   border: 0px solid $brand-color-black;
-  color: $brand-color-black;
+  color: $brand-color-white;
   border-radius: 5px;
-  font-weight: normal;
+  font-weight: bold;
   font-family: $main-font;
   cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.editprofile--form--save:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 ////////////////////////////////////////
 ///// Feed
 ////////////////////////////////////////
 
+.feed--header-container {
+  padding: 0px 32px;
+  text-align: center;
+  background: $brand-color-lightpink;
+}
+
+.feed--button--everybody {
+  float: left;
+  display: block;
+  font-size: $font-size;
+  width: 40%;
+  margin: 0px 0px 24px 0px;
+  padding: 8px 16px;
+  background: $brand-color-green;
+  border: 0px solid $brand-color-black;
+  color: $brand-color-white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: $main-font;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.feed--button--everybody:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.feed--button--following {
+  float: right;
+  display: block;
+  font-size: $font-size;
+  width: 40%;
+  margin: 0px 0px 24px 0px;
+  padding: 8px 16px;
+  background: $brand-color-green;
+  border: 0px solid $brand-color-black;
+  color: $brand-color-white;
+  border-radius: 5px;
+  font-weight: bold;
+  font-family: $main-font;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.feed--button--following:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.clear {
+  clear: both;
+}
+
+.feed {
+  padding: 0px 16px 24px 16px;
+  margin: 0;
+  background: $brand-color-lightpink;
+}
+
+.feed--container {
+  background: $brand-color-lightpink;
+  padding: 24px 0px 0px 0px;
+  margin: 0;
+}
+
 .feed--list {
   list-style: none;
-  background: $brand-color-white;
+  background: $brand-color-lightpink;
   padding: 0;
   margin: 0;
 }
 
 .feed--list-item {
-  background: $brand-color-lightgreen;
-  border-bottom: 2px solid $brand-color-white;
-  padding: 10px 3%;
+  background: $brand-color-white;
+  padding: 8px 16px;
+  margin: 0px 0px 16px 0px;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.feed--list-item:nth-child(even) {
-  background: $brand-color-pink;
+.feed--list-item:last-child {
+  margin: 0px;
 }
 
 .feed--avatar {
-  float: left;
-  border: 1px solid $brand-color-white;
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 44px;
+  width: 44px;
   background: $brand-color-black;
   display: block;
-  margin-right: 3%;
-  margin-top: 10px;
+  margin-right: 16px;
+  position: absolute;
 }
 
-.feed--user {
-  font-size: $font-size * 0.9;
-  line-height: $line-height * 0.9;
+.feed--user a {
+  text-decoration: none;
+}
+
+.feed--user-container {
+  padding-left: 52px;
+  position: relative;
 }
 
 .feed--username {
-  font-size: $font-size * 1.1;
-  line-height: $line-height * 1.1;
+  font-size: $font-size;
   font-weight: bold;
+  color: $brand-color-green;
 }
 
 .feed--date {
-  color: $brand-color-black;
+  color: $brand-color-gray;
+  font-size: $font-size * 0.8;
 }
 
 .feed--message {
   word-wrap: break-word;
+  margin: 0;
 }
 
 .feed--list-item--actions {
   padding-top: 10px;
   text-align: left;
   list-style: none;
-  padding: 10px 0 0 60px;
+  padding: 8px 0 0 0px;
   margin: 0;
 }
 
@@ -354,18 +479,17 @@ body {
 }
 
 .feed--delete-button {
-  font-size: $font-size * 0.8;
-  float: none;
-  display: block;
-  margin: 0;
-  padding: 5px 15px;
-  background: $brand-color-green;
-  border: 0px solid $brand-color-black;
-  color: $brand-color-black;
-  border-radius: 5px;
-  font-weight: normal;
+  font-size: $font-size * 0.7;
   font-family: $main-font;
+  font-weight: bold;
+  color: $brand-color-pink;
+  background: none;
+  border: none;
   cursor: pointer;
+  margin: 16px;
+  float: right;
+  padding: 0;
+  margin: -16px 0px 0px 0px;
 }
 
 ////////////////////////////////////////
@@ -373,113 +497,116 @@ body {
 ////////////////////////////////////////
 
 .search--container {
-  width: 100%;
-  vertical-align: middle;
-  white-space: nowrap;
-  position: relative;
+  background: $brand-color-lightpink;
+  padding: 24px 16px;
+}
+
+.search {
+  background: $brand-color-white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: $brand-color-black;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+}
+
+.search--header {
+  padding: 30px 0px;
+  margin: 0px 0px 16px 0px;
+  background: $brand-color-green;
+  border-radius: 5px 5px 0 0;
+  color: $brand-color-white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.search--form {
+  margin: 0 auto;
+  padding: 0;
+  width: 94%;
 }
 
 .search--input {
-  width: 80%;
-  margin: 25px auto;
-  background-color: #f5f8fa;
-  border-radius: 4px;
-  border: 1px solid #e6ecf0;
-  box-sizing: border-box;
-  color: #14171a;
+  margin: 0 auto;
+  padding: 8px 0px;
+  width: 100%;
+  height: auto;
+  border: none;
+  border-bottom: 3px solid $brand-color-lightgray;
+  background: $brand-color-white;
+  resize: none;
+  font-size: 16px;
   display: block;
-  font-size: 12px;
-  height: 32px;
-  line-height: 16px;
-  padding: 8px 32px 8px 12px;
-  transition: all 0.2s ease-in-out;
+  outline: 0;
+  &:focus {
+    border-bottom-color: $brand-color-lightgreen;
+  }
 }
 
 .search--input:focus {
-  outline: none;
-  border: 2px solid $brand-color-green;
+  outline: 0;
 }
 
-.search--container img {
-  position: absolute;
-  top: 23%;
-  z-index: 1;
-  width: 18px;
-  right: 20%;
-}
-
-.searchResults--list li {
-  display: inline;
-  margin: 0 5px;
-  padding: 7px;
-  font-size: 13px;
-}
-
-.searchResults--outerContainer {
-  border: 1px solid #e6e6e6;
-  box-shadow: 3px 3px 7px -1px #e8e6e6;
+.search--form--submit-button {
+  font-size: 14px;
+  width: 100%;
+  margin: 16px 0px;
+  padding: 10px;
+  background: $brand-color-green;
+  border: 0px solid $brand-color-pink;
   border-radius: 5px;
-  width: 80%;
-  margin: 30px auto;
+  font-weight: bold;
+  font-family: $main-font;
+  cursor: pointer;
+  font-size: $font-size;
+  color: $brand-color-white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.searchResults--container {
-  display: flex;
-  height: 35px;
-  justify-content: center;
-  align-items: center;
-  padding: 9px;
-  margin: 0 auto;
+.search--form--submit-button:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
-.searchResults--container:hover {
-  background-color: lighten($brand-color-green, 15%);
-  // border: 1px solid $brand-color;
-}
-
-.searchResults--container .avatar {
-  width: 21px;
-  border: 1px solid #e8e2e2;
-  border-radius: 19px;
-  padding: 7px;
-}
-
-.searchResults--list .name {
-  font-weight: 800;
-}
-
-.searchResults--list .name:hover {
-  color: darken($brand-color-green, 10%);
-}
-
-.searchResults--list .handle {
-  color: grey;
+.search--form--submit-button:focus {
+  outline: 0;
 }
 
 ////////////////////////////////////////
 ///// Scoop
 ////////////////////////////////////////
 
+.scoop--container {
+  background: $brand-color-lightpink;
+  padding: 24px 16px;
+}
+
 .scoop {
-  background: $brand-background-pg;
-  margin: 0 auto;
+  background: $brand-color-white;
+  margin: 0;
   padding: 0;
   text-align: center;
   color: $brand-color-black;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
 }
 
-.scoop h1 {
-  margin: 0;
-  padding: 30px 0px 30px 0px;
+.scoop--header {
+  padding: 30px 0px;
+  margin: 0px 0px 16px 0px;
+  background: $brand-color-green;
+  border-radius: 5px 5px 0 0;
+  color: $brand-color-white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .scoop--textarea {
   margin: 0;
-  padding: 10px 3%;
-  width: 94%;
+  padding: 0;
+  width: 100%;
   height: 100px;
-  border: 0px solid $brand-color-black;
-  border-radius: 5px;
+  border: none;
+  border-bottom: 3px solid $brand-color-lightgray;
   background: $brand-color-white;
   resize: none;
   font-size: 16px;
@@ -487,6 +614,7 @@ body {
 
 .scoop--textarea:focus {
   outline: 0;
+  border-bottom: 3px solid $brand-color-lightgreen;
 }
 
 .scoop--form {
@@ -496,22 +624,32 @@ body {
 }
 
 .scoop--form--submit-button {
-  font-size: 14px;
+  font-size: $font-size;
+  font-weight: bold;
   width: 100%;
-  margin: 15px 0px 30px 0px;
-  padding: 10px;
+  margin: 16px 0px 16px 0px;
+  padding: 8px;
   background: $brand-color-green;
-  border: 0px solid $brand-color-black;
+  border: 0px solid $brand-color-pink;
   border-radius: 5px;
-  font-weight: normal;
   font-family: $main-font;
   cursor: pointer;
   font-size: $font-size;
-  color: $brand-color-black;
+  color: $brand-color-white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.scoop--form--submit-button:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
 
 .scoop--form--submit-button:focus {
   outline: 0;
+}
+
+.scoop--characters-remaining {
+  color: $brand-color-gray;
 }
 
 ////////////////////////////////////////
@@ -519,12 +657,14 @@ body {
 ////////////////////////////////////////
 
 .footer--list {
-  background: $brand-color-black;
+  background: $brand-color-pink;
   width: 100%;
   margin: 0;
-  padding: 10px 0px 10px 0px;
+  padding: 8px 0px 8px 0px;
   color: $brand-color-white;
   text-align: center;
+  border-top: 1px solid rgba(0, 0, 0, 0.23);
+  //box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 .footer--list ul {
@@ -546,6 +686,74 @@ body {
 }
 
 .footer--list a {
-  color: $brand-color-pink;
+  color: $brand-color-white;
   text-decoration: none;
+}
+
+////////////////////////////////////////
+///// Follow Views
+////////////////////////////////////////
+
+.follow {
+  padding: 0px 16px 24px 16px;
+  margin: 0;
+  background: $brand-color-lightpink;
+}
+
+.follow--container {
+  background: $brand-color-lightpink;
+  padding: 24px 0px 0px 0px;
+  margin: 0;
+}
+
+.follow--list {
+  list-style: none;
+  background: $brand-color-lightpink;
+  padding: 0;
+  margin: 0;
+}
+
+.follow--list-item {
+  background: $brand-color-white;
+  padding: 8px 16px;
+  margin: 0px 0px 16px 0px;
+  border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.follow--list-item:last-child {
+  margin: 0px;
+}
+
+.follow--avatar {
+  float: left;
+  border-radius: 50%;
+  height: 44px;
+  width: 44px;
+  background: $brand-color-black;
+  display: block;
+  margin-right: 16px;
+}
+
+.follow--username {
+  color: $brand-color-green;
+  font-weight: bold;
+}
+
+.follow--leftside {
+  display: block;
+}
+
+.follow--unfollow-button {
+  font-size: $font-size * 0.7;
+  border: none;
+  background: none;
+  color: $brand-color-pink;
+  font-weight: bold;
+  margin: 16px;
+  font-family: $main-font;
+  cursor: pointer;
+  float: right;
+  padding: 0;
+  margin: -16px 0px 0px 0px;
 }

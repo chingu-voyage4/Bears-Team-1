@@ -27,7 +27,18 @@ class FeedView extends Component {
   }
 
   render() {
-    return <Feed scoops={this.state.scoops} />;
+    return (
+      <div className="feed--container">
+        <div className="feed--header-container">
+          <div className="feed--header">
+            <div className="feed--button--everybody">Everybody</div>
+            <div className="feed--button--following">Following</div>
+          </div>
+          <div className="clear" />
+        </div>
+        <Feed scoops={this.state.scoops} />
+      </div>
+    );
   }
 }
 

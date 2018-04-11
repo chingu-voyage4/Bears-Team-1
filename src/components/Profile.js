@@ -14,14 +14,14 @@ class Profile extends Component {
     const profile = this.props.profile;
 
     return (
-      <div className="container">
+      <div className="profile--container">
         <div className="profile">
-          <div className="profile--background" />
+          <div className="profile--header" />
           <div>
             <a className="profile--avatar" />
             <Link to="editprofile">
               <button className="profile--button--edit-profile">
-                Edit profile
+                Edit Profile
               </button>
             </Link>
             <Logout />
@@ -32,23 +32,26 @@ class Profile extends Component {
               <div className="profile--username">{profile.username}</div>
               <div className="profile--location">{profile.location}</div>
               <div className="profile--about">{profile.about}</div>
-
               <div>
                 <ul className="profile--stats">
                   <li>
                     <span className="profile--stats-name">Scoops</span>
-                    <span className="profile--stats-number">1432</span>
+                    <span className="profile--stats-number">000</span>
                   </li>
                   <li>
                     <a href="/following">
                       <span className="profile--stats-name">Following</span>
-                      <span className="profile--stats-number">847</span>
+                      <span className="profile--stats-number">
+                        {profile.following.length}
+                      </span>
                     </a>
                   </li>
                   <li>
                     <a href="/followers">
                       <span className="profile--stats-name">Followers</span>
-                      <span className="profile--stats-number">123</span>
+                      <span className="profile--stats-number">
+                        {profile.followers.length}
+                      </span>
                     </a>
                   </li>
                 </ul>

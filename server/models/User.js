@@ -20,9 +20,7 @@ const User = mongoose.model("User", {
     trim: true
   },
   googleID: {
-    type: String,
-    required: true,
-    trim: true
+    type: String
   },
   gitId: {
     type: Number

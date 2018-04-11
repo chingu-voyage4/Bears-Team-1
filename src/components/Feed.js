@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
 import reply from "../assets/iconmonstr-speech-bubble-2-240.png";
@@ -70,7 +71,7 @@ class Feed extends Component {
     const scoops = this.props.scoops;
 
     return (
-      <div className="container">
+      <div className="feed">
         <ol className="feed--list">
           {scoops !== null &&
             scoops.map((scoop, index) => (
@@ -78,18 +79,20 @@ class Feed extends Component {
                 <div>
                   <div className="feed--avatar" />
                 </div>
-                <div>
+                <div className="feed--user-container">
                   <div className="feed--user">
-                    <span className="feed--username">
-                      {scoop.creator.username}
-                    </span>
+                    <Link to={`/profile/${scoop._id}`}>
+                      <span className="feed--username">
+                        {scoop.creator.username}
+                      </span>
+                    </Link>
                     <span className="feed--date">
-                      {" - "}
-                      {moment(scoop.date).fromNow()}
+                      {" "}
+                      &middot; {moment(scoop.date).fromNow()}
                     </span>
                   </div>
                   <div>
-                    <span className="feed--message">{scoop.text}</span>
+                    <p className="feed--message">{scoop.text}</p>
                   </div>
                   <ul className="feed--list-item--actions">
                     <li>
@@ -103,20 +106,19 @@ class Feed extends Component {
                         {this.likeButton("isLiked")}0
                       </form>
                     </li>
-                    <li>
-                      <form
-                        data-scoopid={scoop._id}
-                        data-listindex={index}
-                        onSubmit={this.handleDelete}
-                      >
-                        <input
-                          type="submit"
-                          value="Delete"
-                          className="feed--delete-button"
-                        />
-                      </form>
-                    </li>
                   </ul>
+
+                  <form
+                    data-scoopid={scoop._id}
+                    data-listindex={index}
+                    onSubmit={this.handleDelete}
+                  >
+                    <input
+                      type="submit"
+                      value="Delete"
+                      className="feed--delete-button"
+                    />
+                  </form>
                 </div>
               </li>
             ))}
