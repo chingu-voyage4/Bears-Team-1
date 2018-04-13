@@ -42,7 +42,7 @@ class Profile extends Component {
                     <a href="/following">
                       <span className="profile--stats-name">Following</span>
                       <span className="profile--stats-number">
-                        {profile.following.length}
+                        {profile.following ? profile.following.length : 0}
                       </span>
                     </a>
                   </li>
@@ -50,7 +50,7 @@ class Profile extends Component {
                     <a href="/followers">
                       <span className="profile--stats-name">Followers</span>
                       <span className="profile--stats-number">
-                        {profile.followers.length}
+                        {profile.followers ? profile.followers.length : 0}
                       </span>
                     </a>
                   </li>

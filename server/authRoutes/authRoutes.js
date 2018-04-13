@@ -29,7 +29,7 @@ module.exports = app => {
     console.log(req.user); //We will want to also console log it.
   });
 
-  app.get("/auth/isLoggedIn", function(req, res) {
+  app.get("/auth/isAuthenticated", function(req, res) {
     if (req.user) {
       console.log(req.user);
       res.send(req.user);
