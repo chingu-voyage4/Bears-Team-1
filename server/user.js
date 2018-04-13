@@ -3,6 +3,17 @@ const router = express.Router();
 const User = require("./models/User");
 const Tweet = require("./models/Tweet");
 
+const authCheck = (req, res, next) => {
+  if (req.user) {
+    // If logged in
+    next();
+  } else {
+    // If user is not logged in
+    console.log("Please log in to complete your request");
+    res.redirect("/auth/google");
+  }
+};
+
 // Get all users
 router.get("/all", function(req, res) {
   User.find()
@@ -67,7 +78,7 @@ router.get("/:user_id/profile", (req, res) => {
 });
 
 //Edit a user's information
-router.put("/:user_id/profile", (req, res) => {
+router.put("/:user_id/profile", authCheck, (req, res) => {
   const user_id = req.params.user_id;
   const username = req.body.username;
   const firstName = req.body.firstName;

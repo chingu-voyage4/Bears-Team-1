@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 class EditProfile extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: null,
       username: "",
       firstname: "",
       lastname: "",
       location: "",
-      about: ""
+      about: "",
+      redirectToNewPage: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,7 +31,7 @@ class EditProfile extends Component {
   handleSubmit(event) {
     event.preventDefault();
     axios
-      .put(`/user/5aa054ac1a6e5a01b90f591c/profile`, {
+      .put(`/user/${this.state.id}/profile`, {
         username: this.state.username,
         firstName: this.state.firstname,
         lastName: this.state.lastname,
@@ -38,6 +40,7 @@ class EditProfile extends Component {
       })
       .then(response => {
         console.log("Profile saved");
+        this.setState({ redirectToNewPage: true });
       })
       .catch(error => {
         console.log(error);
@@ -46,10 +49,11 @@ class EditProfile extends Component {
 
   getUserProfile(event) {
     axios
-      .get(`/user/${"5aa054ac1a6e5a01b90f591d"}/profile`)
+      .get("auth/isAuthenticated")
       .then(response => {
         console.log("profile:", response);
         this.setState({
+          id: response.data._id,
           username: response.data.username || "",
           firstname: response.data.firstName || "",
           lastname: response.data.lastName || "",
@@ -67,6 +71,10 @@ class EditProfile extends Component {
   }
 
   render() {
+    if (this.state.redirectToNewPage) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <div className="editprofile--container">
         <form onSubmit={this.handleSubmit} className="editprofile--form">

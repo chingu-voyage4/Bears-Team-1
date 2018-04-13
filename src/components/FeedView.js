@@ -6,11 +6,12 @@ class FeedView extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      profile: null,
       scoops: null
     };
   }
 
-  getAllScoops(event) {
+  getAllScoops() {
     axios
       .get("/tweet/all")
       .then(response => {

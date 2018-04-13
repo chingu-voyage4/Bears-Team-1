@@ -15,21 +15,9 @@ class ProfileView extends Component {
     };
   }
 
-  getAuthenticatedProfile() {
+  getUserProfile(ID) {
     axios
-      .get("auth/isAuthenticated")
-      .then(response => {
-        console.log("isAuthenticated:", response.data);
-        this.setState({ profile: response.data });
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }
-
-  getUserProfile() {
-    axios
-      .get(`/user/${this.state.userID}/profile`)
+      .get(`/user/${ID}/profile`)
       .then(response => {
         console.log("profile:", response.data);
         this.setState({ profile: response.data });
@@ -39,9 +27,9 @@ class ProfileView extends Component {
       });
   }
 
-  getAllScoops() {
+  getAllScoops(ID) {
     axios
-      .get(`/user/${this.state.profile.id}/tweets`)
+      .get(`/user/${ID}/tweets`)
       .then(response => {
         console.log("scoops:", response);
         this.setState({ scoops: response.data });
@@ -53,23 +41,15 @@ class ProfileView extends Component {
 
   componentDidMount() {
     if (this.state.userID) {
-      this.getUserProfile();
-      console.log("Other user fetched");
-    }
-
-    //if (this.state.isAuthenticated) {
-    this.getAuthenticatedProfile();
-    //  console.log('Logged in user fetched');
-    //}
-
-    if (this.state.profile !== null) {
-      this.getAllScoops();
-      console.log("Profile scoops fetched");
+      this.getUserProfile(this.state.userID);
+      this.getAllScoops(this.state.userID);
+    } else if (this.props.loggedInUser) {
+      console.log(this.props.loggedInUser);
+      this.getAllScoops(this.props.loggedInUser._id);
     }
   }
 
   render() {
-    console.log(this.state.profile);
     return (
       <div>
         {this.state.profile ? <Profile profile={this.state.profile} /> : null}
