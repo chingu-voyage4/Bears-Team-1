@@ -81,7 +81,7 @@ class Feed extends Component {
                 </div>
                 <div className="feed--user-container">
                   <div className="feed--user">
-                    <Link to={`/profile/${scoop._id}`}>
+                    <Link to={`/profile/${scoop.creator._id}`}>
                       <span className="feed--username">
                         {scoop.creator.username}
                       </span>

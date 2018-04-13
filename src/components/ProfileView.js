@@ -11,7 +11,7 @@ class ProfileView extends Component {
       profile: null,
       scoops: null,
       userID: this.props.match.params.id,
-      isAuthenticated: null
+      signedInUser: null
     };
   }
 
@@ -40,12 +40,24 @@ class ProfileView extends Component {
   }
 
   componentDidMount() {
+    // If clicking another user, get their profile,
     if (this.state.userID) {
       this.getUserProfile(this.state.userID);
       this.getAllScoops(this.state.userID);
-    } else if (this.props.loggedInUser) {
-      console.log(this.props.loggedInUser);
-      this.getAllScoops(this.props.loggedInUser._id);
+    } else {
+      // else get signed in user's profile
+      axios
+        .get("auth/isAuthenticated")
+        .then(response => {
+          this.setState({
+            signedInUser: response.data
+          });
+          this.getUserProfile(response.data._id);
+          this.getAllScoops(response.data._id);
+        })
+        .catch(error => {
+          console.log(error);
+        });
     }
   }
 
