@@ -63,7 +63,7 @@ router.get("/feed", authCheck, (req, res) => {
 
     // Returns all tweets from every user referenced in feedOIDs, sorts by date
     Tweet.find({ $or: query })
-      .sort({ date: "asc" })
+      .sort({ date: "descending" })
       .then(feed => {
         res.send(feed);
       });
@@ -85,6 +85,13 @@ router.put("/:user_id/profile", authCheck, (req, res) => {
   const lastName = req.body.lastName;
   const location = req.body.location;
   const about = req.body.about;
+
+  /* Block a signed in user from editing another user's profile?
+  if (req.user._id != req.params.user_id) {
+    console.log("Signed in user doesn't match profile being edited")
+    res.send("Signed in user doesn't match profile being edited"); or err?
+  }
+*/
 
   User.findOneAndUpdate(
     { _id: user_id },

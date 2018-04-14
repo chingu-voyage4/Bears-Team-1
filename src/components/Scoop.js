@@ -40,7 +40,7 @@ class Scoop extends Component {
 
   render() {
     if (this.state.redirectToNewPage) {
-      return <Redirect to="/feed" />;
+      return <Redirect to="/" />;
     }
 
     return (
