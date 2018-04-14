@@ -11,7 +11,8 @@ class ProfileView extends Component {
       profile: null,
       scoops: null,
       userID: this.props.match.params.id,
-      signedInUser: null
+      signedInUser: null,
+      signedInUserBoolean: false
     };
   }
 
@@ -50,7 +51,8 @@ class ProfileView extends Component {
         .get("auth/isAuthenticated")
         .then(response => {
           this.setState({
-            signedInUser: response.data
+            signedInUser: response.data,
+            signedInUserBoolean: true
           });
           this.getUserProfile(response.data._id);
           this.getAllScoops(response.data._id);
@@ -64,7 +66,12 @@ class ProfileView extends Component {
   render() {
     return (
       <div>
-        {this.state.profile ? <Profile profile={this.state.profile} /> : null}
+        {this.state.profile ? (
+          <Profile
+            profile={this.state.profile}
+            signedInUserBoolean={this.state.signedInUserBoolean}
+          />
+        ) : null}
         {this.state.scoops ? <Feed scoops={this.state.scoops} /> : null}
         {!this.state.scoops && !this.state.profile ? "Please log in" : null}
       </div>

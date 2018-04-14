@@ -12,19 +12,26 @@ class Profile extends Component {
 
   render() {
     const profile = this.props.profile;
-
+    console.log("signedInUserBoolean:", this.props.signedInUserBoolean);
     return (
       <div className="profile--container">
         <div className="profile">
           <div className="profile--header" />
           <div>
             <a className="profile--avatar" />
-            <Link to="editprofile">
-              <button className="profile--button--edit-profile">
-                Edit Profile
-              </button>
-            </Link>
-            <Logout />
+            {this.props.signedInUserBoolean ? (
+              <div>
+                <Link to="editprofile">
+                  <button className="profile--button--edit-profile">
+                    Edit Profile
+                  </button>
+                </Link>
+                <Logout />{" "}
+              </div>
+            ) : (
+              <button className="profile--button--edit-profile">Follow</button>
+            )}
+
             <div className="profile--container--bottom-half">
               <div className="profile--name">
                 {profile.firstName} {profile.lastName}
