@@ -29,7 +29,7 @@ class ProfileView extends Component {
 
   getAllScoops(ID) {
     axios
-      .get(`/user/${ID}/tweets`)
+      .get(`/user/${ID}/scoops`)
       .then(response => {
         console.log("scoops:", response);
         this.setState({ scoops: response.data });

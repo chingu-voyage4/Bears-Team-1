@@ -27,7 +27,7 @@ class FeedView extends Component {
 
   getFollowingScoops() {
     axios
-      .get("user/following/tweets")
+      .get("/user/feed")
       .then(response => {
         console.log(response);
         this.setState({ scoops: response.data });
@@ -35,7 +35,6 @@ class FeedView extends Component {
       .catch(error => {
         console.log(error);
       });
-    console.log("this ran");
   }
 
   componentDidMount() {

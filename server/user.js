@@ -36,9 +36,9 @@ router.post("/new", function(req, res) {
     .catch(err => res.status(400).send(err));
 });
 
-// Find all tweets by user_id
-router.get("/following/tweets", authCheck, (req, res) => {
-  const creator = req.user._id;
+// Get a specific user's scoops
+router.get("/:user_id/scoops", (req, res) => {
+  const creator = req.params.user_id;
   Tweet.find({ creator })
     .populate("creator")
     .exec(function(err, docs) {
@@ -47,9 +47,9 @@ router.get("/following/tweets", authCheck, (req, res) => {
     });
 });
 
-// Get a user's feed
-router.get("/:self_id/feed", (req, res) => {
-  const self_id = req.params.self_id;
+// Get a signed in user's feed (scoops created by users whom the signed in user is following)
+router.get("/feed", authCheck, (req, res) => {
+  const self_id = req.user._id;
 
   User.findById(self_id, function(err, self) {
     // Get array of ObjectIDs (OIDs) from self and followed users
