@@ -12,12 +12,12 @@ import Scoop from "./components/Scoop";
 const Main = props => (
   <main>
     <Switch>
-      <Route exact path="/" component={ProfileView} />
+      <Route exact path="/profile" component={ProfileView} />
       <Route path="/profile/:id" component={ProfileView} />
       <Route exact path="/followers/:id" component={Followers} />
       <Route exact path="/following/:id" component={Following} />
       <Route exact path="/editprofile" component={EditProfile} />
-      <Route path="/feed" component={FeedView} />
+      <Route path="/" component={FeedView} />
       <Route path="/search" component={Search} />
       <Route path="/notifications" component={Notifications} />
       <Route path="/scoop" component={Scoop} />

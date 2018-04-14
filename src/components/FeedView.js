@@ -9,6 +9,8 @@ class FeedView extends Component {
       profile: null,
       scoops: null
     };
+    this.getAllScoops = this.getAllScoops.bind(this);
+    this.getFollowingScoops = this.getFollowingScoops.bind(this);
   }
 
   getAllScoops() {
@@ -23,6 +25,19 @@ class FeedView extends Component {
       });
   }
 
+  getFollowingScoops() {
+    axios
+      .get("user/following/tweets")
+      .then(response => {
+        console.log(response);
+        this.setState({ scoops: response.data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+    console.log("this ran");
+  }
+
   componentDidMount() {
     this.getAllScoops();
   }
@@ -32,8 +47,18 @@ class FeedView extends Component {
       <div className="feed--container">
         <div className="feed--header-container">
           <div className="feed--header">
-            <div className="feed--button--everybody">Everybody</div>
-            <div className="feed--button--following">Following</div>
+            <div
+              onClick={this.getAllScoops}
+              className="feed--button--everybody"
+            >
+              Everybody
+            </div>
+            <div
+              onClick={this.getFollowingScoops}
+              className="feed--button--following"
+            >
+              Following
+            </div>
           </div>
           <div className="clear" />
         </div>

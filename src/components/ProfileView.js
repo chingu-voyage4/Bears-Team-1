@@ -66,6 +66,7 @@ class ProfileView extends Component {
       <div>
         {this.state.profile ? <Profile profile={this.state.profile} /> : null}
         {this.state.scoops ? <Feed scoops={this.state.scoops} /> : null}
+        {!this.state.scoops && !this.state.profile ? "Please log in" : null}
       </div>
     );
   }

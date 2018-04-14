@@ -37,8 +37,8 @@ router.post("/new", function(req, res) {
 });
 
 // Find all tweets by user_id
-router.get("/:user_id/tweets", (req, res) => {
-  const creator = req.params.user_id;
+router.get("/following/tweets", authCheck, (req, res) => {
+  const creator = req.user._id;
   Tweet.find({ creator })
     .populate("creator")
     .exec(function(err, docs) {
