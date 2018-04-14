@@ -39,26 +39,20 @@ class Profile extends Component {
                     <span className="profile--stats-number">000</span>
                   </li>
                   <li>
-                    {
-                      //<a href="/following">
-                    }
                     <Link to={`/following/${profile._id}`}>
                       <span className="profile--stats-name">Following</span>
                       <span className="profile--stats-number">
                         {profile.following ? profile.following.length : 0}
                       </span>
                     </Link>
-                    {
-                      //</a>
-                    }
                   </li>
                   <li>
-                    <a href="/followers">
+                    <Link to={`/followers/${profile._id}`}>
                       <span className="profile--stats-name">Followers</span>
                       <span className="profile--stats-number">
                         {profile.followers ? profile.followers.length : 0}
                       </span>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>
