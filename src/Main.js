@@ -15,7 +15,7 @@ const Main = props => (
       <Route exact path="/" component={ProfileView} />
       <Route path="/profile/:id" component={ProfileView} />
       <Route exact path="/followers" component={Followers} />
-      <Route exact path="/following" component={Following} />
+      <Route exact path="/following/:id" component={Following} />
       <Route exact path="/editprofile" component={EditProfile} />
       <Route path="/feed" component={FeedView} />
       <Route path="/search" component={Search} />

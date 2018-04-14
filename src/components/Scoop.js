@@ -26,7 +26,6 @@ class Scoop extends Component {
     console.log("Here's the Scoop:", this.state.scoopText);
     axios
       .post("tweet/new", {
-        creator: this.props.loggedInUser._id,
         text: this.state.scoopText
       })
       .then(response => {

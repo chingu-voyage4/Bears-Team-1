@@ -39,12 +39,18 @@ class Profile extends Component {
                     <span className="profile--stats-number">000</span>
                   </li>
                   <li>
-                    <a href="/following">
+                    {
+                      //<a href="/following">
+                    }
+                    <Link to={`/following/${profile._id}`}>
                       <span className="profile--stats-name">Following</span>
                       <span className="profile--stats-number">
                         {profile.following ? profile.following.length : 0}
                       </span>
-                    </a>
+                    </Link>
+                    {
+                      //</a>
+                    }
                   </li>
                   <li>
                     <a href="/followers">

@@ -24,9 +24,9 @@ router.get("/all", (req, res) => {
 });
 
 // Post a new tweet
-router.post("/new", (req, res) => {
+router.post("/new", authCheck, (req, res) => {
   const newTweet = new Tweet({
-    creator: req.body.creator,
+    creator: req.user._id,
     text: req.body.text
   });
 
