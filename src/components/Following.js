@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 class Following extends Component {
@@ -52,10 +53,12 @@ class Following extends Component {
                     <div className="follow--avatar" />
 
                     <div>
-                      <div className="follow--user">
-                        <div className="follow--username">
-                          {following.username}
-                        </div>
+                      <div className="feed--user">
+                        <Link to={`/profile/${following._id}`}>
+                          <span className="feed--username">
+                            {following.username}
+                          </span>
+                        </Link>
                         <div className="follow--name">
                           {following.firstName} {following.lastName}
                         </div>
