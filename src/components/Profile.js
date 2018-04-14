@@ -26,7 +26,7 @@ class Profile extends Component {
                     Edit Profile
                   </button>
                 </Link>
-                <Logout />{" "}
+                <Logout />
               </div>
             ) : (
               <button className="profile--button--edit-profile">Follow</button>
