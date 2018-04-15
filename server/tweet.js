@@ -2,6 +2,17 @@ const express = require("express");
 const router = express.Router();
 const Tweet = require("./models/Tweet");
 
+const authCheck = (req, res, next) => {
+  if (req.user) {
+    // If logged in
+    next();
+  } else {
+    // If user is not logged in
+    console.log("Please log in to complete your request");
+    res.redirect("/auth/google");
+  }
+};
+
 // Get all tweets
 router.get("/all", (req, res) => {
   Tweet.find({})
@@ -13,9 +24,9 @@ router.get("/all", (req, res) => {
 });
 
 // Post a new tweet
-router.post("/new", (req, res) => {
+router.post("/new", authCheck, (req, res) => {
   const newTweet = new Tweet({
-    creator: req.body.creator,
+    creator: req.user._id,
     text: req.body.text
   });
 

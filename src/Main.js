@@ -10,15 +10,15 @@ import Notifications from "./components/Notifications";
 import Scoop from "./components/Scoop";
 import Login from "./components/Login";
 
-const Main = () => (
+const Main = props => (
   <main>
     <Switch>
-      <Route exact path="/" component={ProfileView} />
+      <Route exact path="/profile" component={ProfileView} />
       <Route path="/profile/:id" component={ProfileView} />
-      <Route exact path="/followers" component={Followers} />
-      <Route exact path="/following" component={Following} />
+      <Route exact path="/followers/:id" component={Followers} />
+      <Route exact path="/following/:id" component={Following} />
       <Route exact path="/editprofile" component={EditProfile} />
-      <Route path="/feed" component={FeedView} />
+      <Route exact path="/" component={FeedView} />
       <Route path="/search" component={Search} />
       <Route path="/notifications" component={Notifications} />
       <Route path="/scoop" component={Scoop} />

@@ -1,17 +1,19 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 class Followers extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      followers: null
+      followers: null,
+      userID: this.props.match.params.id
     };
   }
 
   componentDidMount() {
     axios
-      .get(`/user/${"5aa054ac1a6e5a01b90f591c"}/followers`)
+      .get(`/user/${this.state.userID}/followers`)
       .then(response => {
         console.log(response);
         this.setState({ followers: response.data });
@@ -35,10 +37,12 @@ class Followers extends Component {
                     <div className="follow--avatar" />
                   </div>
                   <div>
-                    <div className="follow--user">
-                      <div className="follow--username">
-                        {follower.username}
-                      </div>
+                    <div className="feed--user">
+                      <Link to={`/profile/${follower._id}`}>
+                        <span className="feed--username">
+                          {follower.username}
+                        </span>
+                      </Link>
                       <div className="follow--name">
                         {follower.firstName} {follower.lastName}
                       </div>

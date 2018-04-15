@@ -12,19 +12,26 @@ class Profile extends Component {
 
   render() {
     const profile = this.props.profile;
-
+    console.log("signedInUserBoolean:", this.props.signedInUserBoolean);
     return (
       <div className="profile--container">
         <div className="profile">
           <div className="profile--header" />
           <div>
             <a className="profile--avatar" />
-            <Link to="editprofile">
-              <button className="profile--button--edit-profile">
-                Edit Profile
-              </button>
-            </Link>
-            <Logout />
+            {this.props.signedInUserBoolean ? (
+              <div>
+                <Link to="editprofile">
+                  <button className="profile--button--edit-profile">
+                    Edit Profile
+                  </button>
+                </Link>
+                <Logout />
+              </div>
+            ) : (
+              <button className="profile--button--edit-profile">Follow</button>
+            )}
+
             <div className="profile--container--bottom-half">
               <div className="profile--name">
                 {profile.firstName} {profile.lastName}
@@ -39,20 +46,20 @@ class Profile extends Component {
                     <span className="profile--stats-number">000</span>
                   </li>
                   <li>
-                    <a href="/following">
+                    <Link to={`/following/${profile._id}`}>
                       <span className="profile--stats-name">Following</span>
                       <span className="profile--stats-number">
-                        {profile.following.length}
+                        {profile.following ? profile.following.length : 0}
                       </span>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/followers">
+                    <Link to={`/followers/${profile._id}`}>
                       <span className="profile--stats-name">Followers</span>
                       <span className="profile--stats-number">
-                        {profile.followers.length}
+                        {profile.followers ? profile.followers.length : 0}
                       </span>
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

@@ -35,12 +35,14 @@
   }
 
   a {
+    cursor: pointer;
     display: block;
     text-align: center;
+
     color: $brand-color-white;
     font-size: 1.1em;
-    font-weight: bold;
     text-decoration: none;
+
     background-color: $brand-color-green;
     border: 1px solid transparent;
     border-radius: 10px;

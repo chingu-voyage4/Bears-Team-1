@@ -3,6 +3,17 @@ const router = express.Router();
 const User = require("./models/User");
 const Tweet = require("./models/Tweet");
 
+const authCheck = (req, res, next) => {
+  if (req.user) {
+    // If logged in
+    next();
+  } else {
+    // If user is not logged in
+    console.log("Please log in to complete your request");
+    res.redirect("/auth/google");
+  }
+};
+
 // Get all users
 router.get("/all", function(req, res) {
   User.find()
@@ -25,8 +36,8 @@ router.post("/new", function(req, res) {
     .catch(err => res.status(400).send(err));
 });
 
-// Find all tweets by user_id
-router.get("/:user_id/tweets", (req, res) => {
+// Get a specific user's scoops
+router.get("/:user_id/scoops", (req, res) => {
   const creator = req.params.user_id;
   Tweet.find({ creator })
     .populate("creator")
@@ -36,9 +47,9 @@ router.get("/:user_id/tweets", (req, res) => {
     });
 });
 
-// Get a user's feed
-router.get("/:self_id/feed", (req, res) => {
-  const self_id = req.params.self_id;
+// Get a signed in user's feed (scoops created by users whom the signed in user is following)
+router.get("/feed", authCheck, (req, res) => {
+  const self_id = req.user._id;
 
   User.findById(self_id, function(err, self) {
     // Get array of ObjectIDs (OIDs) from self and followed users
@@ -52,7 +63,7 @@ router.get("/:self_id/feed", (req, res) => {
 
     // Returns all tweets from every user referenced in feedOIDs, sorts by date
     Tweet.find({ $or: query })
-      .sort({ date: "asc" })
+      .sort({ date: "descending" })
       .then(feed => {
         res.send(feed);
       });
@@ -67,13 +78,20 @@ router.get("/:user_id/profile", (req, res) => {
 });
 
 //Edit a user's information
-router.put("/:user_id/profile", (req, res) => {
+router.put("/:user_id/profile", authCheck, (req, res) => {
   const user_id = req.params.user_id;
   const username = req.body.username;
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const location = req.body.location;
   const about = req.body.about;
+
+  /* Block a signed in user from editing another user's profile?
+  if (req.user._id != req.params.user_id) {
+    console.log("Signed in user doesn't match profile being edited")
+    res.send("Signed in user doesn't match profile being edited"); or err?
+  }
+*/
 
   User.findOneAndUpdate(
     { _id: user_id },
