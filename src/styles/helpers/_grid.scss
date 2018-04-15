@@ -1,0 +1,27 @@
+//SASS Grid
+//Mobile First
+.container {
+  width: auto;
+  margin: 0 auto;
+  position: relative;
+  // 576px+ width
+  @media #{$sm} {
+  }
+  // 768px+ width
+  @media #{$md} {
+  }
+  // 992px+ width
+  @media #{$lg} {
+  }
+  // 1200px+ width
+  @media #{$xl} {
+  }
+}
+
+// Create grid column-1 through column-12
+@for $i from 1 through 12 {
+  .column-#{$i} {
+    width: 100% / 12 * $i;
+    display: inline-block;
+  }
+}

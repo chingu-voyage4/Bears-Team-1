@@ -28,9 +28,9 @@
     "start-server": "nodemon server/server.js",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css":
-      "npm run build-css && node-sass-chokidar src/*.scss --output src/ --watch --recursive",
+      "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
-    "start": "npm-run-all -p start-server watch-css start-js",
+    "start": "npm-run-all -p start-server start-js",
     "heroku-postbuild": "npm run build",
     "build": "react-scripts build",
     "test": "mocha server/**/*.test.js",

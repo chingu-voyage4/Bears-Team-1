@@ -16,7 +16,7 @@ class ProfileView extends Component {
 
   getUserProfile(event) {
     axios
-      .get(`/user/${"5aa054ac1a6e5a01b90f591c"}/profile`)
+      .get(`/user/${"5ad01f62de46a605780562a6"}/profile`)
       .then(response => {
         console.log("profile:", response);
         this.setState({ profile: response.data });
@@ -28,7 +28,7 @@ class ProfileView extends Component {
 
   getAllScoops(event) {
     axios
-      .get(`/user/${"5aa054ac1a6e5a01b90f591c"}/tweets`)
+      .get(`/user/${"5ad01f62de46a605780562a6"}/tweets`)
       .then(response => {
         console.log("scoops:", response);
         this.setState({ scoops: response.data });

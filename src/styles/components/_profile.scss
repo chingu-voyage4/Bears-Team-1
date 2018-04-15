@@ -1,0 +1,105 @@
+////////////////////////////////
+//// PROFILE COMPONENT STYLES
+////////////////////////////////
+
+.profile--container {
+  background: $brand-color-lightpink;
+  padding: 24px 16px;
+}
+
+.profile {
+  border-radius: 5px;
+  background: $brand-color-white;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.profile--header {
+  margin: 0;
+  padding: 0;
+  height: 82px;
+  background: $brand-color-green;
+  border-radius: 5px 5px 0px 0px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.profile--avatar {
+  position: absolute;
+  margin: -52px 0 0 14px;
+  border: solid $brand-color-white 2px;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  background: $brand-color-black;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.profile--button--edit-profile {
+  font-size: $font-size;
+  float: right;
+  margin: 16px;
+  background: none;
+  border: none;
+  color: $brand-color-green;
+  font-weight: bold;
+  font-family: $main-font;
+  cursor: pointer;
+}
+
+.profile--button--edit-profile:focus {
+  outline: 0;
+}
+
+.profile--container--bottom-half {
+  padding: 62px 16px 16px 16px;
+}
+
+.profile--name {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.profile--username {
+  float: left;
+}
+
+.profile--location {
+  float: right;
+  text-align: right;
+}
+
+.profile--about {
+  padding: 8px 0px 0px 0px;
+  clear: both;
+  margin: 8px 0px;
+}
+
+.profile--stats {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.profile--stats li {
+  display: inline-block;
+  width: 33%;
+  margin: 0;
+  padding: 0;
+}
+
+.profile--stats li a {
+  text-decoration: none;
+  color: $brand-color-black;
+}
+
+.profile--stats-name {
+  display: block;
+  font-weight: bold;
+}
+
+.profile--stats-number {
+  font-weight: bold;
+  text-decoration: none;
+  color: $brand-color-pink;
+}

@@ -1,0 +1,52 @@
+/////////////////////////////
+//// LOGIN COMPONENT STYLES
+/////////////////////////////
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+
+  .authContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    background-color: white;
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    padding: 20px 30px;
+  }
+
+  .authButtons {
+    padding: 0px 0px 20px 0px;
+  }
+
+  h2 {
+    color: $brand-color-green;
+    border-bottom: 1px solid $brand-color-lightgray;
+    font-weight: lighter;
+    font-size: 2em;
+    margin: 0px 0px 20px 0px;
+    padding: 10px 10px 20px 10px;
+  }
+
+  a {
+    display: block;
+    text-align: center;
+    color: $brand-color-white;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: $brand-color-green;
+    border: 1px solid transparent;
+    border-radius: 10px;
+
+    width: 250px;
+    margin: 20px 0px;
+    padding: 10px 20px;
+  }
+}
