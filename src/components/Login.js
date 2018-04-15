@@ -3,8 +3,15 @@ import React, { Component } from "react";
 class Login extends Component {
   render() {
     return (
-      <div className="container">
-        Login view Log in with GitHub Log in with Google+
+      <div className="container loginContainer">
+        <div className="authContainer">
+          <h2>Sign into Scoop</h2>
+          <div className="authButtons">
+            <a href="http://localhost:3001/auth/google">
+              Sign In using Google+
+            </a>
+          </div>
+        </div>
       </div>
     );
   }

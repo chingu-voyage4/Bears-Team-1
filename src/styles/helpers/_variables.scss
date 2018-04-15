@@ -1,0 +1,25 @@
+//COLOR PALLETE
+$brand-color-black: #200;
+$brand-color-gray: #777;
+$brand-color-lightgray: #d3d3d3;
+$brand-color-white: #ffffff;
+$brand-color-lightgreen: #9edfe2;
+$brand-color-green: #00c8cd; //00C8CD 65C6CB
+$brand-color-lightpink: #ffbacf;
+$brand-color-pink: #e59eb4;
+$brand-background-pg: linear-gradient(
+  -225deg,
+  $brand-color-lightgreen 50%,
+  $brand-color-pink 50%
+);
+
+// FONT STYLES
+$font-size: 16px;
+$line-height: 22px;
+$main-font: "Open Sans", sans-serif;
+$font-color: $brand-color-black;
+// MOBILE BREAKPOINTS
+$sm: "only screen and (min-width: 576px)";
+$md: "only screen and (min-width: 768px)";
+$lg: "only screen and (min-width: 992px)";
+$xl: "only screen and (min-width: 1200px)";

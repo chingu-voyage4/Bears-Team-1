@@ -8,6 +8,7 @@ import FeedView from "./components/FeedView";
 import Search from "./components/Search";
 import Notifications from "./components/Notifications";
 import Scoop from "./components/Scoop";
+import Login from "./components/Login";
 
 const Main = props => (
   <main>
@@ -21,6 +22,7 @@ const Main = props => (
       <Route path="/search" component={Search} />
       <Route path="/notifications" component={Notifications} />
       <Route path="/scoop" component={Scoop} />
+      <Route path="/login" component={Login} />
     </Switch>
   </main>
 );
