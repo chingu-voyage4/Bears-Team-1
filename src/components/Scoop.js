@@ -26,8 +26,6 @@ class Scoop extends Component {
     console.log("Here's the Scoop:", this.state.scoopText);
     axios
       .post("tweet/new", {
-        // Can't create a scoop without a valid user id. This one is from server/__tests__/test-data.js -Jdawg
-        creator: "5aa054ac1a6e5a01b90f591c",
         text: this.state.scoopText
       })
       .then(response => {
@@ -42,7 +40,7 @@ class Scoop extends Component {
 
   render() {
     if (this.state.redirectToNewPage) {
-      return <Redirect to="/feed" />;
+      return <Redirect to="/" />;
     }
 
     return (

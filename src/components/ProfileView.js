@@ -10,15 +10,17 @@ class ProfileView extends Component {
     this.state = {
       profile: null,
       scoops: null,
-      userID: this.props.match.params.id
+      userID: this.props.match.params.id,
+      signedInUser: null,
+      signedInUserBoolean: false
     };
   }
 
-  getUserProfile(event) {
+  getUserProfile(ID) {
     axios
-      .get(`/user/${"5aa054ac1a6e5a01b90f591c"}/profile`)
+      .get(`/user/${ID}/profile`)
       .then(response => {
-        console.log("profile:", response);
+        console.log("profile:", response.data);
         this.setState({ profile: response.data });
       })
       .catch(error => {
@@ -26,9 +28,9 @@ class ProfileView extends Component {
       });
   }
 
-  getAllScoops(event) {
+  getAllScoops(ID) {
     axios
-      .get(`/user/${"5aa054ac1a6e5a01b90f591c"}/tweets`)
+      .get(`/user/${ID}/scoops`)
       .then(response => {
         console.log("scoops:", response);
         this.setState({ scoops: response.data });
@@ -39,16 +41,39 @@ class ProfileView extends Component {
   }
 
   componentDidMount() {
-    this.getUserProfile();
-    this.getAllScoops();
+    // If clicking another user, get their profile,
+    if (this.state.userID) {
+      this.getUserProfile(this.state.userID);
+      this.getAllScoops(this.state.userID);
+    } else {
+      // else get signed in user's profile
+      axios
+        .get("auth/isAuthenticated")
+        .then(response => {
+          this.setState({
+            signedInUser: response.data,
+            signedInUserBoolean: true
+          });
+          this.getUserProfile(response.data._id);
+          this.getAllScoops(response.data._id);
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
   }
 
   render() {
-    console.log(this.state.userID);
     return (
       <div>
-        {this.state.profile ? <Profile profile={this.state.profile} /> : null}
+        {this.state.profile ? (
+          <Profile
+            profile={this.state.profile}
+            signedInUserBoolean={this.state.signedInUserBoolean}
+          />
+        ) : null}
         {this.state.scoops ? <Feed scoops={this.state.scoops} /> : null}
+        {!this.state.scoops && !this.state.profile ? "Please log in" : null}
       </div>
     );
   }

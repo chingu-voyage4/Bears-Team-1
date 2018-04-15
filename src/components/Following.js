@@ -1,18 +1,20 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 class Following extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      following: null
+      following: null,
+      userID: this.props.match.params.id
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleUnfollow = this.handleUnfollow.bind(this);
   }
 
   componentDidMount(event) {
     axios
-      .get(`/user/${"5aa054ac1a6e5a01b90f591c"}/following`)
+      .get(`/user/${this.state.userID}/following`)
       .then(response => {
         console.log(response);
         this.setState({ following: response.data });
@@ -23,11 +25,11 @@ class Following extends Component {
   }
 
   // The user to be followed/unfollowed is the id in the link
-  handleSubmit(event) {
+  handleUnfollow(event) {
     event.preventDefault();
     axios
       .put(`/user/${event.target.dataset.followingid}/following`, {
-        self_id: "5aa054ac1a6e5a01b90f591d"
+        self_id: this.state.userID
       })
       .then(response => {
         console.log(response.data);
@@ -51,10 +53,12 @@ class Following extends Component {
                     <div className="follow--avatar" />
 
                     <div>
-                      <div className="follow--user">
-                        <div className="follow--username">
-                          {following.username}
-                        </div>
+                      <div className="feed--user">
+                        <Link to={`/profile/${following._id}`}>
+                          <span className="feed--username">
+                            {following.username}
+                          </span>
+                        </Link>
                         <div className="follow--name">
                           {following.firstName} {following.lastName}
                         </div>
@@ -62,7 +66,12 @@ class Following extends Component {
                     </div>
                   </div>
 
-                  <button className="follow--unfollow-button">Unfollow</button>
+                  <button
+                    onClick={this.handleUnfollow}
+                    className="follow--unfollow-button"
+                  >
+                    Unfollow
+                  </button>
                 </li>
               ))}
           </ol>

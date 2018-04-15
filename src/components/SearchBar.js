@@ -66,21 +66,15 @@ class SearchBar extends Component {
                 className="search--form--submit-button"
               />
             </form>
-            <ul>
-              {!this.state.searchResults
-                ? "Waiting"
-                : !this.state.searchResults.length
-                  ? "No Results Found"
-                  : this.state.searchResults.map((item, index) => {
-                      return (
-                        <li key={item.id} className="searchResults--list-item">
-                          {item.username}
-                        </li>
-                      );
-                    })}
-            </ul>
           </div>
         </div>
+        {!this.state.searchResults ? (
+          ""
+        ) : !this.state.searchResults.length ? (
+          "No Results Found"
+        ) : (
+          <SearchResults results={this.state.searchResults} />
+        )}
       </div>
     );
   }

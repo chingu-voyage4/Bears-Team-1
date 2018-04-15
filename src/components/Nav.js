@@ -18,7 +18,7 @@ class Nav extends Component {
         <nav className="navbar">
           <ul className="navbar--list">
             <li>
-              <NavLink exact to="/" activeClassName="navbar--selected">
+              <NavLink exact to="/profile" activeClassName="navbar--selected">
                 <img src={profile} alt="Profile" className="navbar--icon" />
               </NavLink>
             </li>
@@ -41,7 +41,7 @@ class Nav extends Component {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/feed" activeClassName="navbar--selected">
+              <NavLink to="/" activeClassName="navbar--selected">
                 <img src={feed} alt="Feed" className="navbar--icon" />
               </NavLink>
             </li>
