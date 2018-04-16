@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import search from "../assets/search.svg";
 import axios from "axios";
 import SearchResults from "./SearchResults";
 

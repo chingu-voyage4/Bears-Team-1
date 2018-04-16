@@ -54,10 +54,10 @@
 }
 
 .search--form--submit-button {
-  font-size: 14px;
+  font-size: $font-size;
   width: 100%;
   margin: 16px 0px;
-  padding: 10px;
+  padding: 8px;
   background: $brand-color-green;
   border: 0px solid $brand-color-pink;
   border-radius: 5px;
@@ -88,7 +88,7 @@
   margin: 0;
 }
 
-.search {
+.searchresults {
   margin: 0;
   background: $brand-color-lightpink;
   padding: 0px 32px;
@@ -131,4 +131,9 @@
 .search--username {
   color: $brand-color-green;
   font-weight: bold;
+  transition: color 0.25s ease-in-out;
+}
+
+.search--username:hover {
+  color: $brand-color-pink;
 }

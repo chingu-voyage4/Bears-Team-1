@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import search from "../assets/search.svg";
 
 class SearchResults extends Component {
   render() {
     return (
       <div className="searchresults--container">
-        <div className="search">
+        <div className="searchresults">
           <ol className="search--list">
             {this.props.results.map((user, index) => {
               return (

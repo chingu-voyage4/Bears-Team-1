@@ -110,6 +110,11 @@
   font-size: $font-size;
   font-weight: bold;
   color: $brand-color-green;
+  transition: color 0.25s ease-in-out;
+}
+
+.feed--username:hover {
+  color: $brand-color-pink;
 }
 
 .feed--date {
