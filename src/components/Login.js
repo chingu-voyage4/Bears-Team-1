@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Login extends Component {
   render() {
     return (
-      <div className="container loginContainer">
+      <div className="login--container">
         <div className="authContainer">
           <h2>Sign into Scoop</h2>
           <div className="authButtons">

@@ -2,6 +2,30 @@
 //// LOGIN COMPONENT STYLES
 /////////////////////////////
 
+.login--container {
+  background: $brand-color-lightpink;
+  padding: 24px 16px;
+}
+
+.search {
+  background: $brand-color-white;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: $brand-color-black;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 5px;
+}
+
+.search--header {
+  padding: 30px 0px;
+  margin: 0px 0px 16px 0px;
+  background: $brand-color-green;
+  border-radius: 5px 5px 0 0;
+  color: $brand-color-white;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
 .loginContainer {
   display: flex;
   justify-content: center;

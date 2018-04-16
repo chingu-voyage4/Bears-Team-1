@@ -21,7 +21,7 @@ class Profile extends Component {
             <a className="profile--avatar" />
             {this.props.signedInUserBoolean ? (
               <div>
-                <Link to="editprofile">
+                <Link to="/editprofile">
                   <button className="profile--button--edit-profile">
                     Edit Profile
                   </button>
