@@ -18,6 +18,9 @@ class Login extends Component {
               Google+
             </a>
             <div />
+            <p className="login--smalltext-create-account">
+              Accounts are created automatically, just sign in!
+            </p>
           </div>
         </div>
       </div>
