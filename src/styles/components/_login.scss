@@ -29,6 +29,9 @@
 .login--conversion-message {
   font-size: $font-size * 1.5;
   font-weight: bold;
+  line-height: $line-height * 1.5;
+  text-align: center;
+  margin: 0px 16px;
 }
 
 .login--container--signin-buttons {
@@ -71,4 +74,8 @@
   font-size: $font-size * 0.8;
   margin: 0;
   padding: 0px 0px 16px 0px;
+}
+
+.login--icon {
+  height: 20px;
 }

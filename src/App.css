@@ -69,7 +69,7 @@ body {
   padding: 0px;
   font-family: "Open Sans", sans-serif;
   font-size: 16px;
-  color: #200;
+  color: #222;
   line-height: 22px;
   background: #e59eb4;
 }
@@ -106,37 +106,32 @@ body {
   filter: brightness(2);
 }
 
-.footer--list {
+.footer--container {
   background: #e59eb4;
   width: 100%;
   margin: 0;
   padding: 8px 0px 8px 0px;
   color: #ffffff;
-  text-align: center;
   border-top: 1px solid rgba(0, 0, 0, 0.23);
 }
 
-.footer--list ul {
-  list-style: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+.footer {
+  margin: 0px 16px;
 }
 
-.footer--list li {
-  display: inline-block;
-  width: 33%;
-  margin: 0;
-  padding: 0;
+.footer span:last-child {
+  float: right;
 }
 
-.footer--list img {
-  width: 40px;
-}
-
-.footer--list a {
+.footer a {
   color: #ffffff;
   text-decoration: none;
+  transition: color 0.3s ease-in-out;
+  font-weight: normal;
+}
+
+.footer a:hover {
+  color: #9edfe2;
 }
 
 .profile--container {
@@ -166,7 +161,7 @@ body {
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  background: #200;
+  background: #222;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -180,7 +175,7 @@ body {
   font-weight: bold;
   font-family: "Open Sans", sans-serif;
   cursor: pointer;
-  transition: color 0.25s ease-in-out;
+  transition: color 0.3s ease-in-out;
 }
 
 .profile--button--edit-profile:hover {
@@ -232,7 +227,7 @@ body {
 
 .profile--stats li a {
   text-decoration: none;
-  color: #200;
+  color: #222;
 }
 
 .profile--stats-name {
@@ -244,7 +239,7 @@ body {
   font-weight: bold;
   text-decoration: none;
   color: #e59eb4;
-  transition: color 0.25s ease-in-out;
+  transition: color 0.3s ease-in-out;
 }
 
 .profile--stats-number:hover {
@@ -313,7 +308,7 @@ body {
   margin: 16px 0px;
   padding: 8px 16px;
   background: #e59eb4;
-  border: 0px solid #200;
+  border: 0px solid #222;
   color: #ffffff;
   border-radius: 5px;
   font-weight: bold;
@@ -335,7 +330,7 @@ body {
   margin: 16px 0px;
   padding: 8px 16px;
   background: #00c8cd;
-  border: 0px solid #200;
+  border: 0px solid #222;
   color: #ffffff;
   border-radius: 5px;
   font-weight: bold;
@@ -385,7 +380,7 @@ body {
   border-radius: 50%;
   height: 44px;
   width: 44px;
-  background: #200;
+  background: #222;
   display: block;
   margin-right: 16px;
 }
@@ -427,7 +422,7 @@ body {
   margin: 0px 0px 24px 0px;
   padding: 8px 16px;
   background: #00c8cd;
-  border: 0px solid #200;
+  border: 0px solid #222;
   color: #ffffff;
   border-radius: 5px;
   font-weight: bold;
@@ -449,7 +444,7 @@ body {
   margin: 0px 0px 24px 0px;
   padding: 8px 16px;
   background: #00c8cd;
-  border: 0px solid #200;
+  border: 0px solid #222;
   color: #ffffff;
   border-radius: 5px;
   font-weight: bold;
@@ -502,7 +497,7 @@ body {
   border-radius: 50%;
   height: 44px;
   width: 44px;
-  background: #200;
+  background: #222;
   display: block;
   margin-right: 16px;
   position: absolute;
@@ -521,7 +516,7 @@ body {
   font-size: 16px;
   font-weight: bold;
   color: #00c8cd;
-  transition: color 0.25s ease-in-out;
+  transition: color 0.3s ease-in-out;
 }
 
 .feed--username:hover {
@@ -574,6 +569,11 @@ body {
   float: right;
   padding: 0;
   margin: -16px 0px 0px 0px;
+  transition: color 0.3s ease-in-out;
+}
+
+.feed--delete-button:hover {
+  color: #00c8cd;
 }
 
 .feed--button-selected {
@@ -590,7 +590,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  color: #200;
+  color: #222;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   border-radius: 5px;
 }
@@ -697,7 +697,7 @@ body {
   border-radius: 50%;
   height: 44px;
   width: 44px;
-  background: #200;
+  background: #222;
   display: block;
   margin-right: 16px;
 }
@@ -705,7 +705,7 @@ body {
 .search--username {
   color: #00c8cd;
   font-weight: bold;
-  transition: color 0.25s ease-in-out;
+  transition: color 0.3s ease-in-out;
 }
 
 .search--username:hover {
@@ -722,7 +722,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  color: #200;
+  color: #222;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   border-radius: 5px;
 }
@@ -739,6 +739,9 @@ body {
 .login--conversion-message {
   font-size: 24px;
   font-weight: bold;
+  line-height: 33px;
+  text-align: center;
+  margin: 0px 16px;
 }
 
 .login--container--signin-buttons {
@@ -783,6 +786,10 @@ body {
   padding: 0px 0px 16px 0px;
 }
 
+.login--icon {
+  height: 20px;
+}
+
 .scoop--container {
   background: #ffbacf;
   padding: 24px 16px;
@@ -793,7 +800,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
-  color: #200;
+  color: #222;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   border-radius: 5px;
 }

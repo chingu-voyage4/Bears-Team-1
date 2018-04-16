@@ -4,16 +4,17 @@ class Footer extends Component {
   render() {
     return (
       <div className="footer--container">
-        <ul className="footer--list">
-          <li>2018</li>
-          <li>
-            {" "}
-            <Link to="/login">Sign in</Link>
-          </li>
-          <li>
+        <div className="footer">
+          <span>
+            &copy; {new Date().getFullYear()},{" "}
+            <a href="https://github.com/chingu-voyage4/Bears-Team-1">
+              Bears-Team-1 Chingu Voyage-4
+            </a>
+          </span>
+          <span>
             <a href="https://github.com/chingu-voyage4/Bears-Team-1">GitHub</a>
-          </li>
-        </ul>
+          </span>
+        </div>
       </div>
     );
   }

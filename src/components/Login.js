@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import post from "../assets/iconmonstr-candy-27.svg";
 
 class Login extends Component {
   render() {
@@ -8,7 +9,8 @@ class Login extends Component {
         <div className="login">
           <h1 className="login--header">Sign in</h1>
           <div className="login--conversion-message">
-            Get the latest scoop on your friends
+            Get the latest scoop <br />with your friends{" "}
+            <img src={post} alt="Scoop" className="login--icon" />
           </div>
           <div className="login--container--signin-buttons">
             <a

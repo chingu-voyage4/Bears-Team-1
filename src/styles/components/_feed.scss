@@ -110,7 +110,7 @@
   font-size: $font-size;
   font-weight: bold;
   color: $brand-color-green;
-  transition: color 0.25s ease-in-out;
+  transition: color 0.3s ease-in-out;
 }
 
 .feed--username:hover {
@@ -163,6 +163,11 @@
   float: right;
   padding: 0;
   margin: -16px 0px 0px 0px;
+  transition: color 0.3s ease-in-out;
+}
+
+.feed--delete-button:hover {
+  color: $brand-color-green;
 }
 
 .feed--button-selected {
