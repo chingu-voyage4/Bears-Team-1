@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import moment from "moment";
-import reply from "../assets/iconmonstr-speech-bubble-2-240.png";
-import share from "../assets/iconmonstr-retweet-1-240.png";
-import like from "../assets/iconmonstr-favorite-2-240.png";
-import liked from "../assets/iconmonstr-favorite-1-240.png";
+import reply from "../assets/iconmonstr-speech-bubble-2.svg";
+import share from "../assets/iconmonstr-retweet-1.svg";
+import like from "../assets/iconmonstr-favorite-2.svg";
+import liked from "../assets/iconmonstr-favorite-1.svg";
 
 class Feed extends Component {
   constructor(props) {

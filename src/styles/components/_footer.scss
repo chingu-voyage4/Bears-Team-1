@@ -2,104 +2,30 @@
 //// FOOTER COMPONENT STYLES
 ///////////////////////////////
 
-.footer--list {
+.footer--container {
   background: $brand-color-pink;
   width: 100%;
   margin: 0;
   padding: 8px 0px 8px 0px;
   color: $brand-color-white;
-  text-align: center;
   border-top: 1px solid rgba(0, 0, 0, 0.23);
-  //box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
-.footer--list ul {
-  list-style: none;
-  width: 100%;
-  margin: 0;
-  padding: 0;
+.footer {
+  margin: 0px 16px;
 }
 
-.footer--list li {
-  display: inline-block;
-  width: 33%;
-  margin: 0;
-  padding: 0;
+.footer span:last-child {
+  float: right;
 }
 
-.footer--list img {
-  width: 40px;
-}
-
-.footer--list a {
+.footer a {
   color: $brand-color-white;
   text-decoration: none;
+  transition: color 0.3s ease-in-out;
+  font-weight: normal;
 }
 
-////////////////////////////////////////
-///// Follow Views
-////////////////////////////////////////
-
-.follow {
-  padding: 0px 16px 24px 16px;
-  margin: 0;
-  background: $brand-color-lightpink;
-}
-
-.follow--container {
-  background: $brand-color-lightpink;
-  padding: 24px 0px 0px 0px;
-  margin: 0;
-}
-
-.follow--list {
-  list-style: none;
-  background: $brand-color-lightpink;
-  padding: 0;
-  margin: 0;
-}
-
-.follow--list-item {
-  background: $brand-color-white;
-  padding: 8px 16px;
-  margin: 0px 0px 16px 0px;
-  border-radius: 5px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-}
-
-.follow--list-item:last-child {
-  margin: 0px;
-}
-
-.follow--avatar {
-  float: left;
-  border-radius: 50%;
-  height: 44px;
-  width: 44px;
-  background: $brand-color-black;
-  display: block;
-  margin-right: 16px;
-}
-
-.follow--username {
-  color: $brand-color-green;
-  font-weight: bold;
-}
-
-.follow--leftside {
-  display: block;
-}
-
-.follow--unfollow-button {
-  font-size: $font-size * 0.7;
-  border: none;
-  background: none;
-  color: $brand-color-pink;
-  font-weight: bold;
-  margin: 16px;
-  font-family: $main-font;
-  cursor: pointer;
-  float: right;
-  padding: 0;
-  margin: -16px 0px 0px 0px;
+.footer a:hover {
+  color: $brand-color-lightgreen;
 }

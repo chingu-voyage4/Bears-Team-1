@@ -1,25 +1,26 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import search from "../assets/search.svg";
 
 class SearchResults extends Component {
   render() {
     return (
-      <div className="follow--container">
-        <div className="follow">
-          <ol className="follow--list">
+      <div className="searchresults--container">
+        <div className="searchresults">
+          <ol className="search--list">
             {this.props.results.map((user, index) => {
               return (
-                <li className="follow--list-item" key={index}>
+                <li className="search--list-item" key={index}>
                   <div>
-                    <div className="follow--avatar" />
+                    <div className="search--avatar" />
                   </div>
                   <div>
-                    <div className="feed--user">
+                    <div className="search--user">
                       <Link to={`/profile/${user._id}`}>
-                        <span className="feed--username">{user.username}</span>
+                        <span className="search--username">
+                          {user.username}
+                        </span>
                       </Link>
-                      <div className="follow--name">
+                      <div className="search--name">
                         {user.firstName} {user.lastName}
                       </div>
                     </div>

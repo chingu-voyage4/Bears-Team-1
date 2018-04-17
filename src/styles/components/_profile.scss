@@ -43,6 +43,11 @@
   font-weight: bold;
   font-family: $main-font;
   cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.profile--button--edit-profile:hover {
+  color: $brand-color-pink;
 }
 
 .profile--button--edit-profile:focus {
@@ -102,4 +107,9 @@
   font-weight: bold;
   text-decoration: none;
   color: $brand-color-pink;
+  transition: color 0.3s ease-in-out;
+}
+
+.profile--stats-number:hover {
+  color: $brand-color-green;
 }

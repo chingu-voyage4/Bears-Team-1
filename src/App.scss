@@ -21,23 +21,29 @@
 //// COMPONENTS
 //////////////////
 
-//Profile
-@import "styles/components/profile";
-
-//Edit Profile
-@import "styles/components/editProfile";
-
-//Feed
-@import "styles/components/feed";
-
 //Navigation
 @import "styles/components/nav";
 
 //Footer
 @import "styles/components/footer";
 
+//Profile
+@import "styles/components/profile";
+
+//Edit Profile
+@import "styles/components/editProfile";
+
+//Follow
+@import "styles/components/follow";
+
+//Feed
+@import "styles/components/feed";
+
 //Search
 @import "styles/components/search";
 
 //Login
 @import "styles/components/login";
+
+//Scoop
+@import "styles/components/scoop";
