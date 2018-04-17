@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 
 class Logout extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+    this.combinedFunction = this.combinedFunction.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+  }
+
   handleLogout() {
     axios
       .get("/auth/logout")
@@ -13,11 +20,16 @@ class Logout extends Component {
       });
   }
 
+  combinedFunction() {
+    this.handleLogout();
+    this.props.redir();
+  }
+
   render() {
     return (
       <div>
         <button
-          onClick={this.handleLogout}
+          onClick={this.combinedFunction}
           className="profile--button--edit-profile"
         >
           Logout

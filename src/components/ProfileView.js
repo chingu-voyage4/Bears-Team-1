@@ -13,7 +13,10 @@ class ProfileView extends Component {
       userID: this.props.match.params.id,
       signedInUser: null,
       signedInUserBoolean: false,
-      redirectToNewPage: false
+      redirectToNewPage: false,
+      redir: () => {
+        this.setState({ redirectToNewPage: true });
+      }
     };
   }
 
@@ -79,6 +82,7 @@ class ProfileView extends Component {
           <Profile
             profile={this.state.profile}
             signedInUserBoolean={this.state.signedInUserBoolean}
+            redir={this.state.redir}
           />
         ) : null}
         {this.state.scoops ? <Feed scoops={this.state.scoops} /> : null}
