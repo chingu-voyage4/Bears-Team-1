@@ -606,7 +606,7 @@ body {
 
 .search--form {
   margin: 0 auto;
-  padding: 0;
+  padding: 16px 0 0 0;
   width: 94%;
 }
 
@@ -635,7 +635,7 @@ body {
   font-size: 16px;
   width: 100%;
   margin: 16px 0px;
-  padding: 8px;
+  padding: 8px 0px;
   background: #00c8cd;
   border: 0px solid #e59eb4;
   border-radius: 5px;
@@ -742,6 +742,7 @@ body {
   line-height: 33px;
   text-align: center;
   margin: 0px 16px;
+  padding: 16px 0;
 }
 
 .login--container--signin-buttons {
@@ -863,5 +864,20 @@ body {
 }
 
 .scoop--characters-remaining {
+  color: #777;
+}
+
+.scoop--link {
+  font-weight: bold;
+  text-decoration: none;
+  color: #e59eb4;
+  transition: color 0.3s ease-in-out;
+}
+
+.scoop--link:hover {
+  color: #00c8cd;
+}
+
+.scoop--graytext {
   color: #777;
 }

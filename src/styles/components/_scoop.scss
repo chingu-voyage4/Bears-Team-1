@@ -77,3 +77,18 @@
 .scoop--characters-remaining {
   color: $brand-color-gray;
 }
+
+.scoop--link {
+  font-weight: bold;
+  text-decoration: none;
+  color: $brand-color-pink;
+  transition: color 0.3s ease-in-out;
+}
+
+.scoop--link:hover {
+  color: $brand-color-green;
+}
+
+.scoop--graytext {
+  color: $brand-color-gray;
+}

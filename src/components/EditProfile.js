@@ -72,7 +72,7 @@ class EditProfile extends Component {
 
   render() {
     if (this.state.redirectToNewPage) {
-      return <Redirect to="/" />;
+      return <Redirect to="/login" />;
     }
 
     return (

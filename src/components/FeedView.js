@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Feed from "./Feed";
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 
 class FeedView extends Component {
   constructor(props) {
@@ -8,7 +9,8 @@ class FeedView extends Component {
     this.state = {
       profile: null,
       scoops: null,
-      selected: "everybody"
+      selected: "everybody",
+      redirectToNewPage: false
     };
     this.getAllScoops = this.getAllScoops.bind(this);
     this.getFollowingScoops = this.getFollowingScoops.bind(this);
@@ -30,11 +32,11 @@ class FeedView extends Component {
     axios
       .get("/user/feed")
       .then(response => {
-        console.log(response);
         this.setState({ scoops: response.data, selected: "following" });
       })
       .catch(error => {
         console.log(error);
+        this.setState({ redirectToNewPage: true });
       });
   }
 
@@ -43,6 +45,10 @@ class FeedView extends Component {
   }
 
   render() {
+    if (this.state.redirectToNewPage) {
+      return <Redirect to="/login" />;
+    }
+
     const everybodySelected = (
       <div className="feed--header">
         <div
