@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import Profile from "./Profile";
 import Feed from "./Feed";
@@ -12,7 +12,11 @@ class ProfileView extends Component {
       scoops: null,
       userID: this.props.match.params.id,
       signedInUser: null,
-      signedInUserBoolean: false
+      signedInUserBoolean: false,
+      redirectToNewPage: false,
+      redir: () => {
+        this.setState({ redirectToNewPage: true });
+      }
     };
   }
 
@@ -50,12 +54,16 @@ class ProfileView extends Component {
       axios
         .get("auth/isAuthenticated")
         .then(response => {
-          this.setState({
-            signedInUser: response.data,
-            signedInUserBoolean: true
-          });
-          this.getUserProfile(response.data._id);
-          this.getAllScoops(response.data._id);
+          if (response.data != "Not logged in") {
+            this.setState({
+              signedInUser: response.data,
+              signedInUserBoolean: true
+            });
+            this.getUserProfile(response.data._id);
+            this.getAllScoops(response.data._id);
+          } else {
+            this.setState({ redirectToNewPage: true });
+          }
         })
         .catch(error => {
           console.log(error);
@@ -64,16 +72,21 @@ class ProfileView extends Component {
   }
 
   render() {
+    if (this.state.redirectToNewPage) {
+      return <Redirect to="/login" />;
+    }
+
     return (
       <div>
         {this.state.profile ? (
           <Profile
             profile={this.state.profile}
             signedInUserBoolean={this.state.signedInUserBoolean}
+            redir={this.state.redir}
           />
         ) : null}
         {this.state.scoops ? <Feed scoops={this.state.scoops} /> : null}
-        {!this.state.scoops && !this.state.profile ? "Please log in" : null}
+        {!this.state.scoops && !this.state.profile ? "Loading" : null}
       </div>
     );
   }

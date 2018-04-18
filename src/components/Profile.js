@@ -26,7 +26,7 @@ class Profile extends Component {
                     Edit Profile
                   </button>
                 </Link>
-                <Logout />
+                <Logout redir={this.props.redir} />
               </div>
             ) : (
               <button className="profile--button--edit-profile">Follow</button>

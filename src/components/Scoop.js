@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
 
 class Scoop extends Component {
@@ -8,7 +8,10 @@ class Scoop extends Component {
     this.state = {
       scoopText: "",
       remainingCharacters: 200,
-      redirectToNewPage: false
+      redirectToNewPage: false,
+      username: "",
+      firstname: "",
+      signedIn: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,7 +41,40 @@ class Scoop extends Component {
       });
   }
 
+  componentDidMount() {
+    axios
+      .get("auth/isAuthenticated")
+      .then(response => {
+        if (response.data.username) {
+          this.setState({
+            username: response.data.username || "",
+            firstname: response.data.firstName || "",
+            signedIn: true
+          });
+        } else {
+          this.setState({ signedIn: false });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
+
   render() {
+    const loggedOutElement = (
+      <span className="scoop--graytext">
+        Please{" "}
+        <Link to="/login" className="scoop--link">
+          sign in
+        </Link>
+      </span>
+    );
+    const loggedInElement = (
+      <span className="scoop--graytext">
+        Give us the details, {this.state.username}!
+      </span>
+    );
+
     if (this.state.redirectToNewPage) {
       return <Redirect to="/" />;
     }
@@ -47,6 +83,7 @@ class Scoop extends Component {
       <div className="scoop--container">
         <div className="scoop">
           <h1 className="scoop--header">What's the scoop?</h1>
+          {this.state.signedIn ? loggedInElement : loggedOutElement}
           <form onSubmit={this.handleSubmit} className="scoop--form">
             <textarea
               value={this.state.scoopText}
