@@ -8,13 +8,21 @@ module.exports = app => {
     })
   );
 
-  app.get(
+  /*app.get(
     "/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
       // dev mode: http://localhost:3000/   prod mode: /
       res.redirect("http://localhost:3000/");
     }
+  );*/
+
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google", {
+      successRedirect: "http://localhost:3000/",
+      failureRedirect: "http://localhost:3000/"
+    })
   );
 
   app.get("/auth/logout", (req, res) => {

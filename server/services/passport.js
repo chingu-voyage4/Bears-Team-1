@@ -1,8 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20");
-const mongoose = require("mongoose");
-
-const User = mongoose.model("User");
+const User = require("../models/User");
 
 passport.serializeUser((user, done) => {
   done(null, user.id);
@@ -19,11 +17,11 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/auth/google/callback"
+      callbackURL: "/auth/google/callback",
+      passReqToCallback: true
     },
-    (accessToken, refreshToken, profile, done) => {
+    (request, accessToken, refreshToken, profile, done) => {
       User.findOne({ googleID: profile.id }).then(existingUser => {
-        console.log(existingUser);
         if (existingUser) {
           done(null, existingUser);
         } else {
