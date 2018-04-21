@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import post from "../assets/iconmonstr-candy-27.svg";
 
 class Login extends Component {

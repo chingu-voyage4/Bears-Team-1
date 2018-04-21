@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import Feed from "./Feed";
 import Logout from "./Logout";
 
 class Profile extends Component {
@@ -12,7 +10,6 @@ class Profile extends Component {
 
   render() {
     const profile = this.props.profile;
-    console.log("signedInUserBoolean:", this.props.signedInUserBoolean);
     return (
       <div className="profile--container">
         <div className="profile">
@@ -28,6 +25,10 @@ class Profile extends Component {
                 </Link>
                 <Logout redir={this.props.redir} />
               </div>
+            ) : this.props.signedInUserIsFollowing ? (
+              <button className="profile--button--edit-profile">
+                Following
+              </button>
             ) : (
               <button className="profile--button--edit-profile">Follow</button>
             )}

@@ -51,7 +51,6 @@ class EditProfile extends Component {
     axios
       .get("auth/isAuthenticated")
       .then(response => {
-        console.log("profile:", response);
         this.setState({
           id: response.data._id,
           username: response.data.username || "",

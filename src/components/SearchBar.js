@@ -43,8 +43,6 @@ class SearchBar extends Component {
   }
 
   render() {
-    console.log("component sr: ", this.state.searchResults);
-
     return (
       <div>
         <div className="search--container">
