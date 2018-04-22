@@ -156,12 +156,12 @@ body {
 
 .profile--avatar {
   position: absolute;
-  margin: -52px 0 0 14px;
-  border: solid #ffffff 2px;
+  margin: -53px 0 0 14px;
+  border: solid #ffffff 3px;
   border-radius: 50%;
   height: 100px;
   width: 100px;
-  background: #222;
+  background: #ffffff;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 

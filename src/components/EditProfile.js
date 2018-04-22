@@ -12,6 +12,7 @@ class EditProfile extends Component {
       lastname: "",
       location: "",
       about: "",
+      avatarUrl: "",
       redirectToNewPage: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -36,7 +37,8 @@ class EditProfile extends Component {
         firstName: this.state.firstname,
         lastName: this.state.lastname,
         location: this.state.location,
-        about: this.state.about
+        about: this.state.about,
+        avatarUrl: this.state.avatarUrl
       })
       .then(response => {
         console.log("Profile saved");
@@ -57,7 +59,8 @@ class EditProfile extends Component {
           firstname: response.data.firstName || "",
           lastname: response.data.lastName || "",
           location: response.data.location || "",
-          about: response.data.about || ""
+          about: response.data.about || "",
+          avatarUrl: response.data.avatarUrl || ""
         });
       })
       .catch(error => {
@@ -71,7 +74,7 @@ class EditProfile extends Component {
 
   render() {
     if (this.state.redirectToNewPage) {
-      return <Redirect to="/login" />;
+      return <Redirect to="/profile" />;
     }
 
     return (
@@ -137,7 +140,19 @@ class EditProfile extends Component {
                 maxLength="200"
               />
             </label>
-            <Link to="/">
+
+            <label>
+              Profile Picture URL:
+              <input
+                name="avatarUrl"
+                type="text"
+                value={this.state.avatarUrl}
+                onChange={this.handleInputChange}
+                maxLength="200"
+              />
+            </label>
+
+            <Link to="/profile">
               <button className="editprofile--form--cancel">Cancel</button>
             </Link>
             <input
