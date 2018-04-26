@@ -36,18 +36,20 @@ router.post("/new", authCheck, (req, res) => {
     .catch(err => res.send(err));
 });
 
-router.delete("/:delete_id", (req, res) => {
+router.delete("/:delete_id", authCheck, (req, res) => {
+  // Route sends a tweet after being removed?
   const delete_id = req.params.delete_id;
   Tweet.findOneAndRemove({ _id: delete_id }).then(tweet => res.send(tweet));
 });
 
-router.put("/:tweet_id/comment", (req, res) => {
+router.put("/:tweet_id/comment", authCheck, (req, res) => {
   const tweet_id = req.params.tweet_id;
   const comment = req.body;
 
   Tweet.findById({ _id: tweet_id })
     .then(tweet => {
       tweet.comments.push({
+        // Change to req.user?
         user: comment.user,
         text: comment.text
       });
@@ -56,7 +58,7 @@ router.put("/:tweet_id/comment", (req, res) => {
     .catch(err => res.status(400).send(err));
 });
 
-router.put("/:tweet_id/reply", (req, res) => {
+router.put("/:tweet_id/reply", authCheck, (req, res) => {
   const tweet_id = req.params.tweet_id;
   const { comment_id, user, text } = req.body;
 
