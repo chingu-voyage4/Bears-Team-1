@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import post from "../assets/iconmonstr-candy-27.svg";
+import { Link } from "react-router-dom";
 
 class Login extends Component {
   render() {
@@ -12,9 +13,9 @@ class Login extends Component {
             <img src={post} alt="Scoop" className="login--icon" />
           </div>
           <div className="login--container--signin-buttons">
-            <a href="/auth/google" className="login--signin-button">
+            <Link to="/auth/google" className="login--signin-button">
               Google+
-            </a>
+            </Link>
             <div />
             <p className="login--smalltext-create-account">
               Accounts are created automatically, just sign in!
