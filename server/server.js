@@ -1,5 +1,5 @@
 const express = require("express");
-const env = require("dotenv").config();
+require("dotenv").config();
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
@@ -40,7 +40,7 @@ require("./services/passport");
 
 app.use(
   cookieSession({
-    maxAge: 30 * 24 * 60 * 60 * 1000,
+    maxAge: 7 * 24 * 60 * 60 * 1000,
     keys: [process.env.COOKIE_KEY]
   })
 );
