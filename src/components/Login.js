@@ -13,9 +13,9 @@ class Login extends Component {
             <img src={post} alt="Scoop" className="login--icon" />
           </div>
           <div className="login--container--signin-buttons">
-            <Link to="/auth/google" className="login--signin-button">
+            <a href="/auth/google" className="login--signin-button">
               Google+
-            </Link>
+            </a>
             <div />
             <p className="login--smalltext-create-account">
               Accounts are created automatically, just sign in!

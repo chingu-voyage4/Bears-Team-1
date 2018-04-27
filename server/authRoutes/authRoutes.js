@@ -8,15 +8,15 @@ module.exports = app => {
     })
   );
 
-  /*app.get(
+  app.get(
     "/auth/google/callback",
     passport.authenticate("google"),
     (req, res) => {
       // dev mode: http://localhost:3000/   prod mode: /
-      res.redirect("http://localhost:3000/");
+      res.redirect("/");
     }
-  );*/
-
+  );
+  /*
   app.get(
     "/auth/google/callback",
     passport.authenticate("google", {
@@ -24,7 +24,7 @@ module.exports = app => {
       failureRedirect: "/"
     })
   );
-
+*/
   app.get("/auth/logout", (req, res) => {
     req.logout();
     // dev mode: http://localhost:3000/   prod mode: /
@@ -54,7 +54,7 @@ module.exports = app => {
     } else {
       // If user is not logged in
       console.log("Please log in to complete your request");
-      res.redirect("/auth/google");
+      res.redirect("/login");
     }
   };
 };
