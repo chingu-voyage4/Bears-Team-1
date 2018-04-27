@@ -20,15 +20,15 @@ module.exports = app => {
   app.get(
     "/auth/google/callback",
     passport.authenticate("google", {
-      successRedirect: "http://localhost:3000/",
-      failureRedirect: "http://localhost:3000/"
+      successRedirect: "/",
+      failureRedirect: "/"
     })
   );
 
   app.get("/auth/logout", (req, res) => {
     req.logout();
     // dev mode: http://localhost:3000/   prod mode: /
-    res.redirect("http://localhost:3000/");
+    res.redirect("/");
     console.log("logged out");
   });
 
