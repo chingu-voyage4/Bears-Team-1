@@ -70,7 +70,7 @@ app.use("/user", user);
 app.use("/tweet", tweet);
 
 // All remaining requests return the React app, so it can handle routing.
-app.route("*", (req, res) => {
+app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../build", "index.html"));
 });
 
