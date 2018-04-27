@@ -47,7 +47,9 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-require("./authRoutes/authRoutes")(app);
+//require("./authRoutes/authRoutes")(app);
+const authRouter = require("./authRouter");
+app.use("/", authRouter);
 
 //////////////////////////////
 // Answer requests
