@@ -25,12 +25,13 @@
   },
   "proxy": "http://localhost:3001",
   "scripts": {
+    "start": "node server/server.js",
     "start-server": "nodemon server/server.js",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css":
       "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
-    "start": "npm-run-all -p start-server watch-css start-js",
+    "dev": "npm-run-all -p start-server watch-css start-js",
     "heroku-postbuild": "npm run build",
     "build": "react-scripts build",
     "test": "mocha server/**/*.test.js",
