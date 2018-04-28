@@ -22,7 +22,7 @@ app.use(
 );
 
 // Priority serve any static files.
-app.use(express.static(path.join(__dirname, "../build")));
+//app.use(express.static(path.join(__dirname, "../build")));
 
 // Cross Origin Resource Sharing
 app.use(cors());
