@@ -8,7 +8,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const passport = require("passport");
 
-const PORT = process.env.PORT || 3001;
+const SERVER_PORT = process.env.SERVER_PORT || 3001;
 const app = express();
 
 app.use(bodyParser.json());
@@ -79,6 +79,6 @@ app.get("*", (request, response) => {
 });
 
 // Connect to port
-app.listen(PORT, () =>
-  console.log(`Express server is listening on port ${PORT}`)
+app.listen(SERVER_PORT, () =>
+  console.log(`Express server is listening on port ${SERVER_PORT}`)
 );
