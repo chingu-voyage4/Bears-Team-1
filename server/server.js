@@ -8,8 +8,18 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const passport = require("passport");
 
-const app = express();
 const PORT = process.env.PORT || 3001;
+const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(
+  cookieSession({
+    maxAge: 24 * 60 * 60 * 1000,
+    keys: [process.env.COOKIE_KEY]
+  })
+);
 
 // Priority serve any static files.
 app.use(express.static(path.resolve(__dirname, "../build")));
@@ -37,14 +47,6 @@ mongoose.Promise = global.Promise;
 //////////////////////////////
 // Passport
 //////////////////////////////
-
-app.use(
-  cookieSession({
-    maxAge: 24 * 60 * 60 * 1000,
-    keys: [process.env.COOKIE_KEY]
-  })
-);
-app.use(bodyParser.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
