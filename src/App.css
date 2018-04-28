@@ -286,6 +286,7 @@ body {
   height: auto;
   border: none;
   border-bottom: 3px solid #d3d3d3;
+  border-radius: 0;
   background: #ffffff;
   resize: none;
   font-size: 16px;
@@ -617,6 +618,7 @@ body {
   height: auto;
   border: none;
   border-bottom: 3px solid #d3d3d3;
+  border-radius: 0;
   background: #ffffff;
   resize: none;
   font-size: 16px;
@@ -822,6 +824,7 @@ body {
   height: 100px;
   border: none;
   border-bottom: 3px solid #d3d3d3;
+  border-radius: 0;
   background: #ffffff;
   resize: none;
   font-size: 16px;
