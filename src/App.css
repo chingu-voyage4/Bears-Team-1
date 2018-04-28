@@ -99,7 +99,6 @@ body {
 
 .navbar img {
   width: 40px;
-  filter: brightness(1.45);
 }
 
 .navbar--selected {
