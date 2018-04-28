@@ -57,11 +57,9 @@ class SearchBar extends Component {
                 placeholder="Search by username (case-sensitive)"
                 required
               />
-              <input
-                type="submit"
-                value="Search"
-                className="search--form--submit-button"
-              />
+              <button type="submit" className="search--form--submit-button">
+                Search
+              </button>
             </form>
           </div>
         </div>
