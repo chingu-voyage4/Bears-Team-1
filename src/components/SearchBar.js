@@ -54,7 +54,7 @@ class SearchBar extends Component {
                 type="text"
                 value={this.state.searchText}
                 onChange={this.handleChange}
-                placeholder="Search by username"
+                placeholder="Search by username (case-sensitive)"
                 required
               />
               <input

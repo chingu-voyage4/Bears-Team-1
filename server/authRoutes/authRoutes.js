@@ -1,33 +1,33 @@
 const express = require("express");
-const authRouter = express.Router();
+const router = express.Router();
 const passport = require("passport");
 
-authRouter.get(
-  "/auth/google",
+router.get(
+  "/google",
   passport.authenticate("google", {
     scope: ["profile"]
   })
 );
 
-authRouter.get(
-  "/auth/google/callback",
+router.get(
+  "/google/callback",
   passport.authenticate("google", {
     successRedirect: "/",
     failureRedirect: "/login"
   })
 );
 
-authRouter.get("/auth/logout", (req, res) => {
+router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
 
-authRouter.get("/auth/current_user", (req, res) => {
+router.get("/current_user", (req, res) => {
   res.send(req.user);
   console.log(req.user);
 });
 
-authRouter.get("/auth/isAuthenticated", function(req, res) {
+router.get("/isAuthenticated", function(req, res) {
   if (req.user) {
     console.log(req.user);
     res.send(req.user);
@@ -37,4 +37,4 @@ authRouter.get("/auth/isAuthenticated", function(req, res) {
   }
 });
 
-module.exports = authRouter;
+module.exports = router;

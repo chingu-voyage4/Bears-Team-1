@@ -49,9 +49,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./services/passport");
-//require("./authRoutes/authRoutes")(app);
-const authRouter = require("./authRoutes/authRoutes");
-app.use("/", authRouter);
+const auth = require("./authRoutes/authRoutes"); // router
+app.use("/auth", auth);
 
 //////////////////////////////
 // Answer requests
