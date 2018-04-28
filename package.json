@@ -29,6 +29,9 @@
     },
     "/tweet/*": {
       "target": "http://localhost:3001"
+    },
+    "/api/*": {
+      "target": "http://localhost:3001"
     }
   },
   "scripts": {
@@ -39,7 +42,8 @@
       "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "dev": "npm-run-all -p start-server watch-css start-js",
-    "heroku-postbuild": "npm run build",
+    "heroku-postbuild":
+      "npm install --only=dev --no-shrinkwrap && npm run build",
     "build": "react-scripts build",
     "test": "mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'",
