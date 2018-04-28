@@ -22,7 +22,7 @@ app.use(
 );
 
 // Priority serve any static files.
-app.use(express.static(path.resolve(__dirname, "../build")));
+app.use(express.static(path.join(__dirname, "../build")));
 
 // Cross Origin Resource Sharing
 app.use(cors());
@@ -74,7 +74,7 @@ app.use("/tweet", tweet);
 
 // All remaining requests return the React app, so it can handle routing.
 app.get("*", (request, response) => {
-  response.sendFile(path.resolve(__dirname, "../build", "index.html"));
+  response.sendFile(path.join(__dirname, "../build", "index.html"));
 });
 
 // Connect to port
