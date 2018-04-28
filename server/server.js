@@ -10,7 +10,9 @@ const urlEncodedParser = bodyParser.urlencoded({ extended: false });
 const app = express();
 
 // Priority serve any static files.
-app.use(express.static(path.resolve(__dirname, "../build")));
+// app.use(express.static(path.resolve(__dirname, "../build")));
+// Priority serve any static files.
+app.use(express.static("../react/build"));
 
 // Cross Origin Resource Sharing
 app.use(cors());
@@ -40,16 +42,16 @@ require("./services/passport");
 
 app.use(
   cookieSession({
-    maxAge: 7 * 24 * 60 * 60 * 1000,
+    maxAge: 24 * 60 * 60 * 1000,
     keys: [process.env.COOKIE_KEY]
   })
 );
 
 app.use(passport.initialize());
 app.use(passport.session());
-//require("./authRoutes/authRoutes")(app);
-const authRoutes = require("./authRoutes/authRoutes");
-app.use("/", authRoutes);
+require("./authRoutes/authRoutes")(app);
+//const authRoutes = require("./authRoutes/authRoutes");
+//app.use("/", authRoutes);
 
 //////////////////////////////
 // Answer requests
