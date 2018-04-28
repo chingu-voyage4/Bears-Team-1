@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, "../build")));
 
 // Cross Origin Resource Sharing
 app.use(cors());
+app.options("*", cors());
 
 //////////////////////////////
 // MongoDB
