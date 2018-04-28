@@ -49,7 +49,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./services/passport");
-require("./authRoutes/authRoutes")(app);
+//require("./authRoutes/authRoutes")(app);
+const authRouter = require("./authRoutes/authRoutes");
+app.use("/", authRouter);
 
 //////////////////////////////
 // Answer requests
@@ -75,7 +77,6 @@ app.get("*", (request, response) => {
 });
 
 // Connect to port
-
 app.listen(PORT, () =>
   console.log(`Express server is listening on port ${PORT}`)
 );
