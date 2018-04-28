@@ -13,7 +13,10 @@ class Login extends Component {
             <img src={post} alt="Scoop" className="login--icon" />
           </div>
           <div className="login--container--signin-buttons">
-            <a href="/auth/google" className="login--signin-button">
+            <a
+              href="https://whats-the-scoop.herokuapp.com/auth/google"
+              className="login--signin-button"
+            >
               Google+
             </a>
             <div />
