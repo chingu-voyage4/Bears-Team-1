@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import post from "../assets/iconmonstr-candy-27.svg";
 
 class Login extends Component {
@@ -13,10 +12,7 @@ class Login extends Component {
             <img src={post} alt="Scoop" className="login--icon" />
           </div>
           <div className="login--container--signin-buttons">
-            <a
-              href="http://localhost:3001/auth/google"
-              className="login--signin-button"
-            >
+            <a href="/auth/google" className="login--signin-button">
               Google+
             </a>
             <div />

@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
-import Feed from "./Feed";
 import Logout from "./Logout";
+import user1 from "../assets/iconmonstr-user-1.svg";
 
 class Profile extends Component {
   constructor(props) {
@@ -12,13 +11,16 @@ class Profile extends Component {
 
   render() {
     const profile = this.props.profile;
-    console.log("signedInUserBoolean:", this.props.signedInUserBoolean);
     return (
       <div className="profile--container">
         <div className="profile">
           <div className="profile--header" />
           <div>
-            <a className="profile--avatar" />
+            <img
+              className="profile--avatar"
+              src={profile.avatarUrl || user1}
+              alt="Avatar"
+            />
             {this.props.signedInUserBoolean ? (
               <div>
                 <Link to="/editprofile">
@@ -28,6 +30,10 @@ class Profile extends Component {
                 </Link>
                 <Logout redir={this.props.redir} />
               </div>
+            ) : this.props.signedInUserIsFollowing ? (
+              <button className="profile--button--edit-profile">
+                Following
+              </button>
             ) : (
               <button className="profile--button--edit-profile">Follow</button>
             )}

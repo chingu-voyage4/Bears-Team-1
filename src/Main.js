@@ -10,7 +10,7 @@ import Notifications from "./components/Notifications";
 import Scoop from "./components/Scoop";
 import Login from "./components/Login";
 
-const Main = props => (
+const Main = () => (
   <main>
     <Switch>
       <Route exact path="/profile" component={ProfileView} />

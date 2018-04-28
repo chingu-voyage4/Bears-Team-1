@@ -10,7 +10,7 @@ const authCheck = (req, res, next) => {
   } else {
     // If user is not logged in
     console.log("Please log in to complete your request");
-    res.redirect("/auth/google");
+    res.redirect("/login");
   }
 };
 
@@ -85,7 +85,7 @@ router.put("/:user_id/profile", authCheck, (req, res) => {
   const lastName = req.body.lastName;
   const location = req.body.location;
   const about = req.body.about;
-
+  const avatarUrl = req.body.avatarUrl;
   /* Block a signed in user from editing another user's profile?
   if (req.user._id != req.params.user_id) {
     console.log("Signed in user doesn't match profile being edited")
@@ -101,7 +101,8 @@ router.put("/:user_id/profile", authCheck, (req, res) => {
         firstName: firstName,
         lastName: lastName,
         location: location,
-        about: about
+        about: about,
+        avatarUrl: avatarUrl
       }
     },
     // Returns the updated document
@@ -112,7 +113,7 @@ router.put("/:user_id/profile", authCheck, (req, res) => {
 });
 
 // Make a user inactive
-router.put("/:delete_id", (req, res) => {
+router.put("/:delete_id", authCheck, (req, res) => {
   const delete_id = req.params.delete_id;
   User.findOneAndUpdate({ _id: delete_id }, { $set: { isActive: false } })
     .then(user => {
@@ -122,7 +123,7 @@ router.put("/:delete_id", (req, res) => {
 });
 
 // Handle likes
-router.put("/:user_id/likes/", (req, res) => {
+router.put("/:user_id/likes/", authCheck, (req, res) => {
   const tweet_id = req.body.tweet_id;
   const user_id = req.params.user_id;
 
@@ -197,7 +198,8 @@ router.get("/:user_id/likes", (req, res) => {
 });
 
 // Handle Follow
-router.put("/:user_id/following/", (req, res) => {
+router.put("/:user_id/following/", authCheck, (req, res) => {
+  // use req.user._id for signed in user?
   const user_id = req.params.user_id;
   const self_id = req.body.self_id;
   const action = req.body.action;

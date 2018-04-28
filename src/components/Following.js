@@ -16,7 +16,6 @@ class Following extends Component {
     axios
       .get(`/user/${this.state.userID}/following`)
       .then(response => {
-        console.log(response);
         this.setState({ following: response.data });
       })
       .catch(error => {
@@ -40,7 +39,6 @@ class Following extends Component {
   }
 
   render() {
-    console.log(this.state.following);
     return (
       <div className="follow--container">
         <div className="follow">

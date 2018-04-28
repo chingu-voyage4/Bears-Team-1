@@ -6,9 +6,9 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
-passport.deserializeUser((id, done) => {
-  User.findById(id).then(user => {
-    done(null, user);
+passport.deserializeUser(function(id, done) {
+  User.findById(id, (err, user) => {
+    done(err, user);
   });
 });
 
@@ -17,10 +17,9 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
-      passReqToCallback: true
+      callbackURL: "/auth/google/callback"
     },
-    (request, accessToken, refreshToken, profile, done) => {
+    (accessToken, refreshToken, profile, done) => {
       User.findOne({ googleID: profile.id }).then(existingUser => {
         if (existingUser) {
           done(null, existingUser);

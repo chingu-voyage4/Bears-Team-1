@@ -4,34 +4,46 @@
   "private": true,
   "cacheDirectories": ["node_modules"],
   "dependencies": {
-    "@types/jest": "^22.2.3",
     "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "cookie-session": "^2.0.0-beta.3",
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "express": "^4.16.3",
-    "lodash": "^4.17.5",
+    "express-session": "^1.15.6",
+    "lodash": "^4.17.10",
     "moment": "^2.22.1",
-    "mongoose": "^5.0.15",
-    "node-sass-chokidar": "^0.0.3",
+    "mongoose": "^5.0.16",
     "passport": "^0.4.0",
     "passport-google-oauth20": "^1.0.0",
-    "prettier": "^1.12.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.1"
+    "react-router-dom": "^4.2.2"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": {
+    "/auth/*": {
+      "target": "http://localhost:3001"
+    },
+    "/user/*": {
+      "target": "http://localhost:3001"
+    },
+    "/tweet/*": {
+      "target": "http://localhost:3001"
+    },
+    "/api/*": {
+      "target": "http://localhost:3001"
+    }
+  },
   "scripts": {
+    "start": "node server/server.js",
     "start-server": "nodemon server/server.js",
     "build-css": "node-sass-chokidar src/ -o src/",
     "watch-css":
       "npm run build-css && node-sass-chokidar src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
-    "start": "npm-run-all -p start-server watch-css start-js",
-    "heroku-postbuild": "npm run build",
+    "dev": "npm-run-all -p start-server watch-css start-js",
+    "heroku-postbuild":
+      "npm install --only=dev --no-shrinkwrap && npm run build",
     "build": "react-scripts build",
     "test": "mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'",
@@ -40,14 +52,18 @@
     "precommit": "lint-staged"
   },
   "devDependencies": {
+    "@types/jest": "^22.2.3",
     "concurrently": "^3.5.1",
     "expect": "^22.4.3",
     "husky": "^0.14.3",
     "jest": "^22.4.3",
-    "lint-staged": "^7.0.4",
+    "lint-staged": "^7.0.5",
     "mocha": "^5.1.1",
     "nodemon": "^1.17.3",
+    "node-sass-chokidar": "^0.0.3",
     "npm-run-all": "^4.1.2",
+    "prettier": "^1.12.1",
+    "react-scripts": "1.1.1",
     "supertest": "^3.0.0"
   },
   "lint-staged": {

@@ -96,11 +96,9 @@ class Scoop extends Component {
             <div className="scoop--characters-remaining">
               {this.state.remainingCharacters} characters remaining
             </div>
-            <input
-              type="submit"
-              value="Submit"
-              className="scoop--form--submit-button"
-            />
+            <button type="submit" className="scoop--form--submit-button">
+              Submit
+            </button>
           </form>
         </div>
       </div>

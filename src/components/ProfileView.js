@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import axios from "axios";
 import Profile from "./Profile";
 import Feed from "./Feed";
@@ -14,6 +14,7 @@ class ProfileView extends Component {
       signedInUser: null,
       signedInUserBoolean: false,
       redirectToNewPage: false,
+      signedInUserIsFollowing: false,
       redir: () => {
         this.setState({ redirectToNewPage: true });
       }
@@ -22,11 +23,31 @@ class ProfileView extends Component {
 
   getUserProfile(ID) {
     axios
-      .get(`/user/${ID}/profile`)
-      .then(response => {
-        console.log("profile:", response.data);
-        this.setState({ profile: response.data });
-      })
+      .all([
+        axios.get("/auth/isAuthenticated"),
+        axios.get(`/user/${ID}/profile`)
+      ])
+      .then(
+        axios.spread((loggedInUser, userProfile) => {
+          if (loggedInUser.data.username) {
+            const foundSignedInUser = loggedInUser.data.following.find(e => {
+              return e === userProfile.data._id;
+            });
+            if (foundSignedInUser) {
+              this.setState({
+                profile: userProfile.data,
+                signedInUserIsFollowing: true
+              });
+            } else {
+              this.setState({
+                profile: userProfile.data,
+                signedInUserIsFollowing: false
+              });
+            }
+          }
+          this.setState({ profile: userProfile.data });
+        })
+      )
       .catch(error => {
         console.log(error);
       });
@@ -36,7 +57,6 @@ class ProfileView extends Component {
     axios
       .get(`/user/${ID}/scoops`)
       .then(response => {
-        console.log("scoops:", response);
         this.setState({ scoops: response.data });
       })
       .catch(error => {
@@ -54,7 +74,7 @@ class ProfileView extends Component {
       axios
         .get("auth/isAuthenticated")
         .then(response => {
-          if (response.data != "Not logged in") {
+          if (response.data !== "Not logged in") {
             this.setState({
               signedInUser: response.data,
               signedInUserBoolean: true
@@ -83,6 +103,7 @@ class ProfileView extends Component {
             profile={this.state.profile}
             signedInUserBoolean={this.state.signedInUserBoolean}
             redir={this.state.redir}
+            signedInUserIsFollowing={this.state.signedInUserIsFollowing}
           />
         ) : null}
         {this.state.scoops ? <Feed scoops={this.state.scoops} /> : null}

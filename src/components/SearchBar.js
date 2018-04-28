@@ -43,8 +43,6 @@ class SearchBar extends Component {
   }
 
   render() {
-    console.log("component sr: ", this.state.searchResults);
-
     return (
       <div>
         <div className="search--container">
@@ -56,14 +54,12 @@ class SearchBar extends Component {
                 type="text"
                 value={this.state.searchText}
                 onChange={this.handleChange}
-                placeholder="Search by username"
+                placeholder="Search by username (case-sensitive)"
                 required
               />
-              <input
-                type="submit"
-                value="Search"
-                className="search--form--submit-button"
-              />
+              <button type="submit" className="search--form--submit-button">
+                Search
+              </button>
             </form>
           </div>
         </div>

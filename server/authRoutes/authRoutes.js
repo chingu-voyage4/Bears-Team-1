@@ -1,60 +1,40 @@
+const express = require("express");
+const router = express.Router();
 const passport = require("passport");
 
-module.exports = app => {
-  app.get(
-    "/auth/google",
-    passport.authenticate("google", {
-      scope: ["profile", "email"]
-    })
-  );
+router.get(
+  "/google",
+  passport.authenticate("google", {
+    scope: ["profile"]
+  })
+);
 
-  /*app.get(
-    "/auth/google/callback",
-    passport.authenticate("google"),
-    (req, res) => {
-      // dev mode: http://localhost:3000/   prod mode: /
-      res.redirect("http://localhost:3000/");
-    }
-  );*/
+router.get(
+  "/google/callback",
+  passport.authenticate("google", {
+    successRedirect: "/",
+    failureRedirect: "/login"
+  })
+);
 
-  app.get(
-    "/auth/google/callback",
-    passport.authenticate("google", {
-      successRedirect: "http://localhost:3000/",
-      failureRedirect: "http://localhost:3000/"
-    })
-  );
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
 
-  app.get("/auth/logout", (req, res) => {
-    req.logout();
-    // dev mode: http://localhost:3000/   prod mode: /
-    res.redirect("http://localhost:3000/");
-    console.log("logged out");
-  });
+router.get("/current_user", (req, res) => {
+  res.send(req.user);
+  console.log(req.user);
+});
 
-  app.get("/auth/current_user", (req, res) => {
-    res.send(req.user); //This grabs the current user and it's data.
-    console.log(req.user); //We will want to also console log it.
-  });
+router.get("/isAuthenticated", function(req, res) {
+  if (req.user) {
+    console.log(req.user);
+    res.send(req.user);
+  } else {
+    console.log("Not logged in");
+    res.send("Not logged in");
+  }
+});
 
-  app.get("/auth/isAuthenticated", function(req, res) {
-    if (req.user) {
-      console.log(req.user);
-      res.send(req.user);
-    } else {
-      console.log("Not logged in");
-      res.send("Not logged in");
-    }
-  });
-
-  const authCheck = (req, res, next) => {
-    if (req.user) {
-      // If logged in
-      next();
-    } else {
-      // If user is not logged in
-      console.log("Please log in to complete your request");
-      res.redirect("/auth/google");
-    }
-  };
-};
+module.exports = router;
