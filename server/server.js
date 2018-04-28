@@ -48,8 +48,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 //require("./authRoutes/authRoutes")(app);
-const authRouter = require("./authRouter");
-app.use("/", authRouter);
+const authRoutes = require("./authRoutes/authRoutes");
+app.use("/", authRoutes);
 
 //////////////////////////////
 // Answer requests
