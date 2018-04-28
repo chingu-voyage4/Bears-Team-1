@@ -12,7 +12,7 @@ const app = express();
 // Priority serve any static files.
 // app.use(express.static(path.resolve(__dirname, "../build")));
 // Priority serve any static files.
-app.use(express.static("../react/build"));
+app.use(express.static("../build"));
 
 // Cross Origin Resource Sharing
 app.use(cors());
