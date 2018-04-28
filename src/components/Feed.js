@@ -73,56 +73,55 @@ class Feed extends Component {
     return (
       <div className="feed">
         <ol className="feed--list">
-          {scoops !== null
-            ? scoops.map((scoop, index) => (
-                <li className="feed--list-item" key={"listitem" + index}>
-                  <div>
-                    <div className="feed--avatar" />
-                  </div>
-                  <div className="feed--user-container">
-                    <div className="feed--user">
-                      <Link to={`/profile/${scoop.creator._id}`}>
-                        <span className="feed--username">
-                          {scoop.creator.username}
-                        </span>
-                      </Link>
-                      <span className="feed--date">
-                        {" "}
-                        &middot; {moment(scoop.date).fromNow()}
+          {scoops !== null &&
+            scoops.map((scoop, index) => (
+              <li className="feed--list-item" key={"listitem" + index}>
+                <div>
+                  <div className="feed--avatar" />
+                </div>
+                <div className="feed--user-container">
+                  <div className="feed--user">
+                    <Link to={`/profile/${scoop.creator._id}`}>
+                      <span className="feed--username">
+                        {scoop.creator.username}
                       </span>
-                    </div>
-                    <div>
-                      <p className="feed--message">{scoop.text}</p>
-                    </div>
-                    <ul className="feed--list-item--actions">
-                      <li>
-                        <img src={reply} alt="reply" />0
-                      </li>
-                      <li>
-                        <img src={share} alt="share" />0
-                      </li>
-                      <li>
-                        <form onSubmit={this.handleLike}>
-                          {this.likeButton("isLiked")}0
-                        </form>
-                      </li>
-                    </ul>
-
-                    <form
-                      data-scoopid={scoop._id}
-                      data-listindex={index}
-                      onSubmit={this.handleDelete}
-                    >
-                      <input
-                        type="submit"
-                        value="Delete"
-                        className="feed--delete-button"
-                      />
-                    </form>
+                    </Link>
+                    <span className="feed--date">
+                      {" "}
+                      &middot; {moment(scoop.date).fromNow()}
+                    </span>
                   </div>
-                </li>
-              ))
-            : null}
+                  <div>
+                    <p className="feed--message">{scoop.text}</p>
+                  </div>
+                  <ul className="feed--list-item--actions">
+                    <li>
+                      <img src={reply} alt="reply" />0
+                    </li>
+                    <li>
+                      <img src={share} alt="share" />0
+                    </li>
+                    <li>
+                      <form onSubmit={this.handleLike}>
+                        {this.likeButton("isLiked")}0
+                      </form>
+                    </li>
+                  </ul>
+
+                  <form
+                    data-scoopid={scoop._id}
+                    data-listindex={index}
+                    onSubmit={this.handleDelete}
+                  >
+                    <input
+                      type="submit"
+                      value="Delete"
+                      className="feed--delete-button"
+                    />
+                  </form>
+                </div>
+              </li>
+            ))}
         </ol>
       </div>
     );
