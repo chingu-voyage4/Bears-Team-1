@@ -8,7 +8,7 @@ router.get(
     scope: ["profile"]
   })
 );
-
+/*
 router.get(
   "/google/callback",
   passport.authenticate("google", {
@@ -16,6 +16,10 @@ router.get(
     failureRedirect: "/login"
   })
 );
+*/
+router.get("/google/callback", passport.authenticate("google"), (req, res) => {
+  res.redirect("/");
+});
 
 router.get("/logout", (req, res) => {
   req.logout();
