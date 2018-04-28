@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Logout from "./Logout";
-import smiley from "../assets/iconmonstr-smiley-2.svg";
 import user1 from "../assets/iconmonstr-user-1.svg";
 
 class Profile extends Component {
@@ -17,7 +16,11 @@ class Profile extends Component {
         <div className="profile">
           <div className="profile--header" />
           <div>
-            <img className="profile--avatar" src={profile.avatarUrl || user1} />
+            <img
+              className="profile--avatar"
+              src={profile.avatarUrl || user1}
+              alt="Avatar"
+            />
             {this.props.signedInUserBoolean ? (
               <div>
                 <Link to="/editprofile">

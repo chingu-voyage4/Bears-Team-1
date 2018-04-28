@@ -4,37 +4,26 @@ module.exports = app => {
   app.get(
     "/auth/google",
     passport.authenticate("google", {
-      scope: ["profile", "email"]
+      scope: ["profile"]
     })
   );
 
-  app.get(
-    "/auth/google/callback",
-    passport.authenticate("google"),
-    (req, res) => {
-      // dev mode: http://localhost:3000/   prod mode: /
-      res.redirect("/");
-    }
-  );
-  /*
   app.get(
     "/auth/google/callback",
     passport.authenticate("google", {
       successRedirect: "/",
-      failureRedirect: "/"
+      failureRedirect: "/login"
     })
   );
-*/
+
   app.get("/auth/logout", (req, res) => {
     req.logout();
-    // dev mode: http://localhost:3000/   prod mode: /
     res.redirect("/");
-    console.log("logged out");
   });
 
   app.get("/auth/current_user", (req, res) => {
-    res.send(req.user); //This grabs the current user and it's data.
-    console.log(req.user); //We will want to also console log it.
+    res.send(req.user);
+    console.log(req.user);
   });
 
   app.get("/auth/isAuthenticated", function(req, res) {

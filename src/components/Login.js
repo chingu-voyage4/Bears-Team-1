@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import post from "../assets/iconmonstr-candy-27.svg";
-import { Link } from "react-router-dom";
 
 class Login extends Component {
   render() {
@@ -13,10 +12,7 @@ class Login extends Component {
             <img src={post} alt="Scoop" className="login--icon" />
           </div>
           <div className="login--container--signin-buttons">
-            <a
-              href="https://whats-the-scoop.herokuapp.com/auth/google"
-              className="login--signin-button"
-            >
+            <a href="/auth/google" className="login--signin-button">
               Google+
             </a>
             <div />
