@@ -86,7 +86,7 @@ class FeedView extends Component {
             : followingSelected}
           <div className="clear" />
         </div>
-        <Feed scoops={this.state.scoops} />
+        {this.state.scoops ? <Feed scoops={this.state.scoops} /> : null}
       </div>
     );
   }
