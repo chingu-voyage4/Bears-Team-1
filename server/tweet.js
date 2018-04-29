@@ -16,6 +16,7 @@ const authCheck = (req, res, next) => {
 // Get all tweets
 router.get("/all", (req, res) => {
   Tweet.find({})
+    .sort({ date: "descending" })
     .populate("creator")
     .exec(function(err, docs) {
       if (err) console.error;

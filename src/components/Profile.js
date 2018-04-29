@@ -11,6 +11,7 @@ class Profile extends Component {
 
   render() {
     const profile = this.props.profile;
+    console.log(profile);
     return (
       <div className="profile--container">
         <div className="profile">
@@ -49,7 +50,9 @@ class Profile extends Component {
                 <ul className="profile--stats">
                   <li>
                     <span className="profile--stats-name">Scoops</span>
-                    <span className="profile--stats-number">000</span>
+                    <span className="profile--stats-number">
+                      {this.props.scoops ? this.props.scoops.length : 0}
+                    </span>
                   </li>
                   <li>
                     <Link to={`/following/${profile._id}`}>

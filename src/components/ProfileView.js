@@ -104,9 +104,15 @@ class ProfileView extends Component {
             signedInUserBoolean={this.state.signedInUserBoolean}
             redir={this.state.redir}
             signedInUserIsFollowing={this.state.signedInUserIsFollowing}
+            scoops={this.state.scoops}
           />
         ) : null}
-        {this.state.scoops ? <Feed scoops={this.state.scoops} /> : null}
+        {this.state.scoops ? (
+          <Feed
+            scoops={this.state.scoops}
+            signedInUser={this.state.signedInUser}
+          />
+        ) : null}
         {!this.state.scoops && !this.state.profile ? "Loading" : null}
       </div>
     );
