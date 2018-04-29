@@ -167,7 +167,7 @@ body {
 .profile--button--edit-profile {
   font-size: 16px;
   float: right;
-  margin: 16px;
+  margin: 16px 8px 0 0;
   background: none;
   border: none;
   color: #00c8cd;
