@@ -6,6 +6,7 @@ import reply from "../assets/iconmonstr-speech-bubble-2.svg";
 import share from "../assets/iconmonstr-retweet-1.svg";
 import like from "../assets/iconmonstr-favorite-2.svg";
 import liked from "../assets/iconmonstr-favorite-1.svg";
+import user1 from "../assets/iconmonstr-user-1.svg";
 
 class Feed extends Component {
   constructor(props) {
@@ -69,7 +70,11 @@ class Feed extends Component {
             scoops.map((scoop, index) => (
               <li className="feed--list-item" key={"listitem" + index}>
                 <div>
-                  <div className="feed--avatar" />
+                  <img
+                    className="feed--avatar"
+                    src={scoop.creator.avatarUrl || user1}
+                    alt="Avatar"
+                  />
                 </div>
                 <div className="feed--user-container">
                   <div className="feed--user">
