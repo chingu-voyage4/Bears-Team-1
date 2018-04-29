@@ -47,7 +47,7 @@ class Feed extends Component {
     let scoopid = event.target.dataset.scoopid;
     let itemIndex = event.target.dataset.listindex;
     let updatedList = this.state.scoops.filter(
-      (x, i) => i !== parseInt(itemIndex)
+      (x, i) => i !== parseInt(itemIndex, 10)
     );
     this.setState({
       scoops: updatedList

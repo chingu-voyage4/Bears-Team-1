@@ -22,7 +22,6 @@ class SearchBar extends Component {
     axios
       .get(`user/${this.state.searchText}/searchusers`)
       .then(response => {
-        console.log(response);
         this.setState({ searchResults: response.data });
       })
       .catch(error => {
