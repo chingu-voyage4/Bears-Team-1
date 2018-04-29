@@ -64,9 +64,11 @@ router.get("/feed", authCheck, (req, res) => {
 
     // Returns all tweets from every user referenced in feedOIDs, sorts by date
     Tweet.find({ $or: query })
+      .populate("creator")
       .sort({ date: "descending" })
-      .then(feed => {
-        res.send(feed);
+      .exec(function(err, docs) {
+        if (err) console.error;
+        res.send(docs);
       });
   });
 });
