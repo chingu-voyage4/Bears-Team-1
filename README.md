@@ -4,7 +4,7 @@ After cloning
 
 ```
 npm install
-npm start
+npm run-script dev
 ```
 
 webpack server: 3000 <br>

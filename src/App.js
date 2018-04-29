@@ -4,16 +4,12 @@ import Main from "./Main";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <Nav />
-        <Main />
-        <Footer />
-      </div>
-    );
-  }
-}
+const App = () => (
+  <div>
+    <Nav />
+    <Main />
+    <Footer />
+  </div>
+);
 
 export default App;
