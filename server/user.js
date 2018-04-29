@@ -41,6 +41,7 @@ router.get("/:user_id/scoops", (req, res) => {
   const creator = req.params.user_id;
   Tweet.find({ creator })
     .populate("creator")
+    .sort({ date: "descending" })
     .exec(function(err, docs) {
       if (err) console.error;
       res.send(docs);

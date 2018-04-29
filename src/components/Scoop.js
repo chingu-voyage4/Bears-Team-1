@@ -26,7 +26,6 @@ class Scoop extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log("Here's the Scoop:", this.state.scoopText);
     axios
       .post("tweet/new", {
         text: this.state.scoopText
@@ -34,7 +33,6 @@ class Scoop extends Component {
       .then(response => {
         this.setState({ scoopText: "" });
         this.setState({ redirectToNewPage: true });
-        console.log(response);
       })
       .catch(error => {
         console.log(error);

@@ -6,11 +6,14 @@ import reply from "../assets/iconmonstr-speech-bubble-2.svg";
 import share from "../assets/iconmonstr-retweet-1.svg";
 import like from "../assets/iconmonstr-favorite-2.svg";
 import liked from "../assets/iconmonstr-favorite-1.svg";
+import user1 from "../assets/iconmonstr-user-1.svg";
 
 class Feed extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      scoops: this.props.scoops
+    };
     this.handleLike = this.handleLike.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
   }
@@ -41,34 +44,24 @@ class Feed extends Component {
 
   handleDelete(event) {
     event.preventDefault();
-    console.log("delete:", event.target.dataset.scoopid);
-    /* Tested filter method to update list
+    let scoopid = event.target.dataset.scoopid;
     let itemIndex = event.target.dataset.listindex;
-    let updatedList = this.state.list.filter((x, i) => i !== itemIndex)
-    console.log(updatedList);
+    let updatedList = this.state.scoops.filter(
+      (x, i) => i !== parseInt(itemIndex, 10)
+    );
     this.setState({
-      list: updatedList
-    })*/
-    // Save this.state.list as a variable
-    let newList = this.state.list;
-    // Get the index number of the list item to be deleted
-    let itemIndex = event.target.dataset.listindex;
+      scoops: updatedList
+    });
     axios
-      .delete(`/tweet/${event.target.dataset.scoopid}`)
-      .then(response => {
-        console.log("response:", response);
-        // Splice the list item from the new list
-        newList.splice(itemIndex, 1);
-        // Update this.state.list with the newList
-        this.setState({ list: newList });
-      })
+      .delete(`/tweet/${scoopid}`)
+      .then(response => {})
       .catch(error => {
         console.log(error);
       });
   }
 
   render() {
-    const scoops = this.props.scoops;
+    let scoops = this.state.scoops || this.props.scoops;
 
     return (
       <div className="feed">
@@ -77,7 +70,11 @@ class Feed extends Component {
             scoops.map((scoop, index) => (
               <li className="feed--list-item" key={"listitem" + index}>
                 <div>
-                  <div className="feed--avatar" />
+                  <img
+                    className="feed--avatar"
+                    src={scoop.creator.avatarUrl || user1}
+                    alt="Avatar"
+                  />
                 </div>
                 <div className="feed--user-container">
                   <div className="feed--user">
@@ -108,17 +105,19 @@ class Feed extends Component {
                     </li>
                   </ul>
 
-                  <form
-                    data-scoopid={scoop._id}
-                    data-listindex={index}
-                    onSubmit={this.handleDelete}
-                  >
-                    <input
-                      type="submit"
-                      value="Delete"
-                      className="feed--delete-button"
-                    />
-                  </form>
+                  {this.props.signedInUser ? (
+                    <form
+                      data-scoopid={scoop._id}
+                      data-listindex={index}
+                      onSubmit={this.handleDelete}
+                    >
+                      <input
+                        type="submit"
+                        value="Delete"
+                        className="feed--delete-button"
+                      />
+                    </form>
+                  ) : null}
                 </div>
               </li>
             ))}

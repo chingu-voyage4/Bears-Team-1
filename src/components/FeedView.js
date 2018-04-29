@@ -20,7 +20,6 @@ class FeedView extends Component {
     axios
       .get("/tweet/all")
       .then(response => {
-        console.log(response);
         this.setState({ scoops: response.data, selected: "everybody" });
       })
       .catch(error => {
