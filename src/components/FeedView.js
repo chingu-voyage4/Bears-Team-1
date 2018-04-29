@@ -31,6 +31,7 @@ class FeedView extends Component {
     axios
       .get("/user/feed")
       .then(response => {
+        console.log(response);
         this.setState({ scoops: response.data, selected: "following" });
       })
       .catch(error => {
